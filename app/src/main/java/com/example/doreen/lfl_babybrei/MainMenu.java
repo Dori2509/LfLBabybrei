@@ -1,11 +1,11 @@
 package com.example.doreen.lfl_babybrei;
 
-import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
-import android.widget.Toast;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import java.util.ArrayList;
@@ -83,9 +83,31 @@ public class MainMenu extends AppCompatActivity{
         // Getting a reference to listview of main.xml layout file
         ListView listView = (ListView) findViewById(R.id.listview);
 
+
         // Setting the adapter to the listView
         listView.setAdapter(adapter);
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
+            @Override
+            public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,long arg3) {
+                System.out.println(arg2 + " + Bernd");
+                switch(arg2)
+                {
+                    case 0:
 
+                        Intent intent = new Intent(getApplicationContext(),ProfileActivity.class);
+                        startActivity(intent);
+
+                    case 1:
+                        System.out.println(arg2 + " + Bernd");
+
+                    case 2:
+                        System.out.println(arg2 + " + Bernd");
+
+                    default:
+
+                }
+            }
+        });
     }
 
     public void initToolBar() {

@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:background="@drawable/background"
+    android:layout_height="match_parent"
+    android:weightSum="1">
+
+
+    <ImageView
+        android:layout_width="286dp"
+        android:layout_height="209px"
+        android:id="@+id/imageView3"
+        android:background="@drawable/profil_xl"
+        android:layout_weight="1.0"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="40dp"
+        android:layout_marginBottom="40dp"
+        />
+
+
+
+<LinearLayout
+    android:layout_width="299dp"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center_horizontal"
+    android:weightSum="1"
+    android:layout_marginBottom="5dp">
+
+    <TextView
+        android:id="@+id/username"
+        android:text="Anna"
+        android:layout_width="224dp"
+        android:layout_height="wrap_content"
+        android:textColor="#175c2c"
+        android:textStyle="bold"
+        android:textSize="30dp"
+        android:layout_gravity="bottom|center_horizontal"
+        android:layout_weight="0.80" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/pen"
+        android:id="@+id/imageView4" />
+
+</LinearLayout>
+
+
+
+    <TextView
+        android:id="@+id/textview"
+        android:layout_width="298dp"
+        android:layout_height="2dp"
+        android:background="#175c2c"
+        android:autoText="true"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="3dp" />
+
+    <LinearLayout
+        android:layout_width="299dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:weightSum="1"
+        android:layout_marginTop="11dp">
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:weightSum="1">
+
+            <TextView
+                android:id="@+id/NameKind"
+                android:text="Name des Kindes"
+                android:layout_width="249dp"
+                android:layout_height="wrap_content"
+                android:textColor="#80368a"
+                android:textStyle="bold"
+                android:textSize="25dp"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true" />
+            <TextView
+                android:id="@+id/NameKind_ch"
+                android:text="Bruno"
+                android:layout_width="224dp"
+                android:layout_height="wrap_content"
+                android:textColor="#80368a"
+                android:textSize="25dp"
+                android:layout_below="@+id/NameKind"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true" />
+
+        </RelativeLayout>
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/pen"
+            android:id="@+id/changeNameBaby" />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="299dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:weightSum="1"
+        android:layout_marginTop="11dp"
+        android:layout_marginBottom="5dp">
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:weightSum="1">
+
+            <TextView
+                android:id="@+id/DateKind"
+                android:text="Geburtsdatum"
+                android:layout_width="249dp"
+                android:layout_height="wrap_content"
+                android:textColor="#80368a"
+                android:textStyle="bold"
+                android:textSize="25dp"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true" />
+            <TextView
+                android:id="@+id/DateKind_ch"
+                android:text="10. April 2016"
+                android:layout_width="224dp"
+                android:layout_height="wrap_content"
+                android:textColor="#80368a"
+                android:textSize="25dp"
+                android:layout_below="@+id/DateKind"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true" />
+
+        </RelativeLayout>
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/pen"
+            android:id="@+id/changeBirthBaby" />
+
+    </LinearLayout>
+    <TextView
+        android:id="@+id/textview2"
+        android:layout_width="298dp"
+        android:layout_height="2dp"
+        android:background="#175c2c"
+        android:autoText="true"
+        android:layout_gravity="center_horizontal" />
+    <TextView
+        android:id="@+id/AlterKind"
+        android:text="Bruno ist 6 Monate alt."
+        android:layout_width="298dp"
+        android:layout_height="wrap_content"
+        android:textColor="#80368a"
+        android:textStyle="bold"
+        android:textSize="25dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="15dp" />
+
+</LinearLayout>
