@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:background="@drawable/background"
+    android:layout_height="match_parent">
+
+
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="58dp"
+        android:minHeight="?attr/actionBarSize"
+        android:titleTextColor="#ffffff">
+        <TextView
+            android:id="@+id/points"
+            android:text="50"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#175c2c"
+            android:layout_gravity="right"
+            android:textSize="25dp"
+            android:paddingLeft="20dp"
+            android:paddingRight="40dp" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/imageView2"
+            android:layout_gravity="center"
+            android:src="@drawable/diamant"
+             />
+
+        <TextView
+            android:id="@+id/username"
+            android:text="Anna"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#175c2c"
+            android:textStyle="bold"
+            android:textSize="30dp" />
+
+
+
+    </android.support.v7.widget.Toolbar>
+
+
+    <TextView
+        android:id="@+id/textview"
+        android:layout_width="fill_parent"
+        android:layout_height="2dp"
+        android:background="#175c2c"
+        android:autoText="true" />
+
+    <ListView
+        android:id="@+id/listview"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:divider="@drawable/list_divider"
+        android:dividerHeight="4px"
+        />
+
+
+
+</LinearLayout>
