@@ -90,8 +90,7 @@ public class MainMenu extends AppCompatActivity{
 
     public void initToolBar() {
         toolbar = (Toolbar) findViewById(R.id.toolbar);
-        //toolbar.setTitle("Anna");
-        //toolbar.setNavigationIcon(R.drawable.diamant);
+
         setSupportActionBar(toolbar);
 
 
