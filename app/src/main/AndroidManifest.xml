@@ -17,6 +17,12 @@
         </activity>
         <activity android:name=".MainMenu"/>
         <activity android:name=".ProfileActivity"/>
+        <activity android:name=".MilchActivity"/>
+        <activity android:name=".BeikostActivity"/>
+        <activity android:name=".InfoboxActivity"/>
+        <activity android:name=".KochbuchAcitivity"/>
+        <activity android:name=".RezeptUebersichtActivity"/>
+        <activity android:name=".WochenrechnerActivity"/>
     </application>
 
 </manifest>
