@@ -7,19 +7,16 @@
 
 
     <ImageView
-        android:layout_width="286dp"
-        android:layout_height="209px"
-        android:id="@+id/imageView3"
-        android:background="@drawable/profil_xl"
-        android:layout_weight="1.0"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/profileImage"
         android:layout_gravity="center_horizontal"
+        android:background="@drawable/profil_xl"
         android:layout_marginTop="40dp"
-        android:layout_marginBottom="40dp"
-        />
+        android:layout_marginBottom="40dp" />
 
 
-
-<LinearLayout
+    <LinearLayout
     android:layout_width="299dp"
     android:layout_height="wrap_content"
     android:layout_gravity="center_horizontal"
@@ -41,7 +38,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/pen"
-        android:id="@+id/imageView4" />
+        android:id="@+id/chName" />
 
 </LinearLayout>
 
