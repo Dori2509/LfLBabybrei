@@ -16,10 +16,11 @@ public class DBHelper extends SQLiteOpenHelper {
 
     public static final String DATABASE_NAME = "MyDBName.db";
     public static final String COLUMN_ID = "id";
-    public static final String COLUMN_NAME = "Anna";
-    public static final String COLUMN_BABYNAME = "Bruno";
-    public static final String COLUMN_BIRTHDATE = "25.09.2016";
-    public static final int COLUMN_DIAMANTS = 50;
+    public static final String COLUMN_NAME = "name";
+    public static final String COLUMN_BABYNAME = "babyname";
+    public static final String COLUMN_BIRTHDATE = "birthdate";
+    public static final int COLUMN_DIAMANTS = 0;
+    public static final String COLUMN_IMAGE = "image";
 
 
     public DBHelper(Context context) {
@@ -30,7 +31,7 @@ public class DBHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(
-                "create table notes " +
+                "create table profile " +
                         "(id integer primary key, " +
                         "name text," +
                         "babyname text," +
@@ -41,8 +42,15 @@ public class DBHelper extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        db.execSQL("DROP TABLE IF EXISTS notes");
+        db.execSQL("DROP TABLE IF EXISTS profile");
         onCreate(db);
+    }
+
+    //alle Daten auslesen.
+    public Cursor getData(int id, String orderby) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor res = db.rawQuery("select * from profile where id=" + id + " ORDER BY " + orderby, null);
+        return res;
     }
 
     /*//neuen Kontakt einfügen.
@@ -63,12 +71,7 @@ public class DBHelper extends SQLiteOpenHelper {
         return true;
     }
 
-    //alle Daten auslesen.
-    public Cursor getData(int id, String orderby) {
-        SQLiteDatabase db = this.getReadableDatabase();
-        Cursor res = db.rawQuery("select * from notes where id=" + id + " ORDER BY " + orderby, null);
-        return res;
-    }
+
 
     //Änderungen eines Note werden abgespeichert.
     public boolean updateNote(Integer id, String note, String description, String date, String time, String priority, String finished, String contact, String phone, String mail) {
@@ -97,14 +100,6 @@ public class DBHelper extends SQLiteOpenHelper {
         return true;
     }
 
-    //Änderungen eines normalen/wichten Note abspeichern.
-    public boolean updateImportance(Integer id, String imp) {
-        SQLiteDatabase db = this.getWritableDatabase();
-        ContentValues contentValues = new ContentValues();
-        contentValues.put("priority", imp);
-        db.update("notes", contentValues, "id = ? ", new String[]{Integer.toString(id)});
-        return true;
-    }
 
     //Löschen eines Note.
     public Integer deleteNote(Integer id) {
@@ -123,62 +118,6 @@ public class DBHelper extends SQLiteOpenHelper {
 
         while (res.isAfterLast() == false) {
             array_list.add(res.getString(res.getColumnIndex(COLUMN_NOTE)));
-            res.moveToNext();
-        }
-        return array_list;
-    }
-
-    //Alle Note-Wichtigkeiten werden ausgelesen.
-    public ArrayList<String> getAllPriority(String orderby) {
-        ArrayList<String> array_list = new ArrayList<String>();
-        SQLiteDatabase db = this.getReadableDatabase();
-        Cursor res = db.rawQuery("select * from notes ORDER BY " + orderby, null);
-        res.moveToFirst();
-
-        while (res.isAfterLast() == false) {
-            array_list.add(res.getString(res.getColumnIndex(COLUMN_PRIORITY)));
-            res.moveToNext();
-        }
-        return array_list;
-    }
-
-    //Alle Note-Datum(s) werden ausgelesen.
-    public ArrayList<String> getAllDate(String orderby) {
-        ArrayList<String> array_list = new ArrayList<String>();
-        SQLiteDatabase db = this.getReadableDatabase();
-        Cursor res = db.rawQuery("select * from notes ORDER BY " + orderby, null);
-        res.moveToFirst();
-
-        while (res.isAfterLast() == false) {
-            array_list.add(res.getString(res.getColumnIndex(COLUMN_DATE)));
-            res.moveToNext();
-        }
-        return array_list;
-    }
-
-    //Alle Note-Erledigt werden ausgelesen.
-    public ArrayList<String> getAllFinished(String orderby) {
-        ArrayList<String> array_list = new ArrayList<String>();
-        SQLiteDatabase db = this.getReadableDatabase();
-        Cursor res = db.rawQuery("select * from notes ORDER BY " + orderby, null);
-        res.moveToFirst();
-
-        while (res.isAfterLast() == false) {
-            array_list.add(res.getString(res.getColumnIndex(COLUMN_FINISHED)));
-            res.moveToNext();
-        }
-        return array_list;
-    }
-
-    //Alle Note-IDs werden ausgelesen.
-    public ArrayList<Integer> getAllID(String orderby) {
-        ArrayList<Integer> array_list = new ArrayList<Integer>();
-        SQLiteDatabase db = this.getReadableDatabase();
-        Cursor res = db.rawQuery("select * from notes ORDER BY " + orderby, null);
-        res.moveToFirst();
-
-        while (res.isAfterLast() == false) {
-            array_list.add(res.getInt(res.getColumnIndex(COLUMN_ID)));
             res.moveToNext();
         }
         return array_list;
