@@ -96,34 +96,35 @@ public class MainMenu extends AppCompatActivity{
 
                         Intent intent = new Intent(getApplicationContext(),ProfileActivity.class);
                         startActivity(intent);
-
+                        break;
                     case 1:
                         Intent intent2 = new Intent(getApplicationContext(),MilchActivity.class);
                         startActivity(intent2);
-
+                        break;
                     case 2:
                         Intent intent3 = new Intent(getApplicationContext(),BeikostActivity.class);
                         startActivity(intent3);
-
+                        break;
                     case 3:
                         Intent intent4 = new Intent(getApplicationContext(),InfoboxActivity.class);
                         startActivity(intent4);
-
+                        break;
                     case 4:
                         Intent intent5 = new Intent(getApplicationContext(),RezeptUebersichtActivity.class);
                         startActivity(intent5);
-
+                        break;
                     case 5:
                         Intent intent6 = new Intent(getApplicationContext(),KochbuchAcitivity.class);
                         startActivity(intent6);
-
+                        break;
                     case 6:
                         Intent intent7 = new Intent(getApplicationContext(),WochenrechnerActivity.class);
                         startActivity(intent7);
-
+                        break;
                     case 7:
                         Intent intent8 = new Intent(getApplicationContext(), MinigamesActivity.class);
                         startActivity(intent8);
+                        break;
                     default:
 
                 }

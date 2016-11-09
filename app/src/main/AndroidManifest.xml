@@ -23,6 +23,7 @@
         <activity android:name=".KochbuchAcitivity"/>
         <activity android:name=".RezeptUebersichtActivity"/>
         <activity android:name=".WochenrechnerActivity"/>
+        <activity android:name=".MinigamesActivity"/>
     </application>
 
 </manifest>

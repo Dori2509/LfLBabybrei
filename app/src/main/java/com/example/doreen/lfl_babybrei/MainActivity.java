@@ -7,17 +7,22 @@ import android.os.Bundle;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.example.doreen.lfl_babybrei.db.DBHelper;
+
 public class MainActivity extends AppCompatActivity {
 
     ProgressBar bar;
     TextView label;
     Handler handler = new Handler();
+    private DBHelper mydb ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         bar = (ProgressBar) findViewById(R.id.progBar);
+
+        mydb = new DBHelper(this);
 
         new Thread(new Runnable() {
 
