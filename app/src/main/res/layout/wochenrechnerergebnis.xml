@@ -51,6 +51,16 @@
         android:background="#175c2c"
         android:autoText="true" />
 
+    <TextView
+        android:text="TextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/ErgebnisName"
+        android:layout_marginTop="100dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:textColor="#000000"
+        android:textStyle="normal|bold" />
 
 
 </LinearLayout>

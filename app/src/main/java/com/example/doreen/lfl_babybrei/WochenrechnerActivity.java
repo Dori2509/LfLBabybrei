@@ -14,6 +14,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -27,14 +29,47 @@ import java.io.File;
 public class WochenrechnerActivity extends AppCompatActivity {
     Toolbar toolbar;
     private DBHelper mydb ;
+    EditText SetName;
+    EditText Datum;
+    Button calculate;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.minigames);
+        setContentView(R.layout.wochenrechner);
         initToolBar();
 
+        SetName = (EditText) findViewById(R.id.WochenrechnerName);
+        Datum = (EditText) findViewById(R.id.WochenrechnerDatum);
+        calculate = (Button) findViewById(R.id.calculate);
+
+        SetName.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SetName.setText("");
+            }
+        });
+
+        Datum.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Datum.setText("");
+                DateDialog dialog=new DateDialog(v);
+                FragmentTransaction ft =getFragmentManager().beginTransaction();
+                dialog.show(ft, "DatePicker");
+            }
+        });
+
+        calculate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(WochenrechnerActivity.this,WochenrechnerErgebnisActivity.class);
+                intent.putExtra("Name", SetName.getText().toString());
+                intent.putExtra("Datum", Datum.getText().toString());
+                startActivity(intent);
+            }
+        });
 
     }
 

@@ -2,9 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:background="@drawable/background"
-    android:layout_height="match_parent">
-
-
+    android:layout_height="match_parent"
+    android:weightSum="1">
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"
@@ -44,6 +43,7 @@
 
     </android.support.v7.widget.Toolbar>
 
+
     <TextView
         android:id="@+id/textview"
         android:layout_width="fill_parent"
@@ -52,5 +52,40 @@
         android:autoText="true" />
 
 
+    <EditText
+        android:layout_width="345dp"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:background="#ffffff"
+        android:layout_gravity="center"
+        android:text = "Name"
+        android:ems="10"
+        android:hint ="Name"
+        android:layout_marginTop="150dp"
+        android:id="@+id/WochenrechnerName"
+        android:layout_weight="0.06"
+        android:textColor="?attr/colorButtonNormal" />
 
+    <EditText
+        android:layout_width="345dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:inputType="textPersonName"
+        android:background="#ffffff"
+        android:layout_gravity="center"
+        android:ems="10"
+        android:text = "Geburtsdatum"
+        android:hint ="Geburtstag"
+        android:id="@+id/WochenrechnerDatum"
+        android:layout_weight="0.06"
+        android:textColor="?attr/colorButtonNormal" />
+
+    <Button
+        android:text="Alter berechnen"
+        android:layout_width="345dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:id="@+id/calculate"
+        android:layout_weight="0.06" />
 </LinearLayout>
