@@ -51,6 +51,11 @@
         android:background="#175c2c"
         android:autoText="true" />
 
+    <Button
+        android:text="TicTacToe"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/tictactoe" />
 
 
 </LinearLayout>

@@ -8,6 +8,10 @@ import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.widget.TextView;
+
+import com.example.doreen.lfl_babybrei.db.DBHelper;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -18,6 +22,7 @@ import java.util.List;
 public class MainMenu extends AppCompatActivity{
 
     Toolbar toolbar;
+    private DBHelper mydb ;
     // Array of strings storing country names
     String[] menupuenkte = new String[] {
             "Profil",
@@ -133,6 +138,10 @@ public class MainMenu extends AppCompatActivity{
     }
 
     public void initToolBar() {
+        mydb = new DBHelper(this);
+        String Name = mydb.getName();
+        TextView ProfileName = (TextView) findViewById(R.id.username);
+        ProfileName.setText(Name);
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 

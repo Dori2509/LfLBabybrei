@@ -24,6 +24,11 @@
         <activity android:name=".RezeptUebersichtActivity"/>
         <activity android:name=".WochenrechnerActivity"/>
         <activity android:name=".MinigamesActivity"/>
+        <activity android:name=".ProfileDataActivity"/>
+        <activity android:name=".games.tictactoe.TicTacToe"/>
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
     </application>
 
 </manifest>

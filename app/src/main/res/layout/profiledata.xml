@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:background="@drawable/background"
+    android:layout_height="match_parent"
+    android:weightSum="1">
+
+
+    <EditText
+        android:layout_width="345dp"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:background="#ffffff"
+        android:ems="10"
+        android:hint ="Name"
+        android:id="@+id/nameEingabe"
+        android:layout_marginTop="50dp"
+        android:layout_gravity="center"
+        android:textColor="?attr/colorButtonNormal"
+        android:layout_weight="0.08" />
+
+    <EditText
+        android:layout_width="345dp"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:background="#ffffff"
+        android:layout_gravity="center"
+        android:ems="10"
+        android:hint ="Name des Kindes"
+        android:layout_marginTop="20dp"
+        android:id="@+id/babynameEingabe"
+        android:layout_weight="0.06"
+        android:textColor="?attr/colorButtonNormal" />
+
+    <EditText
+        android:layout_width="345dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:inputType="textPersonName"
+        android:background="#ffffff"
+        android:layout_gravity="center"
+        android:ems="10"
+        android:hint ="Geburtstag"
+        android:id="@+id/birthdayEingabe"
+        android:layout_weight="0.06"
+        android:textColor="?attr/colorButtonNormal" />
+
+    <Button
+        android:text="Speichern"
+        android:layout_width="345dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:id="@+id/saveButton"
+        android:layout_weight="0.06" />
+</LinearLayout>

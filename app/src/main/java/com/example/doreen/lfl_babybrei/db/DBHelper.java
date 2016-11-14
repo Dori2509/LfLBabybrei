@@ -33,12 +33,15 @@ public class DBHelper extends SQLiteOpenHelper {
         db.execSQL(
                 "create table profile " +
                         "(id integer primary key, " +
-                        "name text," +
-                        "babyname text," +
+                        "name text, " +
+                        "babyname text, " +
                         "birthdate text, " +
-                        "diamants integer)"
+                        "diamants integer, " +
+                        "image text)"
         );
     }
+
+
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
@@ -47,10 +50,36 @@ public class DBHelper extends SQLiteOpenHelper {
     }
 
     //alle Daten auslesen.
-    public Cursor getData(int id, String orderby) {
+    public Cursor getData(int id) {
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor res = db.rawQuery("select * from profile where id=" + id + " ORDER BY " + orderby, null);
+        Cursor res = db.rawQuery("select * from profile where id=" + id , null);
         return res;
+    }
+
+    public String getName() {
+        String array_list = "";
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor res = db.rawQuery("select * from profile" , null);
+        res.moveToFirst();
+
+        while (res.isAfterLast() == false) {
+            array_list = res.getString(res.getColumnIndex(COLUMN_NAME));
+            res.moveToNext();
+        }
+        return array_list;
+    }
+
+    public boolean insertProfile(String name, String babyname, String birthdate, int diamants, String image) {
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("name", name);
+        contentValues.put("babyname", babyname);
+        contentValues.put("birthdate", birthdate);
+        contentValues.put("diamants", diamants);
+        contentValues.put("image", image);
+        db.insert("profile", null, contentValues);
+        return true;
     }
 
     /*//neuen Kontakt einfügen.

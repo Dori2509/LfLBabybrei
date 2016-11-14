@@ -15,6 +15,10 @@ public class MainActivity extends AppCompatActivity {
     TextView label;
     Handler handler = new Handler();
     private DBHelper mydb ;
+    String Name;
+
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,6 +27,8 @@ public class MainActivity extends AppCompatActivity {
         bar = (ProgressBar) findViewById(R.id.progBar);
 
         mydb = new DBHelper(this);
+        Name = mydb.getName();
+
 
         new Thread(new Runnable() {
 
@@ -46,11 +52,19 @@ public class MainActivity extends AppCompatActivity {
                         }
                     });
                 }
+
                 if(progressStatus >= 100){
-                    Intent intent = new Intent(getApplicationContext(),MainMenu.class);
-                    startActivity(intent);
+                    if (Name == ""){
+                        System.out.println("Name ist leer");
+                        Intent intent = new Intent(getApplicationContext(), ProfileDataActivity.class);
+                        startActivityForResult(intent, 1);
+                    } else{
+                        Intent intent = new Intent(getApplicationContext(),MainMenu.class);
+                        startActivity(intent);
+                    }
                 }
-            }
+
+                 }
 
             private int doWork() {
 
@@ -58,6 +72,24 @@ public class MainActivity extends AppCompatActivity {
             }
 
         }).start();
+
+
+
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+
+        if(resultCode == RESULT_OK){
+            Name = data.getStringExtra("Name");
+            String BabyName = data.getStringExtra("BabyName");
+            String Birthday = data.getStringExtra("Birthday");
+            System.out.println("Bernd:" + Name);
+            mydb.insertProfile(Name, BabyName, Birthday, 25, null);
+
+            Intent intent = new Intent(getApplicationContext(),MainMenu.class);
+            startActivity(intent);
+        }
 
     }
 }
