@@ -12,6 +12,8 @@ import android.widget.TextView;
 
 import com.example.doreen.lfl_babybrei.db.DBHelper;
 
+import org.w3c.dom.Text;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -140,8 +142,13 @@ public class MainMenu extends AppCompatActivity{
     public void initToolBar() {
         mydb = new DBHelper(this);
         String Name = mydb.getName();
+        int diamants = mydb.getDiamants();
+
         TextView ProfileName = (TextView) findViewById(R.id.username);
+        TextView Dia = (TextView) findViewById(R.id.points);
+
         ProfileName.setText(Name);
+        Dia.setText(String.valueOf(diamants));
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 

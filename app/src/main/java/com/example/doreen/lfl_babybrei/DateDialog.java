@@ -11,8 +11,6 @@ import android.widget.TextView;
 
 import java.util.Calendar;
 
-
-
 /**
  * Created by Doreen on 06.06.2016.
  * DateDialog wird erzeugt um eine Auswahl des Zieldatums zu erleichtern.

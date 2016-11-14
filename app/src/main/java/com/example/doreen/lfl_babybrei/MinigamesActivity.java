@@ -18,6 +18,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.doreen.lfl_babybrei.db.DBHelper;
 import com.example.doreen.lfl_babybrei.games.tictactoe.TicTacToe;
 
 import java.io.File;
@@ -28,6 +29,7 @@ import java.io.File;
 public class MinigamesActivity extends AppCompatActivity {
     Toolbar toolbar;
     Button tic;
+    private DBHelper mydb ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +50,15 @@ public class MinigamesActivity extends AppCompatActivity {
     }
 
     public void initToolBar() {
+        mydb = new DBHelper(this);
+        String Name = mydb.getName();
+        int diamants = mydb.getDiamants();
+
+        TextView ProfileName = (TextView) findViewById(R.id.username);
+        TextView Dia = (TextView) findViewById(R.id.points);
+
+        ProfileName.setText(Name);
+        Dia.setText(String.valueOf(diamants));
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 

@@ -14,7 +14,7 @@
         android:titleTextColor="#ffffff">
         <TextView
             android:id="@+id/points"
-            android:text="50"
+            android:text=""
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="#175c2c"

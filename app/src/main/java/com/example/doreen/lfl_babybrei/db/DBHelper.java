@@ -19,7 +19,7 @@ public class DBHelper extends SQLiteOpenHelper {
     public static final String COLUMN_NAME = "name";
     public static final String COLUMN_BABYNAME = "babyname";
     public static final String COLUMN_BIRTHDATE = "birthdate";
-    public static final int COLUMN_DIAMANTS = 0;
+    public static final String COLUMN_DIAMANTS = "diamants";
     public static final String COLUMN_IMAGE = "image";
 
 
@@ -66,6 +66,33 @@ public class DBHelper extends SQLiteOpenHelper {
             array_list = res.getString(res.getColumnIndex(COLUMN_NAME));
             res.moveToNext();
         }
+        return array_list;
+    }
+
+    public String getBabyName() {
+        String array_list = "";
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor res = db.rawQuery("select * from profile" , null);
+        res.moveToFirst();
+
+        while (res.isAfterLast() == false) {
+            array_list = res.getString(res.getColumnIndex(COLUMN_BABYNAME));
+            res.moveToNext();
+        }
+        return array_list;
+    }
+
+    public int getDiamants() {
+        int array_list = 0;
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor res = db.rawQuery("select * from profile" , null);
+        res.moveToFirst();
+
+        while (res.isAfterLast() == false) {
+            array_list = res.getInt(res.getColumnIndex(COLUMN_DIAMANTS));
+            res.moveToNext();
+        }
+        System.out.println(array_list);
         return array_list;
     }
 

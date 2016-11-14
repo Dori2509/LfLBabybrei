@@ -9,6 +9,8 @@ import android.widget.TextView;
 
 import com.example.doreen.lfl_babybrei.db.DBHelper;
 
+import java.sql.SQLException;
+
 public class MainActivity extends AppCompatActivity {
 
     ProgressBar bar;
@@ -25,6 +27,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         bar = (ProgressBar) findViewById(R.id.progBar);
+
+
 
         mydb = new DBHelper(this);
         Name = mydb.getName();
@@ -86,6 +90,7 @@ public class MainActivity extends AppCompatActivity {
             String Birthday = data.getStringExtra("Birthday");
             System.out.println("Bernd:" + Name);
             mydb.insertProfile(Name, BabyName, Birthday, 25, null);
+
 
             Intent intent = new Intent(getApplicationContext(),MainMenu.class);
             startActivity(intent);
