@@ -1,25 +1,16 @@
 package com.example.doreen.lfl_babybrei;
 
-import android.app.FragmentTransaction;
-import android.content.Intent;
-import android.database.Cursor;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
-import android.net.Uri;
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
-import android.view.View;
-import android.widget.ImageView;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.doreen.lfl_babybrei.db.DBHelper;
+import com.example.doreen.lfl_babybrei.db.DatabaseAccess;
 
-import java.io.File;
+import java.util.List;
 
 /**
  * Created by Doreen on 26.10.2016.
@@ -27,7 +18,7 @@ import java.io.File;
 public class MilchActivity extends AppCompatActivity {
     Toolbar toolbar;
     private DBHelper mydb ;
-
+    private ListView listView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,8 +26,18 @@ public class MilchActivity extends AppCompatActivity {
         setContentView(R.layout.beitrag);
         initToolBar();
 
+        this.listView = (ListView) findViewById(R.id.listView);
+        DatabaseAccess databaseAccess = DatabaseAccess.getInstance(this);
+        databaseAccess.open();
+        List<String> quotes = databaseAccess.getBeitraege("infobox");
+        databaseAccess.close();
 
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, quotes);
+        this.listView.setAdapter(adapter);
     }
+
+
+
 
     public void initToolBar() {
         mydb = new DBHelper(this);
