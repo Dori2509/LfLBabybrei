@@ -19,6 +19,7 @@ public class DatabaseAccess {
     private SQLiteOpenHelper openHelper;
     private SQLiteDatabase database;
     private static DatabaseAccess instance;
+    public Context c;
 
     /**
      * Private constructor to aboid object creation from outside classes.
@@ -27,6 +28,7 @@ public class DatabaseAccess {
      */
     private DatabaseAccess(Context context) {
         this.openHelper = new DatabaseOpenHelper(context);
+        this.c = context;
     }
 
     /**
@@ -70,7 +72,11 @@ public class DatabaseAccess {
         Cursor cursor = database.rawQuery("SELECT * FROM beitraege WHERE assignement='" + value + "'", null);
         cursor.moveToFirst();
         while (!cursor.isAfterLast()) {
-            list.add(new MyAdapter.Item(cursor.getString(1), R.drawable.diamant));
+            int resID = c.getResources().getIdentifier(cursor.getString(4) , "drawable", c.getPackageName());
+            String str = cursor.getString(1);
+            if(str.length() > 22)
+                str = str.substring(0,18) + "...";
+            list.add(new MyAdapter.Item(str, resID, cursor.getInt(3)));
             cursor.moveToNext();
         }
         cursor.close();
@@ -114,4 +120,31 @@ public class DatabaseAccess {
         return title;
 
     }
+    public int getArticleImage(int id) {
+        String title = "";
+        Cursor res = database.rawQuery("select * from beitraege WHERE _id=" + id , null);
+        res.moveToFirst();
+
+        while (res.isAfterLast() == false) {
+            title = res.getString(res.getColumnIndex("image"));
+            res.moveToNext();
+        }
+        int resID = c.getResources().getIdentifier(title , "drawable", c.getPackageName());
+        return resID;
+
+    }
+
+    public int getArticleRate(int id) {
+        int title = 0;
+        Cursor res = database.rawQuery("select * from beitraege WHERE _id=" + id , null);
+        res.moveToFirst();
+
+        while (res.isAfterLast() == false) {
+            title= res.getColumnIndex("rate");
+            res.moveToNext();
+        }
+        return title;
+
+    }
+
 }

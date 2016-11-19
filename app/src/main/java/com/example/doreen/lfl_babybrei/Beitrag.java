@@ -3,6 +3,7 @@ package com.example.doreen.lfl_babybrei;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.doreen.lfl_babybrei.db.DBHelper;
@@ -25,6 +26,7 @@ public class Beitrag extends AppCompatActivity {
 
         TextView article_title = (TextView) findViewById(R.id.article_title);
         TextView article_text = (TextView) findViewById(R.id.article_text);
+        ImageView article_img = (ImageView) findViewById(R.id.article_img);
 
         DatabaseAccess databaseAccess = DatabaseAccess.getInstance(this);
         databaseAccess.open();
@@ -36,6 +38,7 @@ public class Beitrag extends AppCompatActivity {
             System.out.println(Value);
             article_title.setText(databaseAccess.getArticleTitle(Value));
             article_text.setText(databaseAccess.getArticleText(Value));
+            article_img.setImageResource(databaseAccess.getArticleImage(Value));
         }
 
 

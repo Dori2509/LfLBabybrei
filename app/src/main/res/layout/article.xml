@@ -66,8 +66,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:srcCompat="@drawable/dasstillen"
-                android:id="@+id/article_img"
-                android:layout_marginTop="25dp"/>
+                android:id="@+id/article_img"/>
 
             <TextView
                 android:id="@+id/article_title"
@@ -75,7 +74,7 @@
                 android:layout_height="wrap_content"
                 android:text="Titel"
                 android:textSize="20dp"
-                android:layout_marginTop="110px"
+                android:layout_marginTop="50px"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
                 android:textStyle="bold"
@@ -89,6 +88,7 @@
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="15dp"
                 android:layout_marginRight="20dp"
+                android:layout_marginBottom="40dp"
                 android:textColor="@color/common_google_signin_btn_text_light_pressed" />
         </LinearLayout>
 

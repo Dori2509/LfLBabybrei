@@ -11,6 +11,10 @@
         <!-- colorAccent is used as the default value for colorControlActivated
              which is used to tint widgets -->
         <item name="colorAccent">#FFAB40</item>
-    </style>
 
+    </style>
+    <style name="RatingBar" parent="Theme.AppCompat">
+        <item name="colorControlNormal">#510a5c</item>
+        <item name="colorControlActivated">#80368a</item>
+    </style>
 </resources>
