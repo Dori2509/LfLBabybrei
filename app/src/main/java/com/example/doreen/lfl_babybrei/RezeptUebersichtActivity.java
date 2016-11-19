@@ -1,25 +1,14 @@
 package com.example.doreen.lfl_babybrei;
 
-import android.app.FragmentTransaction;
 import android.content.Intent;
-import android.database.Cursor;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
-import android.net.Uri;
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.doreen.lfl_babybrei.db.DBHelper;
-
-import java.io.File;
 
 /**
  * Created by Doreen on 26.10.2016.
@@ -35,6 +24,25 @@ public class RezeptUebersichtActivity extends AppCompatActivity {
         setContentView(R.layout.rezeptuebersicht);
         initToolBar();
 
+        ImageView fuenf = (ImageView) findViewById(R.id.fuenf);
+        fuenf.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent2 = new Intent(getApplicationContext(),RezeptMonat.class);
+                intent2.putExtra("Monat", 5);
+                startActivity(intent2);
+            }
+        });
+
+        ImageView sechs = (ImageView) findViewById(R.id.sechs);
+        sechs.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent2 = new Intent(getApplicationContext(),RezeptMonat.class);
+                intent2.putExtra("Monat", 6);
+                startActivity(intent2);
+            }
+        });
 
     }
 

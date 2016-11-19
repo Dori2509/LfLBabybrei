@@ -28,6 +28,7 @@
         <activity android:name=".games.tictactoe.TicTacToe"/>
         <activity android:name=".WochenrechnerErgebnisActivity"/>
         <activity android:name=".Beitrag"/>
+        <activity android:name=".RezeptMonat"/>
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />

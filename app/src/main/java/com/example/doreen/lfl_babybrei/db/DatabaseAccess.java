@@ -108,6 +108,34 @@ public class DatabaseAccess {
 
     }
 
+    public List<MyAdapter.Item> getRezepte5(int value) {
+        List<MyAdapter.Item> list = new ArrayList<>();
+        Cursor cursor = database.rawQuery("SELECT * FROM rezepte WHERE month='" + value + "'", null);
+        cursor.moveToFirst();
+        while (!cursor.isAfterLast()) {
+            int resID = c.getResources().getIdentifier(cursor.getString(4) , "drawable", c.getPackageName());
+            String str = cursor.getString(1);
+            if(str.length() > 22)
+                str = str.substring(0,18) + "...";
+            list.add(new MyAdapter.Item(str, resID, cursor.getInt(3)));
+            cursor.moveToNext();
+        }
+        cursor.close();
+        return list;
+    }
+    public ArrayList<Integer> getAllRezepteID(int value) {
+        ArrayList<Integer> list = new ArrayList<>();
+        Cursor cursor = database.rawQuery("SELECT * FROM rezepte WHERE month='" + value + "'", null);
+        cursor.moveToFirst();
+        while (!cursor.isAfterLast()) {
+            list.add(cursor.getInt(0));
+            cursor.moveToNext();
+        }
+        cursor.close();
+        return list;
+    }
+
+
     public String getArticleText(int id) {
         String title = "";
         Cursor res = database.rawQuery("select * from beitraege WHERE _id=" + id , null);
