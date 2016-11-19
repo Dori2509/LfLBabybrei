@@ -9,6 +9,9 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import com.example.doreen.lfl_babybrei.MyAdapter;
+import com.example.doreen.lfl_babybrei.R;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -55,20 +58,60 @@ public class DatabaseAccess {
         }
     }
 
+
+
     /**
      * Read all quotes from the database.
      *
      * @return a List of quotes
      */
-    public List<String> getBeitraege(String value) {
-        List<String> list = new ArrayList<>();
+    public List<MyAdapter.Item> getBeitraege(String value) {
+        List<MyAdapter.Item> list = new ArrayList<>();
         Cursor cursor = database.rawQuery("SELECT * FROM beitraege WHERE assignement='" + value + "'", null);
         cursor.moveToFirst();
         while (!cursor.isAfterLast()) {
-            list.add(cursor.getString(1));
+            list.add(new MyAdapter.Item(cursor.getString(1), R.drawable.diamant));
             cursor.moveToNext();
         }
         cursor.close();
         return list;
+    }
+
+    public ArrayList<Integer> getAllID(String value) {
+        ArrayList<Integer> list = new ArrayList<>();
+        Cursor cursor = database.rawQuery("SELECT * FROM beitraege WHERE assignement='" + value + "'", null);
+        cursor.moveToFirst();
+        while (!cursor.isAfterLast()) {
+            list.add(cursor.getInt(0));
+            cursor.moveToNext();
+        }
+        cursor.close();
+        return list;
+    }
+
+    public String getArticleTitle(int id) {
+        String title = "";
+        Cursor res = database.rawQuery("select * from beitraege WHERE _id=" + id , null);
+        res.moveToFirst();
+
+        while (res.isAfterLast() == false) {
+            title = res.getString(res.getColumnIndex("title"));
+            res.moveToNext();
+        }
+        return title;
+
+    }
+
+    public String getArticleText(int id) {
+        String title = "";
+        Cursor res = database.rawQuery("select * from beitraege WHERE _id=" + id , null);
+        res.moveToFirst();
+
+        while (res.isAfterLast() == false) {
+            title = res.getString(res.getColumnIndex("fulltext"));
+            res.moveToNext();
+        }
+        return title;
+
     }
 }

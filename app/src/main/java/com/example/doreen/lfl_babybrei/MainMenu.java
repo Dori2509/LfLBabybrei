@@ -12,8 +12,6 @@ import android.widget.TextView;
 
 import com.example.doreen.lfl_babybrei.db.DBHelper;
 
-import org.w3c.dom.Text;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -34,7 +32,7 @@ public class MainMenu extends AppCompatActivity{
             "Rezeptübersicht",
             "Kochbuch",
             "Wochenrechner",
-            "Minigames"
+            "minigames"
     };
 
     // Array of integers points to images stored in /res/drawable-ldpi/
@@ -43,10 +41,10 @@ public class MainMenu extends AppCompatActivity{
             R.drawable.milch,
             R.drawable.beikost,
             R.drawable.infobox,
-            R.drawable.infobox,
-            R.drawable.infobox,
-            R.drawable.infobox,
-            R.drawable.infobox
+            R.drawable.rezepte,
+            R.drawable.kochbuch,
+            R.drawable.wochenrechner,
+            R.drawable.minigames
     };
 
     // Array of strings to store currencies
@@ -55,10 +53,10 @@ public class MainMenu extends AppCompatActivity{
             "nützliche Hinweise, versch. Fertignahrung etc.",
             "nützliche Hinweise, Obst- und Gemüsekunde",
             "Rückrufe, Ernährungsplan, Küchengeflüster",
-            "XXX",
-            "XXX",
-            "XXX",
-            "XXX"
+            "Finde hier Rezepte je nach Alter abgestimmt",
+            "Deine Lieblingsrezepte in der Übersicht",
+            "Berechne das Alter in Tagen, Wochen usw. einer beliebigen Person",
+            "TicTacToe, Memory, FoodDrop, Quiz, SimonSays"
     };
 
     @Override

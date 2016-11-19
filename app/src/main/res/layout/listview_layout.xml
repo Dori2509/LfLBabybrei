@@ -26,7 +26,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="20dp"
-            android:layout_marginTop="60px"
+            android:layout_marginTop="110px"
             android:textStyle="bold"
             android:textColor="#80368a" />
 

@@ -37,7 +37,7 @@ public class MinigamesActivity extends AppCompatActivity {
         setContentView(R.layout.minigames);
         initToolBar();
 
-        Button tictactoe = (Button) findViewById(R.id.tictactoe);
+        ImageView tictactoe = (ImageView) findViewById(R.id.tictactoe);
         tictactoe.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
