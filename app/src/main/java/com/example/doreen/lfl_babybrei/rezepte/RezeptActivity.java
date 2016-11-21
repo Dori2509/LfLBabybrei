@@ -3,13 +3,20 @@ package com.example.doreen.lfl_babybrei.rezepte;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.doreen.lfl_babybrei.R;
 import com.example.doreen.lfl_babybrei.db.DBHelper;
 import com.example.doreen.lfl_babybrei.db.DatabaseAccess;
+
+import java.util.ArrayList;
 
 /**
  * Created by Doreen on 21.11.2016.
@@ -18,7 +25,9 @@ import com.example.doreen.lfl_babybrei.db.DatabaseAccess;
 public class RezeptActivity extends AppCompatActivity {
     Toolbar toolbar;
     private DBHelper mydb ;
-
+    private ArrayList<Zutaten> productList;
+    public int Value;
+    public int xMenge;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,16 +38,18 @@ public class RezeptActivity extends AppCompatActivity {
         TextView article_title = (TextView) findViewById(R.id.rezept_title);
         TextView article_text = (TextView) findViewById(R.id.rezept_text);
         ImageView article_img = (ImageView) findViewById(R.id.rezept_img);
-        EditText rezeptPortion = (EditText) findViewById(R.id.portion);
-        TextView portionText = (TextView) findViewById(R.id.PortionText);
+        final EditText rezeptPortion = (EditText) findViewById(R.id.portion);
+        final TextView portionText = (TextView) findViewById(R.id.PortionText);
+        final ImageView refresh_img = (ImageView) findViewById(R.id.refresh);
+        Button addKoch = (Button) findViewById(R.id.addkochbuch);
 
-        DatabaseAccess databaseAccess = DatabaseAccess.getInstance(this);
+        final DatabaseAccess databaseAccess = DatabaseAccess.getInstance(this);
         databaseAccess.open();
 
         Bundle extras = getIntent().getExtras();
         if(extras !=null) {
 
-            int Value = extras.getInt("_id");
+            Value = extras.getInt("_id");
             article_title.setText(databaseAccess.getRezeptitle(Value));
             article_text.setText(databaseAccess.getRezeptText(Value));
             article_img.setImageResource(databaseAccess.getRezeptImage(Value));
@@ -47,8 +58,60 @@ public class RezeptActivity extends AppCompatActivity {
             if((Integer.parseInt(databaseAccess.getRezeptPortion(Value)))>1){
                 portionText.setText("Portionen");
             }
+
+            xMenge = Integer.parseInt(databaseAccess.getRezeptPortion(Value));
+
+            productList = new ArrayList<Zutaten>();
+            productList = databaseAccess.getZutaten(Value);
+            ListView lview = (ListView) findViewById(R.id.listview);
+            listviewAdapter adapter = new listviewAdapter(this, productList);
+            lview.setAdapter(adapter);
+
+
+
+            adapter.notifyDataSetChanged();
+
+
         }
 
+        refresh_img.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int anzahl = Integer.parseInt(rezeptPortion.getText().toString());
+                databaseAccess.updatePortion(Value, anzahl);
+
+
+                ArrayList<Integer> mengen = databaseAccess.getMengen(Value);
+
+                int a = 0;
+                int f = 0;
+                while (a < mengen.size())
+                {
+
+                        f = (mengen.get(a)/xMenge)*anzahl;
+
+
+                    databaseAccess.updateMenge(Value, a+1, f);
+                    a++;
+                }
+                xMenge = anzahl;
+                productList = new ArrayList<Zutaten>();
+                productList = databaseAccess.getZutaten(Value);
+                ListView lview = (ListView) findViewById(R.id.listview);
+                listviewAdapter adapter = new listviewAdapter(RezeptActivity.this, productList);
+                lview.setAdapter(adapter);
+                adapter.notifyDataSetChanged();
+
+            }
+        });
+
+        addKoch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //TODO
+                // vom Kochbuch löschen bzw. draufsetzen
+            }
+        });
 
     }
 

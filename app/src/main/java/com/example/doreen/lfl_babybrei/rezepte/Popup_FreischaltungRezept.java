@@ -49,7 +49,7 @@ public class Popup_FreischaltungRezept extends Activity {
             hinweis.setText("Du hast zu wenig Diamanten. Versuch dein Glück bei den Minigames oder sammel Diamanten im Kochbuch.");
             freischalten.setEnabled(false);
         } else{
-            hinweis.setText("Das RezeptActivity ist gesperrt. Für 5 Diamanten kannst du diesen freischalten.");
+            hinweis.setText("Das Rezept ist gesperrt. Für 5 Diamanten kannst du diesen freischalten.");
         }
 
         abbrechen.setOnClickListener(new View.OnClickListener() {

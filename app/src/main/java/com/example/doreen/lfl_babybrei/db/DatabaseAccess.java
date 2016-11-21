@@ -11,6 +11,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 import com.example.doreen.lfl_babybrei.MyAdapter;
+import com.example.doreen.lfl_babybrei.rezepte.Zutaten;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -281,5 +282,44 @@ public class DatabaseAccess {
 
     }
 
+    public ArrayList<Zutaten> getZutaten(int value) {
+        ArrayList<Zutaten> list = new ArrayList<>();
+        Cursor cursor = database.rawQuery("SELECT * FROM Zutaten" + value , null);
+        cursor.moveToFirst();
+        while (!cursor.isAfterLast()) {
+               list.add(new Zutaten(cursor.getInt(1), cursor.getString(2)));
+            cursor.moveToNext();
+        }
+        cursor.close();
+        return list;
+    }
+
+    public ArrayList<Integer> getMengen(int value) {
+        ArrayList<Integer> list = new ArrayList<>();
+        Cursor cursor = database.rawQuery("SELECT * FROM Zutaten" + value , null);
+        cursor.moveToFirst();
+        while (!cursor.isAfterLast()) {
+            list.add(cursor.getInt(1));
+            cursor.moveToNext();
+        }
+        cursor.close();
+        return list;
+    }
+
+    public boolean updateMenge(Integer i, Integer id, int menge)
+    {
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("amount", menge);
+        database.update("Zutaten" + i, contentValues, "_id = ? ", new String[] { Integer.toString(id) } );
+        return true;
+    }
+
+    public boolean updatePortion(Integer id, int menge)
+    {
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("portion", menge);
+        database.update("rezepte", contentValues, "_id = ? ", new String[] { Integer.toString(id) } );
+        return true;
+    }
 
 }
