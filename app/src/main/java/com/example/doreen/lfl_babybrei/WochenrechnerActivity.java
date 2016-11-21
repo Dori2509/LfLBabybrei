@@ -55,7 +55,7 @@ public class WochenrechnerActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Datum.setText("");
-                DateDialog dialog=new DateDialog(v);
+                DateDialog dialog=new DateDialog(v, null, "Wochenrechner");
                 FragmentTransaction ft =getFragmentManager().beginTransaction();
                 dialog.show(ft, "DatePicker");
             }

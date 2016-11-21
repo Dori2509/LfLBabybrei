@@ -37,7 +37,7 @@ public class MainMenuActivity extends AppCompatActivity{
             "Rezeptübersicht",
             "Kochbuch",
             "Wochenrechner",
-            "minigames"
+            "Minigames"
     };
 
     // Array of integers points to images stored in /res/drawable-ldpi/

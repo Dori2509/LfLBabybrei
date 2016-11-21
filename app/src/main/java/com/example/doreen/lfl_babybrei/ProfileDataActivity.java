@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.example.doreen.lfl_babybrei.db.DBHelper;
 import com.google.android.gms.appindexing.Action;
 import com.google.android.gms.appindexing.AppIndex;
 import com.google.android.gms.appindexing.Thing;
@@ -24,12 +25,14 @@ public class ProfileDataActivity extends Activity {
     EditText Name;
     EditText BabyName;
     EditText Birthday;
+    DBHelper mydb;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.profiledata);
+        mydb = new DBHelper(this);
 
         Name = (EditText) findViewById(R.id.nameEingabe);
         BabyName = (EditText) findViewById(R.id.babynameEingabe);
@@ -61,7 +64,7 @@ public class ProfileDataActivity extends Activity {
             @Override
             public void onClick(View v) {
                 Birthday.setText("");
-                DateDialog dialog=new DateDialog(v);
+                DateDialog dialog=new DateDialog(v, mydb, "Profil");
                 FragmentTransaction ft =getFragmentManager().beginTransaction();
                 dialog.show(ft, "DatePicker");
             }

@@ -9,6 +9,8 @@ import android.view.View;
 import android.widget.DatePicker;
 import android.widget.TextView;
 
+import com.example.doreen.lfl_babybrei.db.DBHelper;
+
 import java.util.Calendar;
 
 /**
@@ -18,8 +20,14 @@ import java.util.Calendar;
 @SuppressLint("ValidFragment")
 public class DateDialog extends DialogFragment implements DatePickerDialog.OnDateSetListener {
     TextView txtdate;
-    public DateDialog(View view){
+    private DBHelper mydb;
+    String w;
+
+    public DateDialog(View view, DBHelper mydb, String wo){
         txtdate=(TextView)view;
+        this.mydb = mydb;
+        this.w = wo;
+
     }
 
     public Dialog onCreateDialog(Bundle savedInstanceState) {
@@ -52,6 +60,12 @@ public class DateDialog extends DialogFragment implements DatePickerDialog.OnDat
 
         String date=sday+"-"+(smonth)+"-"+year;
         txtdate.setText(date);
+        if(w.equals("Wochenrechner")){
+
+        } else{
+            mydb.updateBirthday(date);
+        }
+
     }
 
 

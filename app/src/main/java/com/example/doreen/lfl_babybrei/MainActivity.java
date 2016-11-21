@@ -58,7 +58,6 @@ public class MainActivity extends AppCompatActivity {
 
                 if(progressStatus >= 100){
                     if (Name == ""){
-                        System.out.println("Name ist leer");
                         Intent intent = new Intent(getApplicationContext(), ProfileDataActivity.class);
                         startActivityForResult(intent, 1);
                     } else{

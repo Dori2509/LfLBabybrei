@@ -102,7 +102,6 @@ public class DBHelper extends SQLiteOpenHelper {
         ContentValues contentValues = new ContentValues();
         contentValues.put(COLUMN_DIAMANTS, dia);
         db.update("profile", contentValues, "id = ? ", new String[] { "1" } );
-        System.out.println("Update: " + getDiamants());
         return true;
     }
 
@@ -119,6 +118,32 @@ public class DBHelper extends SQLiteOpenHelper {
         return array_list;
     }
 
+    public boolean updateBirthday(String bi)
+    {
+        SQLiteDatabase db = this.getReadableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(COLUMN_BIRTHDATE, bi);
+        db.update("profile", contentValues, "id = ? ", new String[] { "1" } );
+        return true;
+    }
+
+    public boolean updateName(String bi)
+    {
+        SQLiteDatabase db = this.getReadableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(COLUMN_NAME, bi);
+        db.update("profile", contentValues, "id = ? ", new String[] { "1" } );
+        return true;
+    }
+
+    public boolean updateBabyName(String bi)
+    {
+        SQLiteDatabase db = this.getReadableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(COLUMN_BABYNAME, bi);
+        db.update("profile", contentValues, "id = ? ", new String[] { "1" } );
+        return true;
+    }
 
     public boolean insertProfile(String name, String babyname, String birthdate, int diamants, String image) {
 
