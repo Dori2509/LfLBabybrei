@@ -55,6 +55,8 @@ public class InfoboxActivity extends AppCompatActivity {
         id_list = databaseAccess.getAllID("infobox");
         listView.setAdapter(new MyAdapter(this, quotes));
         enable = databaseAccess.getAllEnabled();
+
+
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
             @Override
             public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,long arg3) {

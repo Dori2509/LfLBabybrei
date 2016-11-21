@@ -76,7 +76,7 @@ public class DatabaseAccess {
             String str = cursor.getString(1);
             if(str.length() > 22)
                 str = str.substring(0,18) + "...";
-            list.add(new MyAdapter.Item(str, resID, cursor.getInt(3)));
+            list.add(new MyAdapter.Item(str, resID, cursor.getInt(3), cursor.getString(5)));
             cursor.moveToNext();
         }
         cursor.close();
@@ -129,12 +129,13 @@ public class DatabaseAccess {
             String str = cursor.getString(1);
             if(str.length() > 22)
                 str = str.substring(0,18) + "...";
-            list.add(new MyAdapter.Item(str, resID, cursor.getInt(3)));
+            list.add(new MyAdapter.Item(str, resID, cursor.getInt(3), cursor.getString(9)));
             cursor.moveToNext();
         }
         cursor.close();
         return list;
     }
+
     public ArrayList<Integer> getAllRezepteID(int value) {
         ArrayList<Integer> list = new ArrayList<>();
         Cursor cursor = database.rawQuery("SELECT * FROM rezepte WHERE month='" + value + "'", null);
