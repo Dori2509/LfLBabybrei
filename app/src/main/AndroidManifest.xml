@@ -29,6 +29,7 @@
         <activity android:name=".WochenrechnerErgebnisActivity"/>
         <activity android:name=".beitraege.Beitrag"/>
         <activity android:name=".rezepte.RezeptMonat"/>
+        <activity android:name=".rezepte.RezeptActivity"/>
         <activity android:name=".beitraege.Popup_FreischaltungBeitrag"
             android:theme="@style/AppTheme.PopupTheme">
         </activity>

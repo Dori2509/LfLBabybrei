@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:background="@drawable/background"
+    android:layout_height="match_parent">
+
+
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="58dp"
+        android:minHeight="?attr/actionBarSize"
+        android:titleTextColor="#ffffff">
+        <TextView
+            android:id="@+id/points"
+            android:text="50"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#175c2c"
+            android:layout_gravity="right"
+            android:textSize="25dp"
+            android:paddingLeft="20dp"
+            android:paddingRight="40dp" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/imageView2"
+            android:layout_gravity="center"
+            android:src="@drawable/diamant"
+            />
+
+        <TextView
+            android:id="@+id/username"
+            android:text="Anna"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#175c2c"
+            android:textStyle="bold"
+            android:textSize="30dp" />
+
+
+
+    </android.support.v7.widget.Toolbar>
+
+    <TextView
+        android:id="@+id/textview"
+        android:layout_width="fill_parent"
+        android:layout_height="2dp"
+        android:background="#175c2c"
+        android:autoText="true" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:srcCompat="@drawable/dasstillen"
+                android:id="@+id/rezept_img"/>
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/portion"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="50px"
+                    android:textAlignment="textEnd"
+                    android:text="1"
+                    android:textStyle="bold"
+                    android:textColor="#80368a"
+                    android:background="#ffffff"/>
+
+                <TextView
+                    android:id="@+id/PortionText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Portion"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:textColor="#80368a"
+                    android:layout_marginTop="50px"
+                    android:layout_marginLeft="20dp"/>
+
+                <ImageView
+                    android:id="@+id/refresh"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/refresh"
+                    android:layout_marginTop="50px"
+                    android:layout_marginLeft="120dp"/>
+
+            </LinearLayout>
+
+            <TableLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+            </TableLayout>
+
+            <TextView
+                android:id="@+id/rezept_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Titel"
+                android:textSize="20dp"
+                android:layout_marginTop="50px"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:textStyle="bold"
+                android:textColor="#80368a" />
+
+
+
+            <TextView
+                android:text="TextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/rezept_text"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="40dp"
+                android:textColor="@color/common_google_signin_btn_text_light_pressed" />
+
+        </LinearLayout>
+
+
+
+    </ScrollView>
+
+
+</LinearLayout>

@@ -81,11 +81,7 @@ public View getView(int i, View view, ViewGroup viewGroup) {
 
            // LayerDrawable stars = (LayerDrawable) ratb.getProgressDrawable();
            // stars.getDrawable(2).setColorFilter(Color.parseColor("#175D2D"),PorterDuff.Mode.SRC_ATOP);
-        } /*else{
-
-            LayerDrawable stars = (LayerDrawable) ratb.getProgressDrawable();
-            stars.getDrawable(2).setColorFilter(Color.parseColor("#80368a"),PorterDuff.Mode.SRC_ATOP);
-        }*/
+        }
 
         return v;
         }

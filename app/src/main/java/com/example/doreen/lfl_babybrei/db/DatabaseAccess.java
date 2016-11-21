@@ -216,6 +216,70 @@ public class DatabaseAccess {
 
     }
 
+    public String getRezeptitle(int id) {
+        String title = "";
+        Cursor res = database.rawQuery("select * from rezepte WHERE _id=" + id , null);
+        res.moveToFirst();
+
+        while (res.isAfterLast() == false) {
+            title = res.getString(res.getColumnIndex("title"));
+            res.moveToNext();
+        }
+        return title;
+
+    }
+
+    public String getRezeptText(int id) {
+        String title = "";
+        Cursor res = database.rawQuery("select * from rezepte WHERE _id=" + id , null);
+        res.moveToFirst();
+
+        while (res.isAfterLast() == false) {
+            title = res.getString(res.getColumnIndex("description"));
+            res.moveToNext();
+        }
+        return title;
+
+    }
+    public int getRezeptImage(int id) {
+        String title = "";
+        Cursor res = database.rawQuery("select * from rezepte WHERE _id=" + id , null);
+        res.moveToFirst();
+
+        while (res.isAfterLast() == false) {
+            title = res.getString(res.getColumnIndex("image"));
+            res.moveToNext();
+        }
+        int resID = c.getResources().getIdentifier(title , "drawable", c.getPackageName());
+        return resID;
+
+    }
+
+    public String getRezeptPortion(int id) {
+        String title = "";
+        Cursor res = database.rawQuery("select * from rezepte WHERE _id=" + id , null);
+        res.moveToFirst();
+
+        while (res.isAfterLast() == false) {
+            title = res.getString(res.getColumnIndex("portion"));
+            res.moveToNext();
+        }
+        return title;
+
+    }
+
+    public int getRezeptRate(int id) {
+        int title = 0;
+        Cursor res = database.rawQuery("select * from rezepte WHERE _id=" + id , null);
+        res.moveToFirst();
+
+        while (res.isAfterLast() == false) {
+            title= res.getColumnIndex("rate");
+            res.moveToNext();
+        }
+        return title;
+
+    }
 
 
 }

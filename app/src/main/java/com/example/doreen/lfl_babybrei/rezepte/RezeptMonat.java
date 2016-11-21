@@ -78,7 +78,7 @@ public class RezeptMonat extends AppCompatActivity {
 
 
                 if(enable.get(to_Search-1).equals("true")){
-                    Intent intent = new Intent(getApplicationContext(),Beitrag.class);
+                    Intent intent = new Intent(getApplicationContext(),RezeptActivity.class);
                     intent.putExtras(dataBundle);
                     startActivity(intent);
                 } else if(enable.get(to_Search-1).equals("false")){

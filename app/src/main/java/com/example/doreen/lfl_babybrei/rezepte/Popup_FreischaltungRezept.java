@@ -49,7 +49,7 @@ public class Popup_FreischaltungRezept extends Activity {
             hinweis.setText("Du hast zu wenig Diamanten. Versuch dein Glück bei den Minigames oder sammel Diamanten im Kochbuch.");
             freischalten.setEnabled(false);
         } else{
-            hinweis.setText("Das Rezept ist gesperrt. Für 5 Diamanten kannst du diesen freischalten.");
+            hinweis.setText("Das RezeptActivity ist gesperrt. Für 5 Diamanten kannst du diesen freischalten.");
         }
 
         abbrechen.setOnClickListener(new View.OnClickListener() {
@@ -69,7 +69,7 @@ public class Popup_FreischaltungRezept extends Activity {
         freischalten.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                databaseAccess.updateEnable(id, "true");
+                databaseAccess.updateRezepteEnable(id, "true");
 
                 int diamants = mydb.getDiamants();
                 diamants = diamants - 5;
@@ -79,7 +79,7 @@ public class Popup_FreischaltungRezept extends Activity {
 
                 Bundle dataBundle = new Bundle();
                 dataBundle.putInt("_id", id);
-                Intent intent = new Intent(getApplicationContext(),Beitrag.class);
+                Intent intent = new Intent(getApplicationContext(),RezeptActivity.class);
                 intent.putExtras(dataBundle);
                 startActivity(intent);
             }
