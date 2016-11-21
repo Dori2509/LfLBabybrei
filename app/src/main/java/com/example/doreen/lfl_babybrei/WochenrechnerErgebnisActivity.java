@@ -44,7 +44,6 @@ public class WochenrechnerErgebnisActivity extends AppCompatActivity {
             ErgebnisDatum = extras.getString("Datum");
         }
 
-        System.out.println(ErgebnisDatum);
 
         SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy");
         String PrvvDate = df.format(new Date());

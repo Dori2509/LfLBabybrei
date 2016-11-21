@@ -4,13 +4,13 @@ package com.example.doreen.lfl_babybrei.db;
  * Created by Doreen on 15.11.2016.
  */
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 import com.example.doreen.lfl_babybrei.MyAdapter;
-import com.example.doreen.lfl_babybrei.R;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -95,6 +95,18 @@ public class DatabaseAccess {
         return list;
     }
 
+    public ArrayList<String> getAllEnabled() {
+        ArrayList<String> list = new ArrayList<>();
+        Cursor cursor = database.rawQuery("SELECT * FROM beitraege", null);
+        cursor.moveToFirst();
+        while (!cursor.isAfterLast()) {
+            list.add(cursor.getString(5));
+            cursor.moveToNext();
+        }
+        cursor.close();
+        return list;
+    }
+
     public String getArticleTitle(int id) {
         String title = "";
         Cursor res = database.rawQuery("select * from beitraege WHERE _id=" + id , null);
@@ -108,7 +120,7 @@ public class DatabaseAccess {
 
     }
 
-    public List<MyAdapter.Item> getRezepte5(int value) {
+    public List<MyAdapter.Item> getRezepte(int value) {
         List<MyAdapter.Item> list = new ArrayList<>();
         Cursor cursor = database.rawQuery("SELECT * FROM rezepte WHERE month='" + value + "'", null);
         cursor.moveToFirst();
@@ -133,6 +145,34 @@ public class DatabaseAccess {
         }
         cursor.close();
         return list;
+    }
+
+    public ArrayList<String> getAllRezepteEnabled() {
+        ArrayList<String> list = new ArrayList<>();
+        Cursor cursor = database.rawQuery("SELECT * FROM rezepte", null);
+        cursor.moveToFirst();
+        while (!cursor.isAfterLast()) {
+            list.add(cursor.getString(9));
+            cursor.moveToNext();
+        }
+        cursor.close();
+        return list;
+    }
+
+    public boolean updateRezepteEnable(Integer id, String en)
+    {
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("enable", en);
+        database.update("rezepte", contentValues, "_id = ? ", new String[] { Integer.toString(id) } );
+        return true;
+    }
+
+    public boolean updateEnable(Integer id, String en)
+    {
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("enable", en);
+        database.update("beitraege", contentValues, "_id = ? ", new String[] { Integer.toString(id) } );
+        return true;
     }
 
 
@@ -174,5 +214,7 @@ public class DatabaseAccess {
         return title;
 
     }
+
+
 
 }

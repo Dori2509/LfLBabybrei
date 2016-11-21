@@ -1,41 +1,44 @@
-package com.example.doreen.lfl_babybrei;
+package com.example.doreen.lfl_babybrei.beitraege;
 
-import android.app.FragmentTransaction;
 import android.content.Intent;
-import android.database.Cursor;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
-import android.net.Uri;
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
-import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.doreen.lfl_babybrei.MyAdapter;
+import com.example.doreen.lfl_babybrei.R;
 import com.example.doreen.lfl_babybrei.db.DBHelper;
 import com.example.doreen.lfl_babybrei.db.DatabaseAccess;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Created by Doreen on 26.10.2016.
  */
-public class BeikostActivity extends AppCompatActivity {
+public class MilchActivity extends AppCompatActivity {
     Toolbar toolbar;
     private DBHelper mydb ;
     private GridView listView;
     private List<MyAdapter.Item> quotes;
-    public ArrayList id_list;
+    private  List<String> enable;
+    public  ArrayList id_list;
 
+
+    @Override
+    public void onRestart() {
+        super.onRestart();
+        DatabaseAccess databaseAccess = DatabaseAccess.getInstance(this);
+        quotes = databaseAccess.getBeitraege("milch");
+        id_list = databaseAccess.getAllID("milch");
+        listView.setAdapter(new MyAdapter(this, quotes));
+        enable = databaseAccess.getAllEnabled();
+        initToolBar();
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,9 +50,10 @@ public class BeikostActivity extends AppCompatActivity {
 
         DatabaseAccess databaseAccess = DatabaseAccess.getInstance(this);
         databaseAccess.open();
-        quotes = databaseAccess.getBeitraege("beikost");
-        id_list = databaseAccess.getAllID("beikost");
+        quotes = databaseAccess.getBeitraege("milch");
+        id_list = databaseAccess.getAllID("milch");
         listView.setAdapter(new MyAdapter(this, quotes));
+        enable = databaseAccess.getAllEnabled();
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
             @Override
             public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,long arg3) {
@@ -57,16 +61,27 @@ public class BeikostActivity extends AppCompatActivity {
                 to_Search = (int) id_list.get(arg2);
                 Bundle dataBundle = new Bundle();
                 dataBundle.putInt("_id", to_Search);
-                Intent intent = new Intent(getApplicationContext(),Beitrag.class);
-                intent.putExtras(dataBundle);
-                startActivity(intent);
+
+                if(enable.get(to_Search-1).equals("true")){
+                    Intent intent = new Intent(getApplicationContext(),Beitrag.class);
+                    intent.putExtras(dataBundle);
+                    startActivity(intent);
+                } else if(enable.get(to_Search-1).equals("false")){
+
+                    Intent intent = new Intent(getApplicationContext(),Popup_FreischaltungBeitrag.class);
+                    intent.putExtra("id", to_Search);
+                    startActivity(intent);
+                }
+
 
             }
         });
         databaseAccess.close();
 
-
     }
+
+
+
 
     public void initToolBar() {
         mydb = new DBHelper(this);

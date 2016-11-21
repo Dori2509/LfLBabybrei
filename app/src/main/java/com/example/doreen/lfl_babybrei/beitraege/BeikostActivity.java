@@ -1,4 +1,4 @@
-package com.example.doreen.lfl_babybrei;
+package com.example.doreen.lfl_babybrei.beitraege;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,7 +9,6 @@ import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.TextView;
 
-import com.example.doreen.lfl_babybrei.Beitrag;
 import com.example.doreen.lfl_babybrei.MyAdapter;
 import com.example.doreen.lfl_babybrei.R;
 import com.example.doreen.lfl_babybrei.db.DBHelper;
@@ -19,16 +18,26 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by Doreen on 19.11.2016.
+ * Created by Doreen on 26.10.2016.
  */
-
-public class RezeptMonat extends AppCompatActivity {
+public class BeikostActivity extends AppCompatActivity {
     Toolbar toolbar;
     private DBHelper mydb ;
     private GridView listView;
     private List<MyAdapter.Item> quotes;
+    private  List<String> enable;
     public ArrayList id_list;
-    private int Value;
+
+    @Override
+    public void onRestart() {
+        super.onRestart();
+        DatabaseAccess databaseAccess = DatabaseAccess.getInstance(this);
+        quotes = databaseAccess.getBeitraege("beikost");
+        id_list = databaseAccess.getAllID("beikost");
+        listView.setAdapter(new MyAdapter(this, quotes));
+        enable = databaseAccess.getAllEnabled();
+        initToolBar();
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,37 +45,41 @@ public class RezeptMonat extends AppCompatActivity {
         setContentView(R.layout.beitrag);
         initToolBar();
 
-        Bundle extras = getIntent().getExtras();
-        if(extras !=null) {
-            Value = extras.getInt("Monat");
-        }
-
         this.listView = (GridView) findViewById(R.id.gridview);
 
         DatabaseAccess databaseAccess = DatabaseAccess.getInstance(this);
         databaseAccess.open();
-        quotes = databaseAccess.getRezepte5(Value);
-        id_list = databaseAccess.getAllRezepteID(Value);
+        quotes = databaseAccess.getBeitraege("beikost");
+        id_list = databaseAccess.getAllID("beikost");
         listView.setAdapter(new MyAdapter(this, quotes));
+        enable = databaseAccess.getAllEnabled();
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
             @Override
-            public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
+            public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,long arg3) {
                 int to_Search;
                 to_Search = (int) id_list.get(arg2);
                 Bundle dataBundle = new Bundle();
                 dataBundle.putInt("_id", to_Search);
-                Intent intent = new Intent(getApplicationContext(),Beitrag.class);
-                intent.putExtras(dataBundle);
-                startActivity(intent);
+
+                if(enable.get(to_Search-1).equals("true")){
+                    Intent intent = new Intent(getApplicationContext(),Beitrag.class);
+                    intent.putExtras(dataBundle);
+                    startActivity(intent);
+                } else if(enable.get(to_Search-1).equals("false")){
+
+                    Intent intent = new Intent(getApplicationContext(),Popup_FreischaltungBeitrag.class);
+                    intent.putExtra("id", to_Search);
+                    startActivity(intent);
+                }
+
+
 
             }
         });
         databaseAccess.close();
 
+
     }
-
-
-
 
     public void initToolBar() {
         mydb = new DBHelper(this);

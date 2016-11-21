@@ -17,4 +17,8 @@
         <item name="colorControlNormal">#510a5c</item>
         <item name="colorControlActivated">#80368a</item>
     </style>
+    <style name="AppTheme.PopupTheme">
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowCloseOnTouchOutside">true</item>
+    </style>
 </resources>

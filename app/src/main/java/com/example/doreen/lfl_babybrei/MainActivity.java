@@ -8,8 +8,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.example.doreen.lfl_babybrei.db.DBHelper;
-
-import java.sql.SQLException;
+import com.example.doreen.lfl_babybrei.games.tictactoe.MonatRechner;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -63,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
                         Intent intent = new Intent(getApplicationContext(), ProfileDataActivity.class);
                         startActivityForResult(intent, 1);
                     } else{
-                        Intent intent = new Intent(getApplicationContext(),MainMenu.class);
+                        Intent intent = new Intent(getApplicationContext(),MainMenuActivity.class);
                         startActivity(intent);
                     }
                 }
@@ -88,11 +87,9 @@ public class MainActivity extends AppCompatActivity {
             Name = data.getStringExtra("Name");
             String BabyName = data.getStringExtra("BabyName");
             String Birthday = data.getStringExtra("Birthday");
-            System.out.println("Bernd:" + Name);
             mydb.insertProfile(Name, BabyName, Birthday, 25, null);
-
-
-            Intent intent = new Intent(getApplicationContext(),MainMenu.class);
+            MonatRechner m = new MonatRechner(Birthday);
+            Intent intent = new Intent(getApplicationContext(),MainMenuActivity.class);
             startActivity(intent);
         }
 

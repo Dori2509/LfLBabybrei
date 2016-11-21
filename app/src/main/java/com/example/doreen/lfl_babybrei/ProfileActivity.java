@@ -17,6 +17,9 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.doreen.lfl_babybrei.db.DBHelper;
+import com.example.doreen.lfl_babybrei.games.tictactoe.MonatRechner;
+
 import java.io.File;
 
 /**
@@ -29,8 +32,11 @@ public class ProfileActivity extends AppCompatActivity {
     ImageView changeBabyname;
     ImageView changeBirthday;
 
+    private DBHelper mydb;
     TextView Babyname;
     TextView Name;
+    TextView Geburtstag;
+    TextView Alter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,13 +54,26 @@ public class ProfileActivity extends AppCompatActivity {
         });
         changeName = (ImageView) findViewById(R.id.chName);
         Name = (TextView) findViewById(R.id.username);
+        Babyname = (TextView) findViewById(R.id.NameKind_ch);
+        Geburtstag = (TextView) findViewById(R.id.DateKind_ch);
+        Alter = (TextView) findViewById(R.id.AlterKind);
+        Name.setText(mydb.getName());
+        Babyname.setText(mydb.getBabyName());
+
+        Geburtstag.setText(mydb.getBirthday());
         changeName.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Name.setText("Hallo");
             }
         });
+        MonatRechner m = new MonatRechner(mydb.getBirthday());
 
+        if(m.getAlter()>1){
+            Alter.setText(mydb.getBabyName() + " ist " + m.getAlter() + " Monate alt.");
+        } else{
+            Alter.setText(mydb.getBabyName() + " ist " + m.getAlter() + " Monat alt.");
+        }
 
         changeBabyname = (ImageView) findViewById(R.id.changeNameBaby);
         changeBirthday = (ImageView) findViewById(R.id.changeBirthBaby);
@@ -68,6 +87,8 @@ public class ProfileActivity extends AppCompatActivity {
     }
 
     public void initToolBar() {
+        mydb = new DBHelper(this);
+
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 

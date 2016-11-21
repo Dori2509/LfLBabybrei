@@ -1,4 +1,4 @@
-package com.example.doreen.lfl_babybrei;
+package com.example.doreen.lfl_babybrei.beitraege;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -6,6 +6,7 @@ import android.support.v7.widget.Toolbar;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.doreen.lfl_babybrei.R;
 import com.example.doreen.lfl_babybrei.db.DBHelper;
 import com.example.doreen.lfl_babybrei.db.DatabaseAccess;
 
@@ -48,7 +49,7 @@ public class Beitrag extends AppCompatActivity {
         mydb = new DBHelper(this);
         String Name = mydb.getName();
         int diamants = mydb.getDiamants();
-
+        System.out.println("BeitragDiamants" + diamants);
         TextView ProfileName = (TextView) findViewById(R.id.username);
         TextView Dia = (TextView) findViewById(R.id.points);
 

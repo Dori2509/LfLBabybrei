@@ -96,6 +96,30 @@ public class DBHelper extends SQLiteOpenHelper {
         return array_list;
     }
 
+    public boolean updateDiamants(int dia)
+    {
+        SQLiteDatabase db = this.getReadableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(COLUMN_DIAMANTS, dia);
+        db.update("profile", contentValues, "id = ? ", new String[] { "1" } );
+        System.out.println("Update: " + getDiamants());
+        return true;
+    }
+
+    public String getBirthday() {
+        String array_list = "";
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor res = db.rawQuery("select * from profile" , null);
+        res.moveToFirst();
+
+        while (res.isAfterLast() == false) {
+            array_list = res.getString(res.getColumnIndex(COLUMN_BIRTHDATE));
+            res.moveToNext();
+        }
+        return array_list;
+    }
+
+
     public boolean insertProfile(String name, String babyname, String birthdate, int diamants, String image) {
 
         SQLiteDatabase db = this.getWritableDatabase();
@@ -109,74 +133,5 @@ public class DBHelper extends SQLiteOpenHelper {
         return true;
     }
 
-    /*//neuen Kontakt einfügen.
-    public boolean insertNote(String note, String description, String date, String time, String priority, String finished, String contact, String phone, String mail) {
-
-        SQLiteDatabase db = this.getWritableDatabase();
-        ContentValues contentValues = new ContentValues();
-        contentValues.put("note", note);
-        contentValues.put("description", description);
-        contentValues.put("date", date);
-        contentValues.put("time", time);
-        contentValues.put("priority", priority);
-        contentValues.put("finished", finished);
-        contentValues.put("contact", contact);
-        contentValues.put("phone", phone);
-        contentValues.put("mail", mail);
-        db.insert("notes", null, contentValues);
-        return true;
-    }
-
-
-
-    //Änderungen eines Note werden abgespeichert.
-    public boolean updateNote(Integer id, String note, String description, String date, String time, String priority, String finished, String contact, String phone, String mail) {
-        SQLiteDatabase db = this.getWritableDatabase();
-        ContentValues contentValues = new ContentValues();
-        contentValues.put("note", note);
-        contentValues.put("description", description);
-        contentValues.put("date", date);
-        contentValues.put("time", time);
-        contentValues.put("priority", priority);
-        contentValues.put("finished", finished);
-        contentValues.put("phone", phone);
-        contentValues.put("mail", mail);
-        contentValues.put("contact", contact);
-        db.update("notes", contentValues, "id = ? ", new String[]{Integer.toString(id)});
-        return true;
-    }
-
-
-    //Änderungen eines erledigten/nicht-erledigten Note abspeichern.
-    public boolean updateFinished(Integer id, String finished) {
-        SQLiteDatabase db = this.getWritableDatabase();
-        ContentValues contentValues = new ContentValues();
-        contentValues.put("finished", finished);
-        db.update("notes", contentValues, "id = ? ", new String[]{Integer.toString(id)});
-        return true;
-    }
-
-
-    //Löschen eines Note.
-    public Integer deleteNote(Integer id) {
-        SQLiteDatabase db = this.getWritableDatabase();
-        return db.delete("notes",
-                "id = ? ",
-                new String[]{Integer.toString(id)});
-    }
-
-    //Alle Note-Namen werden ausgelesen.
-    public ArrayList<String> getAllNotes(String orderby) {
-        ArrayList<String> array_list = new ArrayList<String>();
-        SQLiteDatabase db = this.getReadableDatabase();
-        Cursor res = db.rawQuery("select * from notes ORDER BY " + orderby, null);
-        res.moveToFirst();
-
-        while (res.isAfterLast() == false) {
-            array_list.add(res.getString(res.getColumnIndex(COLUMN_NOTE)));
-            res.moveToNext();
-        }
-        return array_list;
-    }*/
 
 }

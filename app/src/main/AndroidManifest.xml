@@ -15,20 +15,27 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainMenu"/>
+        <activity android:name=".MainMenuActivity"/>
         <activity android:name=".ProfileActivity"/>
-        <activity android:name=".MilchActivity"/>
-        <activity android:name=".BeikostActivity"/>
-        <activity android:name=".InfoboxActivity"/>
-        <activity android:name=".KochbuchAcitivity"/>
-        <activity android:name=".RezeptUebersichtActivity"/>
+        <activity android:name=".beitraege.MilchActivity"/>
+        <activity android:name=".beitraege.BeikostActivity"/>
+        <activity android:name=".beitraege.InfoboxActivity"/>
+        <activity android:name=".rezepte.KochbuchAcitivity"/>
+        <activity android:name=".rezepte.RezeptUebersichtActivity"/>
         <activity android:name=".WochenrechnerActivity"/>
         <activity android:name=".MinigamesActivity"/>
         <activity android:name=".ProfileDataActivity"/>
         <activity android:name=".games.tictactoe.TicTacToe"/>
         <activity android:name=".WochenrechnerErgebnisActivity"/>
-        <activity android:name=".Beitrag"/>
-        <activity android:name=".RezeptMonat"/>
+        <activity android:name=".beitraege.Beitrag"/>
+        <activity android:name=".rezepte.RezeptMonat"/>
+        <activity android:name=".beitraege.Popup_FreischaltungBeitrag"
+            android:theme="@style/AppTheme.PopupTheme">
+        </activity>
+        <activity android:name=".rezepte.Popup_FreischaltungRezept"
+            android:theme="@style/AppTheme.PopupTheme">
+        </activity>
+
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />

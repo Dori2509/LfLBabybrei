@@ -1,28 +1,19 @@
-package com.example.doreen.lfl_babybrei;
+package com.example.doreen.lfl_babybrei.beitraege;
 
-import android.app.FragmentTransaction;
 import android.content.Intent;
-import android.database.Cursor;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
-import android.net.Uri;
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
-import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.doreen.lfl_babybrei.MyAdapter;
+import com.example.doreen.lfl_babybrei.R;
 import com.example.doreen.lfl_babybrei.db.DBHelper;
 import com.example.doreen.lfl_babybrei.db.DatabaseAccess;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -34,7 +25,21 @@ public class InfoboxActivity extends AppCompatActivity {
     private DBHelper mydb ;
     private GridView listView;
     private List<MyAdapter.Item> quotes;
+    private  List<String> enable;
     public ArrayList id_list;
+
+
+    @Override
+    public void onRestart() {
+        super.onRestart();
+        DatabaseAccess databaseAccess = DatabaseAccess.getInstance(this);
+        quotes = databaseAccess.getBeitraege("infobox");
+        id_list = databaseAccess.getAllID("infobox");
+        listView.setAdapter(new MyAdapter(this, quotes));
+        enable = databaseAccess.getAllEnabled();
+        initToolBar();
+    }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +54,7 @@ public class InfoboxActivity extends AppCompatActivity {
         quotes = databaseAccess.getBeitraege("infobox");
         id_list = databaseAccess.getAllID("infobox");
         listView.setAdapter(new MyAdapter(this, quotes));
+        enable = databaseAccess.getAllEnabled();
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
             @Override
             public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,long arg3) {
@@ -56,9 +62,18 @@ public class InfoboxActivity extends AppCompatActivity {
                 to_Search = (int) id_list.get(arg2);
                 Bundle dataBundle = new Bundle();
                 dataBundle.putInt("_id", to_Search);
-                Intent intent = new Intent(getApplicationContext(),Beitrag.class);
-                intent.putExtras(dataBundle);
-                startActivity(intent);
+
+                if(enable.get(to_Search-1).equals("true")){
+                    Intent intent = new Intent(getApplicationContext(),Beitrag.class);
+                    intent.putExtras(dataBundle);
+                    startActivity(intent);
+                } else if(enable.get(to_Search-1).equals("false")){
+
+                    Intent intent = new Intent(getApplicationContext(),Popup_FreischaltungBeitrag.class);
+                    intent.putExtra("id", to_Search);
+                    startActivity(intent);
+                }
+
 
             }
         });

@@ -10,7 +10,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.widget.TextView;
 
+import com.example.doreen.lfl_babybrei.beitraege.BeikostActivity;
+import com.example.doreen.lfl_babybrei.beitraege.InfoboxActivity;
+import com.example.doreen.lfl_babybrei.beitraege.MilchActivity;
 import com.example.doreen.lfl_babybrei.db.DBHelper;
+import com.example.doreen.lfl_babybrei.rezepte.KochbuchAcitivity;
+import com.example.doreen.lfl_babybrei.rezepte.RezeptUebersichtActivity;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -19,7 +24,7 @@ import java.util.List;
 /**
  * Created by Doreen on 24.10.2016.
  */
-public class MainMenu extends AppCompatActivity{
+public class MainMenuActivity extends AppCompatActivity{
 
     Toolbar toolbar;
     private DBHelper mydb ;

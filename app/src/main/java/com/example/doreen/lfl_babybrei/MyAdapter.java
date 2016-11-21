@@ -23,13 +23,6 @@ private final LayoutInflater mInflater;
 public MyAdapter(Context context, List<Item> beitraege) {
         mInflater = LayoutInflater.from(context);
         mItems = beitraege;
-
-        /*mItems.add(new Item("Red",       R.drawable.diamant));
-        mItems.add(new Item("Magenta",   R.drawable.beikost));
-        mItems.add(new Item("Dark Gray", R.drawable.background));
-        mItems.add(new Item("Gray",      R.drawable.profil));
-        mItems.add(new Item("Green",     R.drawable.milch));
-        mItems.add(new Item("Cyan",      R.drawable.infobox));*/
         }
 
 @Override
@@ -67,6 +60,7 @@ public View getView(int i, View view, ViewGroup viewGroup) {
         Item item = getItem(i);
 
         picture.setImageResource(item.drawableId);
+
         name.setText(item.name);
         ratb.setRating(item.rate);
 
