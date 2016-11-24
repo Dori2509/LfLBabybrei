@@ -41,7 +41,7 @@ public class RezeptActivity extends AppCompatActivity {
         final EditText rezeptPortion = (EditText) findViewById(R.id.portion);
         final TextView portionText = (TextView) findViewById(R.id.PortionText);
         final ImageView refresh_img = (ImageView) findViewById(R.id.refresh);
-        Button addKoch = (Button) findViewById(R.id.addkochbuch);
+        final Button addKoch = (Button) findViewById(R.id.addkochbuch);
 
         final DatabaseAccess databaseAccess = DatabaseAccess.getInstance(this);
         databaseAccess.open();
@@ -66,6 +66,8 @@ public class RezeptActivity extends AppCompatActivity {
             ListView lview = (ListView) findViewById(R.id.listview);
             listviewAdapter adapter = new listviewAdapter(this, productList);
             lview.setAdapter(adapter);
+
+
 
 
 
@@ -105,13 +107,26 @@ public class RezeptActivity extends AppCompatActivity {
             }
         });
 
-        addKoch.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //TODO
-                // vom Kochbuch löschen bzw. draufsetzen
-            }
-        });
+        if(databaseAccess.getKochbuch(Value).equals("false")){
+            addKoch.setText("zum Kochbuch hinzufügen");
+            addKoch.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    databaseAccess.updateKochbuch(Value, "true");
+                    addKoch.setText("vom Kochbuch löschen");
+                }
+            });
+        }else if(databaseAccess.getKochbuch(Value).equals("true")){
+            addKoch.setText("vom Kochbuch löschen");
+            addKoch.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    databaseAccess.updateKochbuch(Value, "false");
+                    addKoch.setText("zum Kochbuch hinzufügen");
+                }
+            });
+        }
+
 
     }
 

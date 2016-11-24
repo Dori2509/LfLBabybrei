@@ -10,7 +10,7 @@ import android.widget.TextView;
 
 import com.example.doreen.lfl_babybrei.R;
 import com.example.doreen.lfl_babybrei.db.DBHelper;
-import com.example.doreen.lfl_babybrei.games.tictactoe.MonatRechner;
+import com.example.doreen.lfl_babybrei.MonatRechner;
 
 /**
  * Created by Doreen on 26.10.2016.

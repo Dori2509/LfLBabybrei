@@ -8,7 +8,6 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.example.doreen.lfl_babybrei.db.DBHelper;
-import com.example.doreen.lfl_babybrei.games.tictactoe.MonatRechner;
 
 public class MainActivity extends AppCompatActivity {
 

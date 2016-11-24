@@ -2,36 +2,25 @@ package com.example.doreen.lfl_babybrei;
 
 import android.app.FragmentTransaction;
 import android.content.Intent;
-import android.database.Cursor;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
-import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Button;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
-import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.doreen.lfl_babybrei.db.DBHelper;
-import com.example.doreen.lfl_babybrei.db.DatabaseAccess;
-import com.example.doreen.lfl_babybrei.games.tictactoe.MonatRechner;
-
-import java.io.File;
 
 /**
  * Created by Doreen on 26.10.2016.
@@ -82,6 +71,27 @@ public class ProfileActivity extends AppCompatActivity {
         Babyname.setText(mydb.getBabyName());
 
         Geburtstag.setText(mydb.getBirthday());
+        Geburtstag.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                MonatRechner m = new MonatRechner(Geburtstag.getText().toString());
+                if(m.getAlter()>1){
+                    Alter.setText(mydb.getBabyName() + " ist " + m.getAlter() + " Monate alt.");
+                } else{
+                    Alter.setText(mydb.getBabyName() + " ist " + m.getAlter() + " Monat alt.");
+                }
+            }
+        });
         changeName.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -192,9 +202,10 @@ public class ProfileActivity extends AppCompatActivity {
                 DateDialog dialog=new DateDialog(Geburtstag, mydb, "Profil");
                 FragmentTransaction ft =getFragmentManager().beginTransaction();
                 dialog.show(ft, "DatePicker");
-
             }
         });
+
+
     }
 
     public void initToolBar() {

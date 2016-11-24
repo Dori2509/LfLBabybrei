@@ -64,6 +64,7 @@ public class DateDialog extends DialogFragment implements DatePickerDialog.OnDat
 
         } else{
             mydb.updateBirthday(date);
+
         }
 
     }

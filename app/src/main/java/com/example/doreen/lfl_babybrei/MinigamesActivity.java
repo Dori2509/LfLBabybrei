@@ -46,6 +46,15 @@ public class MinigamesActivity extends AppCompatActivity {
             }
         });
 
+        ImageView close = (ImageView) findViewById(R.id.closeMinigames);
+        close.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getApplicationContext(),MainMenuActivity.class);
+                startActivity(i);
+            }
+        });
+
 
     }
 

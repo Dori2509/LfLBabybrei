@@ -54,12 +54,38 @@
         android:autoText="true" />
 
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:orientation="horizontal">
 
+        <TextView
+            android:id="@+id/headline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:gravity="center_horizontal"
+            android:layout_marginLeft="120dp"
+            android:text="Minigames"
+            android:textSize="25dp"
+            android:textStyle="normal|bold"
+            android:textColor="#80368a" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="9dp"
+            android:layout_marginLeft="60dp"
+            android:src="@drawable/close"
+            android:id="@+id/closeMinigames" />
+
+    </LinearLayout>
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="20dp"
         android:layout_marginLeft="60dp"
         android:orientation="vertical">
 <LinearLayout

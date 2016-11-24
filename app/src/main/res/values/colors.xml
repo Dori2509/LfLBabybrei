@@ -2,6 +2,10 @@
 <resources>
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF4081</color>
+    <color name="colorAccent">#ff4081</color>
     <color name="overlaygreen">#175D2D</color>
+    <color name="divider_color">#175d2d</color>
+    <color name="row_top" >#97cca7</color>
+    <color name="row_center">#b0d6bc</color>
+    <color name="row_bottom">#c5e3cf</color>
 </resources>

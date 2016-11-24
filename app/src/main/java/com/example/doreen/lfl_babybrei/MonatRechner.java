@@ -1,4 +1,4 @@
-package com.example.doreen.lfl_babybrei.games.tictactoe;
+package com.example.doreen.lfl_babybrei;
 
 import android.content.Context;
 

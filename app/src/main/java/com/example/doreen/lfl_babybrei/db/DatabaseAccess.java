@@ -149,6 +149,34 @@ public class DatabaseAccess {
         return list;
     }
 
+    public List<MyAdapter.Item> getKochbuchrezepte() {
+        List<MyAdapter.Item> list = new ArrayList<>();
+        Cursor cursor = database.rawQuery("SELECT * FROM rezepte WHERE kochbuch='" + "true" + "'", null);
+        cursor.moveToFirst();
+        while (!cursor.isAfterLast()) {
+            int resID = c.getResources().getIdentifier(cursor.getString(4) , "drawable", c.getPackageName());
+            String str = cursor.getString(1);
+            if(str.length() > 22)
+                str = str.substring(0,18) + "...";
+            list.add(new MyAdapter.Item(str, resID, cursor.getInt(3), cursor.getString(9)));
+            cursor.moveToNext();
+        }
+        cursor.close();
+        return list;
+    }
+
+    public ArrayList<Integer> getKochbuchRezepteID() {
+        ArrayList<Integer> list = new ArrayList<>();
+        Cursor cursor = database.rawQuery("SELECT * FROM rezepte WHERE kochbuch='" + "true" + "'", null);
+        cursor.moveToFirst();
+        while (!cursor.isAfterLast()) {
+            list.add(cursor.getInt(0));
+            cursor.moveToNext();
+        }
+        cursor.close();
+        return list;
+    }
+
     public ArrayList<String> getAllRezepteEnabled() {
         ArrayList<String> list = new ArrayList<>();
         Cursor cursor = database.rawQuery("SELECT * FROM rezepte", null);
@@ -256,6 +284,19 @@ public class DatabaseAccess {
 
     }
 
+    public String getKochbuch(int id) {
+        String title = "";
+        Cursor res = database.rawQuery("select * from rezepte WHERE _id=" + id , null);
+        res.moveToFirst();
+
+        while (res.isAfterLast() == false) {
+            title = res.getString(res.getColumnIndex("kochbuch"));
+            res.moveToNext();
+        }
+        return title;
+
+    }
+
     public String getRezeptPortion(int id) {
         String title = "";
         Cursor res = database.rawQuery("select * from rezepte WHERE _id=" + id , null);
@@ -314,10 +355,20 @@ public class DatabaseAccess {
         return true;
     }
 
+
+
     public boolean updatePortion(Integer id, int menge)
     {
         ContentValues contentValues = new ContentValues();
         contentValues.put("portion", menge);
+        database.update("rezepte", contentValues, "_id = ? ", new String[] { Integer.toString(id) } );
+        return true;
+    }
+
+    public boolean updateKochbuch(Integer id, String kochbuch)
+    {
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("kochbuch", kochbuch);
         database.update("rezepte", contentValues, "_id = ? ", new String[] { Integer.toString(id) } );
         return true;
     }

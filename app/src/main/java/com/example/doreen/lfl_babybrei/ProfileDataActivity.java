@@ -3,17 +3,12 @@ package com.example.doreen.lfl_babybrei;
 import android.app.Activity;
 import android.app.FragmentTransaction;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
 import com.example.doreen.lfl_babybrei.db.DBHelper;
-import com.google.android.gms.appindexing.Action;
-import com.google.android.gms.appindexing.AppIndex;
-import com.google.android.gms.appindexing.Thing;
-import com.google.android.gms.common.api.GoogleApiClient;
 
 /**
  * Created by Doreen on 12.11.2016.

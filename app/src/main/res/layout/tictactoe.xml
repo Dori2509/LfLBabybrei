@@ -1,98 +1,239 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Demonstrates using a relative layout to create a form -->
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="fill_parent"
-    android:layout_height="wrap_content"
-    android:layout_marginTop="50dp">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:background="@drawable/background"
+    android:layout_height="match_parent">
 
-    <Button android:id="@+id/one"
-        android:layout_width="100px"
-        android:layout_height="100px"
-        android:layout_alignParentRight="true"
-        android:layout_marginLeft="5px"
-        android:text=" "
-        android:textSize="70px" />
 
-    <Button android:id="@+id/two"
-        android:layout_width="100px"
-        android:layout_height="100px"
-        android:layout_toLeftOf="@id/one"
-        android:layout_alignTop="@id/one"
-        android:layout_marginLeft="5px"
-        android:text=" "
-        android:textSize="70px" />
 
-    <Button android:id="@+id/three"
-        android:layout_width="100px"
-        android:layout_height="100px"
-        android:layout_toLeftOf="@id/two"
-        android:layout_alignTop="@id/two"
-        android:layout_marginLeft="5px"
-        android:text=" "
-        android:textSize="70px"
-        android:padding="0px"/>
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="58dp"
+        android:minHeight="?attr/actionBarSize"
+        android:titleTextColor="#ffffff">
+        <TextView
+            android:id="@+id/points"
+            android:text="50"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#175c2c"
+            android:layout_gravity="right"
+            android:textSize="25dp"
+            android:paddingLeft="20dp"
+            android:paddingRight="40dp" />
 
-    <Button android:id="@+id/four"
-        android:layout_width="100px"
-        android:layout_height="100px"
-        android:layout_alignParentRight="true"
-        android:layout_marginLeft="5px"
-        android:layout_below="@id/one"
-        android:text=" "
-        android:textSize="70px" />
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/imageView2"
+            android:layout_gravity="center"
+            android:src="@drawable/diamant"
+            />
 
-    <Button android:id="@+id/five"
-        android:layout_width="100px"
-        android:layout_height="100px"
-        android:layout_toLeftOf="@id/four"
-        android:layout_alignTop="@id/four"
-        android:layout_marginLeft="5px"
-        android:text=" "
-        android:textSize="70px" />
+        <TextView
+            android:id="@+id/username"
+            android:text="Anna"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#175c2c"
+            android:textStyle="bold"
+            android:textSize="30dp" />
 
-    <Button android:id="@+id/six"
-        android:layout_width="100px"
-        android:layout_height="100px"
-        android:layout_toLeftOf="@id/five"
-        android:layout_alignTop="@id/five"
-        android:layout_marginLeft="5px"
-        android:text=" "
-        android:textSize="70px" />
 
-    <Button android:id="@+id/seven"
-        android:layout_width="100px"
-        android:layout_height="100px"
-        android:layout_alignParentRight="true"
-        android:layout_marginLeft="5px"
-        android:layout_below="@id/four"
-        android:text=" "
-        android:textSize="70px" />
 
-    <Button android:id="@+id/eight"
-        android:layout_width="100px"
-        android:layout_height="100px"
-        android:layout_toLeftOf="@id/seven"
-        android:layout_alignTop="@id/seven"
-        android:layout_marginLeft="5px"
-        android:text=" "
-        android:textSize="70px" />
+    </android.support.v7.widget.Toolbar>
 
-    <Button android:id="@+id/nine"
-        android:layout_width="100px"
-        android:layout_height="100px"
-        android:layout_toLeftOf="@id/eight"
-        android:layout_alignTop="@id/eight"
-        android:layout_marginLeft="5px"
-        android:text=" "
-        android:textSize="70px" />
-
-    <TextView android:id="@+id/dialogue"
+    <TextView
+        android:id="@+id/textview"
         android:layout_width="fill_parent"
-        android:layout_below="@id/nine"
-        android:layout_height="wrap_content"
-        android:text="Click a button to start"
-        android:gravity="center_horizontal"
-        android:layout_marginTop="20px"
-        android:textSize="20px"/>
+        android:layout_height="2dp"
+        android:background="#175c2c"
+        android:autoText="true" />
 
-</RelativeLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/headline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:gravity="center_horizontal"
+            android:layout_marginLeft="120dp"
+            android:text="Tic Tac Toe"
+            android:textSize="25dp"
+            android:textStyle="normal|bold"
+            android:textColor="#80368a" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="9dp"
+            android:layout_marginLeft="60dp"
+            android:src="@drawable/close"
+            android:id="@+id/closeTicTacToe" />
+
+    </LinearLayout>
+
+
+    <TableLayout
+      android:id="@+id/playArea"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+        android:layout_gravity="center"
+     android:layout_marginTop="30dp" >
+
+        <TableRow
+            android:id="@+id/tableRow1"
+            android:layout_width="186dp"
+             android:layout_height="match_parent"
+            android:background="@color/divider_color"
+            android:gravity="center_horizontal" >
+
+             <Button
+                android:id="@+id/one"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+               android:text="@string/one"
+                 android:background="@color/row_top"
+               android:textSize="70dp"
+                 android:layout_marginBottom="1dp"
+                 android:layout_marginRight="1dp" />
+
+
+
+            <Button
+                android:id="@+id/two"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+               android:text="@string/two"
+                android:background="@color/row_top"
+                android:textSize="70dp"
+                android:layout_marginBottom="1dp"
+                android:layout_marginLeft="1dp"
+                android:layout_marginRight="1dp" />
+
+              <Button
+               android:id="@+id/three"
+                  android:layout_width="100dp"
+                  android:layout_height="100dp"
+               android:text="@string/three"
+                  android:background="@color/row_top"
+                  android:textSize="70dp"
+                  android:layout_marginBottom="1dp"
+                  android:layout_marginLeft="1dp" />
+            </TableRow>
+
+
+
+
+         <TableRow
+           android:id="@+id/tableRow2"
+            android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+             android:background="@color/divider_color"
+          android:gravity="center_horizontal" >
+
+            <Button
+             android:id="@+id/four"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:background="@color/row_center"
+            android:text="@string/four"
+             android:textSize="70dp"
+                android:layout_marginBottom="1dp"
+                android:layout_marginRight="1dp"
+                android:layout_marginTop="1dp" />
+
+             <Button
+              android:id="@+id/five"
+               android:layout_width="100dp"
+               android:layout_height="100dp"
+                 android:background="@color/row_center"
+           android:text="@string/five"
+              android:textSize="70dp"
+                 android:layout_margin="1dp" />
+
+            <Button
+              android:id="@+id/six"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:background="@color/row_center"
+              android:text="@string/six"
+              android:textSize="70dp"
+                android:layout_marginBottom="1dp"
+                android:layout_marginLeft="1dp"
+                android:layout_marginTop="1dp" />
+         </TableRow>
+
+
+
+
+          <TableRow
+            android:id="@+id/tableRow3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+              android:background="@color/divider_color"
+            android:gravity="center_horizontal" >
+
+           <Button
+              android:id="@+id/seven"
+               android:layout_width="100dp"
+               android:layout_height="100dp"
+              android:text="@string/seven"
+               android:background="@color/row_bottom"
+            android:textSize="70dp"
+               android:layout_marginTop="1dp"
+               android:layout_marginRight="1dp" />
+
+            <Button
+              android:id="@+id/eight"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:background="@color/row_bottom"
+             android:text="@string/eight"
+              android:textSize="70dp"
+                android:layout_marginTop="1dp"
+                android:layout_marginRight="1dp"
+                android:layout_marginLeft="1dp" />
+
+            <Button
+             android:id="@+id/nine"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:background="@color/row_bottom"
+              android:text="@string/nine"
+              android:textSize="70dp"
+                android:layout_marginTop="1dp"
+                android:layout_marginLeft="1dp" />
+          </TableRow>
+        </TableLayout>
+
+
+    <TextView
+         android:id="@+id/information"
+          android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+          android:layout_marginTop="10dp"
+         android:gravity="center_horizontal"
+         android:text="Tic Tac Toe"
+          android:textSize="18sp"
+        android:textColor="@color/divider_color" />
+
+    <Button
+        android:text="Neues Spiel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/newGame"
+        android:background="@color/row_center"
+        android:layout_marginTop="30dp"
+        android:textColor="@color/common_google_signin_btn_text_light_focused"
+        android:textSize="18sp" />
+
+
+</LinearLayout>
