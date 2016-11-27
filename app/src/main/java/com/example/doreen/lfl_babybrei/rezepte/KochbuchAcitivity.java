@@ -15,6 +15,7 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -37,6 +38,8 @@ public class KochbuchAcitivity extends AppCompatActivity {
     private GridView listView;
     private List<MyAdapter.Item> quotes;
     public ArrayList id_list;
+    private ArrayList einkaufszutaten;
+    private ArrayList einkaufszettel;
 
 
 
@@ -54,14 +57,14 @@ public class KochbuchAcitivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.beitrag);
+        setContentView(R.layout.kochbuch);
         initToolBar();
 
 
 
         this.listView = (GridView) findViewById(R.id.gridview);
 
-        DatabaseAccess databaseAccess = DatabaseAccess.getInstance(this);
+        final DatabaseAccess databaseAccess = DatabaseAccess.getInstance(this);
         databaseAccess.open();
         quotes = databaseAccess.getKochbuchrezepte();
         id_list = databaseAccess.getKochbuchRezepteID();
@@ -83,20 +86,17 @@ public class KochbuchAcitivity extends AppCompatActivity {
 
 
 
+        einkaufszutaten = new ArrayList<Zutaten>();
+        einkaufszettel = new ArrayList<Zutaten>();
+        Button createZettel = (Button) findViewById(R.id.createEinkaufszettel);
+        createZettel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+               Intent i = new Intent(KochbuchAcitivity.this, Einkaufszettel.class);
+                startActivity(i);
 
-
-
-        //TODO
-        //Logik Kochbuch
-        // Button für Einkaufszettel
-        // bei Klick Generierung der Liste
-        // Einsortierung in Cluster
-        // Info Popup
-        // Hilfebutton auf Spielbrett
-
-
-
-
+            }
+        });
 
 
         databaseAccess.close();

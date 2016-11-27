@@ -335,12 +335,24 @@ public class DatabaseAccess {
         return list;
     }
 
-    public ArrayList<Integer> getMengen(int value) {
-        ArrayList<Integer> list = new ArrayList<>();
+    public ArrayList<Long> getMengen(int value) {
+        ArrayList<Long> list = new ArrayList<>();
         Cursor cursor = database.rawQuery("SELECT * FROM Zutaten" + value , null);
         cursor.moveToFirst();
         while (!cursor.isAfterLast()) {
-            list.add(cursor.getInt(1));
+            list.add(cursor.getLong(1));
+            cursor.moveToNext();
+        }
+        cursor.close();
+        return list;
+    }
+
+    public ArrayList<Zutaten> getZutatenEinkaufszettel(int value) {
+        ArrayList<Zutaten> list = new ArrayList<>();
+        Cursor cursor = database.rawQuery("SELECT * FROM Zutaten" + value , null);
+        cursor.moveToFirst();
+        while (!cursor.isAfterLast()) {
+            list.add(new Zutaten(cursor.getLong(1), cursor.getString(2)));
             cursor.moveToNext();
         }
         cursor.close();

@@ -6,15 +6,15 @@ package com.example.doreen.lfl_babybrei.rezepte;
 
 public class Zutaten {
 
-    private int Menge;
+    private long Menge;
     private String Zutat;
 
-    public Zutaten(int Menge, String zutat) {
+    public Zutaten(long Menge, String zutat) {
         this.Menge = Menge;
         this.Zutat = zutat;
     }
 
-    public int getMenge() {
+    public long getMenge() {
         return Menge;
     }
 

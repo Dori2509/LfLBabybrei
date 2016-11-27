@@ -27,7 +27,7 @@ public class RezeptActivity extends AppCompatActivity {
     private DBHelper mydb ;
     private ArrayList<Zutaten> productList;
     public int Value;
-    public int xMenge;
+    public long xMenge;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,11 +55,11 @@ public class RezeptActivity extends AppCompatActivity {
             article_img.setImageResource(databaseAccess.getRezeptImage(Value));
             rezeptPortion.setText(databaseAccess.getRezeptPortion(Value));
 
-            if((Integer.parseInt(databaseAccess.getRezeptPortion(Value)))>1){
+            if((Long.parseLong(databaseAccess.getRezeptPortion(Value)))>1){
                 portionText.setText("Portionen");
             }
 
-            xMenge = Integer.parseInt(databaseAccess.getRezeptPortion(Value));
+            xMenge = Long.parseLong(databaseAccess.getRezeptPortion(Value));
 
             productList = new ArrayList<Zutaten>();
             productList = databaseAccess.getZutaten(Value);
@@ -83,16 +83,13 @@ public class RezeptActivity extends AppCompatActivity {
                 databaseAccess.updatePortion(Value, anzahl);
 
 
-                ArrayList<Integer> mengen = databaseAccess.getMengen(Value);
+                ArrayList<Long> mengen = databaseAccess.getMengen(Value);
 
                 int a = 0;
                 int f = 0;
                 while (a < mengen.size())
                 {
-
-                        f = (mengen.get(a)/xMenge)*anzahl;
-
-
+                    f = (int) ((mengen.get(a)/xMenge)*anzahl);
                     databaseAccess.updateMenge(Value, a+1, f);
                     a++;
                 }
