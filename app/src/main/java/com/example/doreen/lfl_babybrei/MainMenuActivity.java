@@ -99,7 +99,6 @@ public class MainMenuActivity extends AppCompatActivity{
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
             @Override
             public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,long arg3) {
-                System.out.println(arg2 + " + Bernd");
                 switch(arg2)
                 {
                     case 0:

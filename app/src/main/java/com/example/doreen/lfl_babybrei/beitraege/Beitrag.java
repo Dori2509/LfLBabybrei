@@ -36,7 +36,6 @@ public class Beitrag extends AppCompatActivity {
         if(extras !=null) {
 
             int Value = extras.getInt("_id");
-            System.out.println(Value);
             article_title.setText(databaseAccess.getArticleTitle(Value));
             article_text.setText(databaseAccess.getArticleText(Value));
             article_img.setImageResource(databaseAccess.getArticleImage(Value));
@@ -49,7 +48,6 @@ public class Beitrag extends AppCompatActivity {
         mydb = new DBHelper(this);
         String Name = mydb.getName();
         int diamants = mydb.getDiamants();
-        System.out.println("BeitragDiamants" + diamants);
         TextView ProfileName = (TextView) findViewById(R.id.username);
         TextView Dia = (TextView) findViewById(R.id.points);
 

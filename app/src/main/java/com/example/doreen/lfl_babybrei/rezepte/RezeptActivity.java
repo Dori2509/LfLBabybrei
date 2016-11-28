@@ -131,7 +131,6 @@ public class RezeptActivity extends AppCompatActivity {
         mydb = new DBHelper(this);
         String Name = mydb.getName();
         int diamants = mydb.getDiamants();
-        System.out.println("BeitragDiamants" + diamants);
         TextView ProfileName = (TextView) findViewById(R.id.username);
         TextView Dia = (TextView) findViewById(R.id.points);
 

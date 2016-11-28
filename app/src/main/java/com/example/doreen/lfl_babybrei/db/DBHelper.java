@@ -92,7 +92,6 @@ public class DBHelper extends SQLiteOpenHelper {
             array_list = res.getInt(res.getColumnIndex(COLUMN_DIAMANTS));
             res.moveToNext();
         }
-        System.out.println(array_list);
         return array_list;
     }
 

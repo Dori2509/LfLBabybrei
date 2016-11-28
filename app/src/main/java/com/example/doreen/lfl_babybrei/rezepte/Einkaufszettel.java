@@ -1,8 +1,15 @@
 package com.example.doreen.lfl_babybrei.rezepte;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.text.SpannableString;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.doreen.lfl_babybrei.R;
@@ -10,6 +17,7 @@ import com.example.doreen.lfl_babybrei.db.DBHelper;
 import com.example.doreen.lfl_babybrei.db.DatabaseAccess;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Doreen on 27.11.2016.
@@ -21,11 +29,17 @@ public class Einkaufszettel extends AppCompatActivity {
     public ArrayList id_list;
     private ArrayList einkaufszutaten;
     private ArrayList einkaufszettel;
+    private ArrayList einkaufszettelFinal;
+
+    ListView lv;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.einkaufszettel);
+        lv = (ListView) findViewById(R.id.listeEinkaufszettel);
         initToolBar();
 
         final DatabaseAccess databaseAccess = DatabaseAccess.getInstance(this);
@@ -34,6 +48,8 @@ public class Einkaufszettel extends AppCompatActivity {
 
         einkaufszutaten = new ArrayList<Zutaten>();
         einkaufszettel = new ArrayList<Zutaten>();
+        einkaufszettelFinal = new ArrayList<Zutaten>();
+
 
         int a = 0;
         while (a < id_list.size())
@@ -55,29 +71,49 @@ public class Einkaufszettel extends AppCompatActivity {
                             //falls bereits in Liste vorhanden
                             gesamtmenge = c.getMenge() + ((Zutaten) einkaufszettel.get(d)).getMenge();
                             einkaufszettel.remove(d);
-
                         }
                         d++;
                     }
-
                     einkaufszettel.add(new Zutaten(gesamtmenge, c.getZutat()));
                 }
                 b++;
             }
             a++;
         }
-        int e = 0;
-        while (e < einkaufszettel.size()) {
-            System.out.println(((Zutaten) einkaufszettel.get(e)).getMenge() + " " + ((Zutaten) einkaufszettel.get(e)).getZutat());
-            e++;
-        }
-
-        //TODO
-        // Einsortierung in Cluster
-        // Info Popup
-        // Hilfebutton auf Spielbrett
 
 
+
+
+
+
+
+        final EinkaufszettelAdapter adapter = new EinkaufszettelAdapter(this, einkaufszettel);
+        lv.setAdapter(adapter);
+        final CheckBoxClick cbC = new CheckBoxClick(einkaufszettel.size());
+        lv.setOnItemClickListener(cbC);
+
+
+        Button zumSpiel = (Button) findViewById(R.id.zumSpiel);
+        zumSpiel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ArrayList<Integer> c = cbC.getCheckedList();
+                int b = 0;
+                while (b < c.size()){
+                    if(c.get(b).equals(0)){
+                        Zutaten zu = (Zutaten) einkaufszettel.get(b);
+                        einkaufszettelFinal.add(new Zutaten(zu.getMenge(), zu.getZutat()));
+                    }
+                    b++;
+                }
+
+                Intent intent = new Intent(getApplicationContext(),SpielbrettActivity.class);
+                intent.putExtra("Liste", einkaufszettelFinal);
+                mydb.close();
+                startActivity(intent);
+            }
+        });
+        databaseAccess.close();
 
 
     }

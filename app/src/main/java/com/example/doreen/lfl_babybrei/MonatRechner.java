@@ -26,7 +26,6 @@ public class MonatRechner {
         SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy");
         String PrvvDate = df.format(new Date());
 
-        System.out.println("Hallo Mila");
         SimpleDateFormat sdf = new SimpleDateFormat("EEEE");
 
         DateFormat format = new SimpleDateFormat("dd-MM-yyyy", Locale.GERMAN);
@@ -47,7 +46,6 @@ public class MonatRechner {
             diffmonths = (long) Math.floor(diffDays / 30.41667);
 
 
-            System.out.println("Alter:" + diffmonths);
 
         } catch (Exception e1) {
             System.out.println("exception " + e1);

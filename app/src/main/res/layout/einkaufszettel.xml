@@ -51,8 +51,16 @@
         android:background="#175c2c"
         android:autoText="true" />
 
+    <ListView
+        android:id="@+id/listeEinkaufszettel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+    </ListView>
 
-
-
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/zumSpiel"
+        android:text="zum Spiel"/>
 
 </LinearLayout>
