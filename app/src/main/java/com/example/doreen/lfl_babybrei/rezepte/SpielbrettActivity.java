@@ -81,8 +81,9 @@ public class SpielbrettActivity extends Activity {
 
         AsyncTaskRunner runner = new AsyncTaskRunner();
         runner.execute();
+
+
         //TODO
-        // Einsortierung in Cluster -> in einem Thread mit Progressbar
         // Info Popup
         // Hilfebutton auf Spielbrett
     }
