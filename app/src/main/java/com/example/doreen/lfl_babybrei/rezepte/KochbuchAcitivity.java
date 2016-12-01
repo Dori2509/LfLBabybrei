@@ -99,7 +99,7 @@ public class KochbuchAcitivity extends AppCompatActivity {
         });
 
 
-        databaseAccess.close();
+
 
     }
 
