@@ -1,14 +1,20 @@
 package com.example.doreen.lfl_babybrei.rezepte;
 
 import android.app.Activity;
+import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.View;
 
+import com.example.doreen.lfl_babybrei.MainMenuActivity;
 import com.example.doreen.lfl_babybrei.R;
+import com.example.doreen.lfl_babybrei.db.DBHelper;
 
 import android.os.AsyncTask;
+import android.view.Window;
+import android.widget.Button;
 import android.widget.ImageView;
 
 import java.util.ArrayList;
@@ -32,7 +38,7 @@ public class SpielbrettActivity extends Activity {
     private ProgressDialog mProgressDialog;
     ImageView bubble1_1,bubble1_2,bubble1_3,bubble2_1,bubble2_2,bubble2_3,bubble3_1,bubble3_2,bubble3_3,bubble4_1,bubble4_2,bubble4_3;
     static int GET_INGREDIENTS;
-
+    private DBHelper mydb ;
     public Integer[] Reihe1, Reihe2, Reihe3, Reihe4;
 
 
@@ -40,7 +46,8 @@ public class SpielbrettActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.spielbrett);
-
+        onCoachMark();
+        mydb = new DBHelper(this);
 
         mProgressDialog = new ProgressDialog(this);
         mProgressDialog.setIndeterminate(false);
@@ -860,7 +867,44 @@ public class SpielbrettActivity extends Activity {
             bubble4_2.setImageResource(R.drawable.glas_06_3);
             bubble4_3.setImageResource(R.drawable.glas_07_3);
 
-            System.out.println("gewonnen");
+            onWonDiamants();
         }
+    }
+
+    public void onCoachMark(){
+
+        final Dialog dialog = new Dialog(this);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
+        dialog.setContentView(R.layout.coach_mark);
+        dialog.setCanceledOnTouchOutside(true);
+        //for dismissing anywhere you touch
+        View masterView = dialog.findViewById(R.id.coach_mark_master_view);
+        masterView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialog.dismiss();
+            }
+        });
+        dialog.show();
+    }
+
+    public void onWonDiamants(){
+        mydb.updateDiamants((mydb.getDiamants()+15));
+        final Dialog dialog = new Dialog(this);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
+        dialog.setContentView(R.layout.wonthegame);
+        dialog.setCanceledOnTouchOutside(true);
+        View masterView = dialog.findViewById(R.id.coach_mark_master);
+        masterView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(getApplicationContext(), MainMenuActivity.class);
+                startActivity(i);
+                dialog.dismiss();
+            }
+        });
+        dialog.show();
     }
 }

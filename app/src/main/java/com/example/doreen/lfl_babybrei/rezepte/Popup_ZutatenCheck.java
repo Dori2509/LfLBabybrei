@@ -60,7 +60,7 @@ public class Popup_ZutatenCheck extends Activity {
                 fin.add(ingredients.get(z));
                 z++;
             }
-            final EinkaufszettelAdapter adapter = new EinkaufszettelAdapter(this, fin);
+            final SpielbrettAdapter adapter = new SpielbrettAdapter(this, fin);
             lv.setAdapter(adapter);
             final CheckBoxClick cbC = new CheckBoxClick(fin.size());
             lv.setOnItemClickListener(cbC);
