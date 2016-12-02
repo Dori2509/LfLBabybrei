@@ -41,6 +41,11 @@
             android:theme="@style/AppTheme.PopupTheme">
         </activity>
 
+
+        <activity android:name=".rezepte.Popup_ZutatenCheck"
+            android:theme="@style/AppTheme.PopupTheme">
+        </activity>
+
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />

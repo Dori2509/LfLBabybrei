@@ -28,19 +28,22 @@
             android:layout_width="104dp"
             android:layout_height="100dp"
             android:src="@drawable/glas_05_1"
-            android:layout_weight="1"/>
+            android:layout_weight="1"
+            android:id="@+id/bubble_4_1" />
 
         <ImageView
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:src="@drawable/glas_06_1"
-            android:layout_weight="1" />
+            android:layout_weight="1"
+            android:id="@+id/bubble_4_2" />
 
         <ImageView
             android:layout_width="104dp"
             android:layout_height="100dp"
             android:src="@drawable/glas_07_1"
-            android:layout_weight="1" />
+            android:layout_weight="1"
+            android:id="@+id/bubble_4_3" />
 
     </LinearLayout>
     <LinearLayout
@@ -56,7 +59,8 @@
             android:layout_height="100dp"
             android:src="@drawable/glas_11_1"
             android:layout_weight="1"
-            android:text="D" />
+            android:text="D"
+            android:id="@+id/bubble_3_1" />
 
         <ImageView
             android:layout_width="100dp"
@@ -68,7 +72,8 @@
             android:layout_marginBottom="0dp"
             android:layout_marginRight="0dp"
             android:layout_marginTop="0dp"
-            android:layout_marginLeft="0dp" />
+            android:layout_marginLeft="0dp"
+            android:id="@+id/bubble_3_2" />
 
         <ImageView
             android:layout_width="104dp"
@@ -76,7 +81,8 @@
             android:src="@drawable/glas_10_1"
             android:layout_weight="1"
             android:text="E"
-            android:layout_margin="0dp" />
+            android:layout_margin="0dp"
+            android:id="@+id/bubble_3_3" />
     </LinearLayout>
 
     <LinearLayout
