@@ -36,7 +36,8 @@
             android:layout_height="100dp"
             android:src="@drawable/glas_06_1"
             android:layout_weight="1"
-            android:id="@+id/bubble_4_2" />
+            android:id="@+id/bubble_4_2"
+            android:layout_marginLeft="-1dp" />
 
         <ImageView
             android:layout_width="104dp"
@@ -82,13 +83,14 @@
             android:layout_weight="1"
             android:text="E"
             android:layout_margin="0dp"
-            android:id="@+id/bubble_3_3" />
+            android:id="@+id/bubble_3_3"
+            android:layout_marginLeft="-1dp" />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_marginLeft="20dp"
-        android:layout_marginTop="-2dp"
+        android:layout_marginTop="-4dp"
         android:background="#a66bb0"
         android:layout_height="wrap_content" >
 
@@ -100,7 +102,8 @@
             android:src="@drawable/glas_12_1"
             android:layout_weight="1"
             android:text="D"
-            android:id="@+id/bubble_2_1" />
+            android:id="@+id/bubble_2_1"
+            android:layout_marginTop="-1dp" />
 
         <ImageView
             android:layout_width="102dp"
@@ -111,8 +114,8 @@
             android:layout_margin="0dp"
             android:layout_marginBottom="0dp"
             android:layout_marginRight="0dp"
-            android:layout_marginTop="0dp"
-            android:layout_marginLeft="0dp"
+            android:layout_marginTop="-1dp"
+            android:layout_marginLeft="-1dp"
             android:id="@+id/bubble_2_2" />
 
         <ImageView
@@ -121,13 +124,15 @@
             android:src="@drawable/glas_14_1"
             android:text="E"
             android:layout_margin="0dp"
-            android:id="@+id/bubble_2_3" />
+            android:id="@+id/bubble_2_3"
+            android:layout_marginLeft="-1dp"
+            android:layout_marginTop="-1dp" />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_marginLeft="20dp"
-        android:layout_marginTop="-4dp"
+        android:layout_marginTop="-6dp"
         android:layout_height="wrap_content" >
 
         <!-- Equal weights cause two columns of equal width. -->
@@ -138,7 +143,8 @@
             android:src="@drawable/glas_17_1"
             android:layout_weight="1"
             android:text="D"
-            android:id="@+id/bubble_1_1" />
+            android:id="@+id/bubble_1_1"
+            android:layout_marginTop="-1dp" />
 
         <ImageView
             android:layout_height="101dp"
@@ -148,8 +154,8 @@
             android:layout_margin="0dp"
             android:layout_marginBottom="0dp"
             android:layout_marginRight="0dp"
-            android:layout_marginTop="0dp"
-            android:layout_marginLeft="0dp"
+            android:layout_marginTop="-1dp"
+            android:layout_marginLeft="-2dp"
             android:layout_width="101dp"
             android:id="@+id/bubble_1_2" />
 
@@ -161,7 +167,9 @@
             android:text="E"
             android:layout_margin="0dp"
             android:id="@+id/bubble_1_3"
-            android:paddingLeft="-3dp" />
+            android:paddingLeft="-3dp"
+            android:layout_marginLeft="-1dp"
+            android:layout_marginTop="-2dp" />
     </LinearLayout>
 
 </LinearLayout>

@@ -144,6 +144,15 @@ public class DBHelper extends SQLiteOpenHelper {
         return true;
     }
 
+    public boolean updateImage(String bi)
+    {
+        SQLiteDatabase db = this.getReadableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(COLUMN_IMAGE, bi);
+        db.update("profile", contentValues, "id = ? ", new String[] { "1" } );
+        return true;
+    }
+
     public boolean insertProfile(String name, String babyname, String birthdate, int diamants, String image) {
 
         SQLiteDatabase db = this.getWritableDatabase();
@@ -157,5 +166,18 @@ public class DBHelper extends SQLiteOpenHelper {
         return true;
     }
 
+
+    public String getImage() {
+        String array_list = "";
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor res = db.rawQuery("select * from profile" , null);
+        res.moveToFirst();
+
+        while (res.isAfterLast() == false) {
+            array_list = res.getString(res.getColumnIndex(COLUMN_IMAGE));
+            res.moveToNext();
+        }
+        return array_list;
+    }
 
 }

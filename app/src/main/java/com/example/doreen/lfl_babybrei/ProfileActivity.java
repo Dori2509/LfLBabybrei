@@ -54,10 +54,10 @@ public class ProfileActivity extends AppCompatActivity {
         initToolBar();
 
         img = (ImageView) findViewById(R.id.profileImage);
+        //img.setImageResource(this.getResources().getIdentifier(mydb.getImage() , "drawable", this.getPackageName()));
         img.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //img.setImageResource(R.drawable.infobox);
                 pickImage();
             }
         });
@@ -244,6 +244,7 @@ public class ProfileActivity extends AppCompatActivity {
                 //Get image
                 Bitmap newProfilePic = extras.getParcelable("data");
                 Drawable de = new BitmapDrawable(getResources(), newProfilePic);
+                mydb.updateImage(String.valueOf(de));
                 img.setImageDrawable(de);
             }
         }
