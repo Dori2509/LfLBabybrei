@@ -17,6 +17,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.doreen.lfl_babybrei.db.DBHelper;
 import com.example.doreen.lfl_babybrei.games.tictactoe.TicTacToe;
@@ -55,6 +56,36 @@ public class MinigamesActivity extends AppCompatActivity {
             }
         });
 
+        ImageView memory = (ImageView) findViewById(R.id.memory);
+        memory.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getApplicationContext(), "Memory ist noch in der Entwicklung", Toast.LENGTH_LONG).show();
+            }
+        });
+
+        ImageView fooddrop = (ImageView) findViewById(R.id.fooddrop);
+        fooddrop.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getApplicationContext(), "Fooddrop ist noch in der Entwicklung", Toast.LENGTH_LONG).show();
+            }
+        });
+
+        ImageView quiz = (ImageView) findViewById(R.id.quiz);
+        quiz.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getApplicationContext(), "Das Quiz ist noch in der Entwicklung", Toast.LENGTH_LONG).show();
+            }
+        });
+        ImageView simonsays = (ImageView) findViewById(R.id.simonSays);
+        simonsays.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getApplicationContext(), "SimonSays ist noch in der Entwicklung", Toast.LENGTH_LONG).show();
+            }
+        });
 
     }
 

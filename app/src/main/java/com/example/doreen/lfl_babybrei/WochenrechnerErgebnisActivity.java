@@ -5,7 +5,9 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.SpannableString;
+import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.doreen.lfl_babybrei.db.DBHelper;
@@ -38,7 +40,14 @@ public class WochenrechnerErgebnisActivity extends AppCompatActivity {
         TextView Ergebnis = (TextView) findViewById(R.id.ErgebnisName);
         Bundle extras = getIntent().getExtras();
 
-
+        ImageView close = (ImageView) findViewById(R.id.closeMinigames);
+        close.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getApplicationContext(),MainMenuActivity.class);
+                startActivity(i);
+            }
+        });
         if (extras != null) {
             ErgebnisName = extras.getString("Name");
             ErgebnisDatum = extras.getString("Datum");

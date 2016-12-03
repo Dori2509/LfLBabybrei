@@ -8,6 +8,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.doreen.lfl_babybrei.db.DBHelper;
@@ -32,6 +33,16 @@ public class WochenrechnerActivity extends AppCompatActivity {
         SetName = (EditText) findViewById(R.id.WochenrechnerName);
         Datum = (EditText) findViewById(R.id.WochenrechnerDatum);
         calculate = (Button) findViewById(R.id.calculate);
+
+
+        ImageView close = (ImageView) findViewById(R.id.closeMinigames);
+        close.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getApplicationContext(),MainMenuActivity.class);
+                startActivity(i);
+            }
+        });
 
         SetName.setOnClickListener(new View.OnClickListener() {
             @Override

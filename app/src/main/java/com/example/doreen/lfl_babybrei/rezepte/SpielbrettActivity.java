@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.View;
@@ -16,6 +17,7 @@ import android.os.AsyncTask;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 
 import java.util.ArrayList;
 
@@ -48,7 +50,14 @@ public class SpielbrettActivity extends Activity {
         setContentView(R.layout.spielbrett);
         onCoachMark();
         mydb = new DBHelper(this);
-
+        ImageView close = (ImageView) findViewById(R.id.closeMinigames);
+        close.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getApplicationContext(),MainMenuActivity.class);
+                startActivity(i);
+            }
+        });
         mProgressDialog = new ProgressDialog(this);
         mProgressDialog.setIndeterminate(false);
         mProgressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
@@ -837,6 +846,8 @@ public class SpielbrettActivity extends Activity {
             bubble2_2.setImageResource(R.drawable.glas_13_3);
             bubble2_3.setImageResource(R.drawable.glas_14_3);
 
+            LinearLayout lin = (LinearLayout) findViewById(R.id.linelayout);
+            lin.setBackgroundColor(Color.parseColor("#80368a"));
             if(fluessigkeiten.size()==0){
                 reDrawFourth();
             }

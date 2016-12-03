@@ -7,8 +7,10 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.doreen.lfl_babybrei.MainMenuActivity;
 import com.example.doreen.lfl_babybrei.MyAdapter;
 import com.example.doreen.lfl_babybrei.R;
 import com.example.doreen.lfl_babybrei.beitraege.Beitrag;
@@ -30,6 +32,7 @@ public class RezeptMonat extends AppCompatActivity {
     public ArrayList id_list;
     private int Value;
     private  List<String> enable;
+    public TextView ueberschrift;
 
 
 
@@ -60,7 +63,16 @@ public class RezeptMonat extends AppCompatActivity {
         }
 
         this.listView = (GridView) findViewById(R.id.gridview);
-
+        ueberschrift = (TextView)findViewById(R.id.ueberschrift);
+        ueberschrift.setText(Value + ". Monat");
+        ImageView close = (ImageView) findViewById(R.id.closeMinigames);
+        close.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getApplicationContext(),RezeptUebersichtActivity.class);
+                startActivity(i);
+            }
+        });
         DatabaseAccess databaseAccess = DatabaseAccess.getInstance(this);
         databaseAccess.open();
         quotes = databaseAccess.getRezepte(Value);

@@ -19,6 +19,7 @@ import android.support.v7.widget.Toolbar;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.doreen.lfl_babybrei.db.DBHelper;
 
@@ -54,13 +55,13 @@ public class ProfileActivity extends AppCompatActivity {
         initToolBar();
 
         img = (ImageView) findViewById(R.id.profileImage);
-        //img.setImageResource(this.getResources().getIdentifier(mydb.getImage() , "drawable", this.getPackageName()));
-        img.setOnClickListener(new View.OnClickListener() {
+        //img.setImageDrawable(Drawable.createFromPath(mydb.getImage()));
+        /*img.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 pickImage();
             }
-        });
+        });*/
         changeName = (ImageView) findViewById(R.id.chName);
         changeBabyname = (ImageView) findViewById(R.id.changeNameBaby);
         Name = (TextView) findViewById(R.id.username);
@@ -244,6 +245,7 @@ public class ProfileActivity extends AppCompatActivity {
                 //Get image
                 Bitmap newProfilePic = extras.getParcelable("data");
                 Drawable de = new BitmapDrawable(getResources(), newProfilePic);
+                Toast.makeText(getApplicationContext(), de.toString(), Toast.LENGTH_LONG).show();
                 mydb.updateImage(String.valueOf(de));
                 img.setImageDrawable(de);
             }

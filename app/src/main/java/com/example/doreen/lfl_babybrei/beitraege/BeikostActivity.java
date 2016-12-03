@@ -7,8 +7,10 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.doreen.lfl_babybrei.MainMenuActivity;
 import com.example.doreen.lfl_babybrei.MyAdapter;
 import com.example.doreen.lfl_babybrei.R;
 import com.example.doreen.lfl_babybrei.db.DBHelper;
@@ -27,6 +29,7 @@ public class BeikostActivity extends AppCompatActivity {
     private List<MyAdapter.Item> quotes;
     private  List<String> enable;
     public ArrayList id_list;
+    public TextView ueberschrift;
 
     @Override
     public void onRestart() {
@@ -46,7 +49,16 @@ public class BeikostActivity extends AppCompatActivity {
         initToolBar();
 
         this.listView = (GridView) findViewById(R.id.gridview);
-
+        ImageView close = (ImageView) findViewById(R.id.closeMinigames);
+        close.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getApplicationContext(),MainMenuActivity.class);
+                startActivity(i);
+            }
+        });
+        ueberschrift = (TextView)findViewById(R.id.ueberschrift);
+        ueberschrift.setText("Beikost");
         DatabaseAccess databaseAccess = DatabaseAccess.getInstance(this);
         databaseAccess.open();
         quotes = databaseAccess.getBeitraege("beikost");

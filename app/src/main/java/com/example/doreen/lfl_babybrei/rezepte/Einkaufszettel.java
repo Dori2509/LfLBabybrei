@@ -9,9 +9,11 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.example.doreen.lfl_babybrei.MainMenuActivity;
 import com.example.doreen.lfl_babybrei.R;
 import com.example.doreen.lfl_babybrei.db.DBHelper;
 import com.example.doreen.lfl_babybrei.db.DatabaseAccess;
@@ -49,7 +51,14 @@ public class Einkaufszettel extends AppCompatActivity {
         einkaufszutaten = new ArrayList<Zutaten>();
         einkaufszettel = new ArrayList<Zutaten>();
         einkaufszettelFinal = new ArrayList<Zutaten>();
-
+        ImageView close = (ImageView) findViewById(R.id.closeMinigames);
+        close.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getApplicationContext(),MainMenuActivity.class);
+                startActivity(i);
+            }
+        });
 
         int a = 0;
         while (a < id_list.size())

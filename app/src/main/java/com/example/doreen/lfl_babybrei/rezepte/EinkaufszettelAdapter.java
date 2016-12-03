@@ -46,7 +46,12 @@ public View getView(final int position, View convertView, ViewGroup parent) {
         TextView name = (TextView) convertView.findViewById(R.id.checkedTextView1);
         final CheckedTextView cb = (CheckedTextView) convertView.findViewById(R.id.checkedTextView1);
         Zutaten f = (Zutaten) modelItems.get(position);
-        name.setText(f.getMenge() + " " + f.getZutat());
+        if(f.getMenge()>0){
+                name.setText(f.getMenge() + " " + f.getZutat());
+        } else{
+                name.setText(f.getZutat());
+        }
+
 
 
         cb.setChecked(false);

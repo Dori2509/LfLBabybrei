@@ -85,7 +85,7 @@ public class MainActivity extends AppCompatActivity {
             Name = data.getStringExtra("Name");
             String BabyName = data.getStringExtra("BabyName");
             String Birthday = data.getStringExtra("Birthday");
-            mydb.insertProfile(Name, BabyName, Birthday, 25, "@drawable/profil_xl");
+            mydb.insertProfile(Name, BabyName, Birthday, 25, "R.drawable.profil_xl");
             MonatRechner m = new MonatRechner(Birthday);
             Intent intent = new Intent(getApplicationContext(),MainMenuActivity.class);
             startActivity(intent);
