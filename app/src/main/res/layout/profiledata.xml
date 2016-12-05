@@ -5,6 +5,15 @@
     android:layout_height="match_parent"
     android:weightSum="1">
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Bitte geb hier deinen Namen, den Namen deines Kindes und das Geburtsdatum des Kindes ein. Die Daten bleiben bei dir und werden nicht weitergeleitet oder weitergegeben."
+        android:textSize="15dp"
+        android:layout_marginTop="100px"
+        android:layout_marginLeft="20dp"
+        android:textColor="@color/common_google_signin_btn_text_dark_focused"
+        android:layout_marginRight="20dp"/>
 
     <EditText
         android:layout_width="345dp"
