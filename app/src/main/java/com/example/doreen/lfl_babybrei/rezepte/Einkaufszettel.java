@@ -1,11 +1,14 @@
 package com.example.doreen.lfl_babybrei.rezepte;
 
+import android.app.Dialog;
 import android.content.Intent;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.SpannableString;
 import android.view.View;
+import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -43,7 +46,7 @@ public class Einkaufszettel extends AppCompatActivity {
         setContentView(R.layout.einkaufszettel);
         lv = (ListView) findViewById(R.id.listeEinkaufszettel);
         initToolBar();
-
+        onLayer();
         final DatabaseAccess databaseAccess = DatabaseAccess.getInstance(this);
         databaseAccess.open();
         id_list = databaseAccess.getKochbuchRezepteID();
@@ -141,6 +144,25 @@ public class Einkaufszettel extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
 
+    }
+
+
+    public void onLayer(){
+
+        final Dialog dialog = new Dialog(this);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
+        dialog.setContentView(R.layout.kochbuch_overlay);
+        dialog.setCanceledOnTouchOutside(true);
+        //for dismissing anywhere you touch
+        View masterView = dialog.findViewById(R.id.coach_mark_master_view);
+        masterView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialog.dismiss();
+            }
+        });
+        dialog.show();
     }
 
 }

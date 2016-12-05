@@ -92,7 +92,7 @@ public class RezeptUebersichtActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent2 = new Intent(getApplicationContext(),RezeptMonat.class);
-                intent2.putExtra("Monat", 1);
+                intent2.putExtra("Monat", 12);
                 startActivity(intent2);
             }
         });

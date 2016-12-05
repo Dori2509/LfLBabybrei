@@ -4,15 +4,21 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:id="@+id/coach_mark_master_view">
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent" >
+
         <ImageView
             android:id="@+id/coach_marks_image"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_centerInParent="true"
             android:layout_gravity="center_horizontal"
-            android:src="@drawable/dasstillen" />
+            android:src="@drawable/glas_overlay"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+
     </RelativeLayout>
 </LinearLayout>

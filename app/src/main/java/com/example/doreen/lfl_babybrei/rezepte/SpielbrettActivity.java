@@ -102,31 +102,64 @@ public class SpielbrettActivity extends Activity {
 
 
         flüssigkeitenCheck = new String[] {
-                "etwas Wasser",
-                "TL Rapsöl",
-                "ml Möhren-oder Apfelsaft",
-                "EL Apfelsaft",
-                "ml Wasser"
+                "etwas Wasser", "EL Möhrensaft",
+                "TL Rapsöl", "EL Orangensaft", "ml Apfeldirektsaft",
+                "ml Möhren-oder Apfelsaft", "Wasser", "EL Wasser",
+                "EL Apfelsaft", "ml Möhren-Direktsaft", "ml Milch",
+                "ml Wasser", "ml Vollmilch oder Milch-Wasser-Gemisch",
+                "l Gemüsebrühe", "EL Maiskeimöl", "ml Traubensaft","ml Vollmilch",
+                "ml Gemüsebrühe", "ml warmes Wasser", "etwas Apfelsaft",
+                "EL Apfelsaft", "ml Öl", "ml Mineralwasser", "g heller Sirup oder Ahornsirup",
+                "ml Olivenöl", "TL Gemüsebrühe","l Milch", "etwas Zitronensaft",
+                "ml Schlagsahne"
         };
 
         gemüseCheck = new String[] {
-                "g Zucchini",
-                "g Kartoffeln",
-                "g Spinat",
-                "Süßkartoffel",
-                "kleiner Kohlrabi",
-                "Apfel",
-                "Birne",
-                "kleine Banane"
+                "g Zucchini", "Gurke", "gehackte Kräuter", "g Banane", "Bananen",
+                "g Kartoffeln", "g grüne Bohnen", "Birne", "Kartoffeln",
+                "g Spinat", "g Süßkartoffeln", "g Romanesco", "g Knollensellerie",
+                "Süßkartoffel", "EL Apfelmark/Apfelmus", "g Steckrübe",
+                "kleiner Kohlrabi", "g Rote Bete", "Aprikosen", "g Zucchini",
+                "Apfel", "g Äpfel", "g Apfel", "Möhren", "g Melone",
+                "Birne", "kleiner Apfel", "Banane", "g Blumenkohl",
+                "kleine Banane", "kleine Fenchelknolle", "g Möhren",
+                "Blätter Basilikum", "Pfirsiche", "Stange Lauch",
+                "etwas Petersilie", "Tomate", "Stange Rhabarber",
+                "g geschälte, geriebene Karotte", "g Brokkoli",
+                "g Kohlrabi", "Tomaten", "Pflaumen", "Orange",
+                "g Heidelbeeren", "g Apfelmus", "g Tomaten", "g Tomatenmark",
+                "g Früchte", "Paprika", "g Rucola", "g Cherrytomaten", "Stiele Basilikum",
+                "kleine Zwiebel", "Obst je nach Wunsch"
         };
 
         fischfleischCheck = new String[] {
-                " ",
+                "g mageres Fleisch", "g Hackfleisch", "g Tafelspitz",
+                "g Hühnchen", "g Lachsfilet", "kleine Dose Thunfisch"
 
         };
 
         sonstigesCheck = new String[] {
-                "EL Dinkelgrieß"
+                "EL Dinkelgrieß", "g Goldhirse", "g Reisflocken", "g Grieß",
+                "g Maisgrieß", "g Vollkorn-Dinkelmehl", "g Joghurt", "g Couscous",
+                "Scheiben Vollkornzwieback", "g Bulgur", "g Grünkerne", "g saure Sahne",
+                "g Vollkornreis", "EL Zucker", "Blätter Gelatine", "g Nudeln",
+                "g geriebener Käse", "Eier", "EL Mehl", "ml Sahne", "g Buchstabennudeln",
+                "g Stärke", "g Kakao", "g Rohrzucker", "g Dinkelmehl", "Ei",
+                "TL Butter", "EL Creme Fraiche", "EL Kräuter", "Pck. Trockenhefe",
+                "TL Salz", "g Frischkäse gemischt mit frischen Kräutern",
+                "Eigelb", "g weiche Butter", "EL Früchtetee (BIO)", "TL Süßholz", "g Zucker",
+                "etwas Vanillemark", "Prise Salz", "g frische Hefe", "g Mehl",
+                "TL Backpulver", "g geschmolzene Butter", "etwas Sesam",
+                "EL Kakao", "TL Natron", "TL Zimt", "TL gemahlene Nelken",
+                "TL Kardamom", "TL Zucker", "TL Oregano", "g Spaghetti",
+                "EL klein gestückeltes Brot", "TL Thymian", "etwas geriebene Zitronenschale",
+                "g zarte Haferflocken", "g Butter", "TL Creme Fraiche",
+                "g Vollkornspaghetti", "g geriebener Parmesan","Meersalz, Paprikapulver edelsüß, schwarzer Pfeffer",
+                "Salz, schwarzer Pfeffer", "EL Paniermehl", "EL gehackte Petersilie",
+                "g weiße Schokolade", "EL getrocknete Sauerkirschen", "g gehackte Mandeln", "Salz",
+                "g Magerquark", "EL Honig", "TL Lebkuchen-Gewürz", "EL Semmelbrösel",
+                "g gemahlene Mandeln", "Pck. Backpulver", "g Hirseflocken", "g Haferflocken",
+                "g Honigmelonenmus"
         };
 
 
@@ -885,11 +918,10 @@ public class SpielbrettActivity extends Activity {
     public void onCoachMark(){
 
         final Dialog dialog = new Dialog(this);
-        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.requestWindowFeature(Window.FEATURE_ACTION_MODE_OVERLAY);
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
         dialog.setContentView(R.layout.coach_mark);
         dialog.setCanceledOnTouchOutside(true);
-        //for dismissing anywhere you touch
         View masterView = dialog.findViewById(R.id.coach_mark_master_view);
         masterView.setOnClickListener(new View.OnClickListener() {
             @Override

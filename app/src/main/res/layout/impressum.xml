@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:background="@drawable/background"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="58dp"
+        android:minHeight="?attr/actionBarSize"
+        android:titleTextColor="#ffffff">
+        <TextView
+            android:id="@+id/points"
+            android:text="50"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#175c2c"
+            android:layout_gravity="right"
+            android:textSize="25dp"
+            android:paddingLeft="20dp"
+            android:paddingRight="40dp" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/imageView2"
+            android:layout_gravity="center"
+            android:src="@drawable/diamant"
+            />
+
+        <TextView
+            android:id="@+id/username"
+            android:text="Anna"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#175c2c"
+            android:textStyle="bold"
+            android:textSize="30dp" />
+
+
+
+    </android.support.v7.widget.Toolbar>
+
+    <TextView
+        android:id="@+id/textview"
+        android:layout_width="fill_parent"
+        android:layout_height="2dp"
+        android:background="#175c2c"
+        android:autoText="true" />
+
+<TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Impressum"
+    android:textSize="20dp"
+    android:layout_marginTop="50px"
+    android:layout_marginLeft="20dp"
+    android:layout_marginRight="20dp"
+    android:textStyle="bold"
+    android:textColor="#80368a"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Doreen Nafee,
+Zaschendorfer Str. 25,
+01662 Meissen"
+        android:textSize="15dp"
+        android:layout_marginTop="20px"
+        android:layout_marginLeft="20dp"
+        android:textColor="@color/common_google_signin_btn_text_dark_focused"
+        android:layout_marginRight="20dp"/>
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Kontakt"
+        android:textSize="20dp"
+        android:layout_marginTop="50px"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:textStyle="bold"
+        android:textColor="#80368a"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="E-Mail: kontakt@loeffel-fuer-loeffel.de"
+        android:textSize="15dp"
+        android:layout_marginTop="20px"
+        android:layout_marginLeft="20dp"
+        android:textColor="@color/common_google_signin_btn_text_dark_focused"
+        android:layout_marginRight="20dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Dieser Prototyp (App) entstand zusammen mit meiner Masterarbeit."
+        android:textSize="15dp"
+        android:layout_marginTop="100px"
+        android:layout_marginLeft="20dp"
+        android:textColor="@color/common_google_signin_btn_text_dark_focused"
+        android:layout_marginRight="20dp"/>
+
+</LinearLayout>

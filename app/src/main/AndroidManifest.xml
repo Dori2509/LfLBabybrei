@@ -34,6 +34,7 @@
         <activity android:name=".rezepte.RezeptActivity"/>
         <activity android:name=".rezepte.Einkaufszettel"/>
         <activity android:name=".rezepte.SpielbrettActivity"/>
+        <activity android:name=".ImpressumActivity"/>
         <activity android:name=".beitraege.Popup_FreischaltungBeitrag"
             android:theme="@style/AppTheme.PopupTheme">
         </activity>

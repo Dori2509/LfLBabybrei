@@ -1,6 +1,7 @@
 package com.example.doreen.lfl_babybrei;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -37,7 +38,9 @@ public class MainMenuActivity extends AppCompatActivity{
             "Rezeptübersicht",
             "Kochbuch",
             "Wochenrechner",
-            "Minigames"
+            "Minigames",
+            "Umfrage",
+            "Impressum"
     };
 
     // Array of integers points to images stored in /res/drawable-ldpi/
@@ -49,7 +52,9 @@ public class MainMenuActivity extends AppCompatActivity{
             R.drawable.rezepte,
             R.drawable.kochbuch,
             R.drawable.wochenrechner,
-            R.drawable.minigames
+            R.drawable.minigames,
+            R.drawable.umfrage,
+            R.drawable.impressum
     };
 
     // Array of strings to store currencies
@@ -61,7 +66,9 @@ public class MainMenuActivity extends AppCompatActivity{
             "Finde hier Rezepte je nach Alter abgestimmt",
             "Deine Lieblingsrezepte in der Übersicht",
             "Berechne das Alter in Tagen, Wochen usw. einer beliebigen Person",
-            "TicTacToe, Memory, FoodDrop, Quiz, SimonSays"
+            "TicTacToe, Memory, FoodDrop, Quiz, SimonSays",
+            "Helft uns und gibt uns über diese Umfrage eine Feedback",
+            ""
     };
 
     @Override
@@ -133,6 +140,15 @@ public class MainMenuActivity extends AppCompatActivity{
                     case 7:
                         Intent intent8 = new Intent(getApplicationContext(), MinigamesActivity.class);
                         startActivity(intent8);
+                        break;
+                    case 8:
+                        Uri uri = Uri.parse("http://www.google.com");
+                        Intent intent9 = new Intent(Intent.ACTION_VIEW, uri);
+                        startActivity(intent9);
+                        break;
+                    case 9:
+                        Intent intenta = new Intent(getApplicationContext(), ImpressumActivity.class);
+                        startActivity(intenta);
                         break;
                     default:
 
