@@ -19,6 +19,7 @@ import android.widget.Button;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.doreen.lfl_babybrei.MainMenuActivity;
 import com.example.doreen.lfl_babybrei.MyAdapter;
@@ -39,8 +40,7 @@ public class KochbuchAcitivity extends AppCompatActivity {
     private GridView listView;
     private List<MyAdapter.Item> quotes;
     public ArrayList id_list;
-    private ArrayList einkaufszutaten;
-    private ArrayList einkaufszettel;
+
 
 
 
@@ -94,18 +94,27 @@ public class KochbuchAcitivity extends AppCompatActivity {
 
 
 
-        einkaufszutaten = new ArrayList<Zutaten>();
-        einkaufszettel = new ArrayList<Zutaten>();
         Button createZettel = (Button) findViewById(R.id.createEinkaufszettel);
-        createZettel.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-               Intent i = new Intent(KochbuchAcitivity.this, Einkaufszettel.class);
-                startActivity(i);
 
-            }
-        });
+        if(id_list.size()==0){
+            createZettel.setEnabled(false);
+            createZettel.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Toast.makeText(getApplicationContext(), "Du hast noch kein Rezept zum Kochbuch hinzugefügt.", Toast.LENGTH_LONG).show();
+                }
+            });
 
+        } else{
+            createZettel.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent i = new Intent(KochbuchAcitivity.this, Einkaufszettel.class);
+                    startActivity(i);
+
+                }
+            });
+        }
 
 
 

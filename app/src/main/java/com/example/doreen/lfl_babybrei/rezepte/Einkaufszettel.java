@@ -150,6 +150,8 @@ public class Einkaufszettel extends AppCompatActivity {
     public void onLayer(){
 
         final Dialog dialog = new Dialog(this);
+        Window window = dialog.getWindow();
+        window.setLayout(1300,900);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
         dialog.setContentView(R.layout.kochbuch_overlay);
