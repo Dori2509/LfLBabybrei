@@ -19,8 +19,9 @@
         android:layout_width="345dp"
         android:layout_height="wrap_content"
         android:inputType="textPersonName"
-        android:background="#ffffff"
+        android:background="@drawable/round_corners"
         android:ems="10"
+        android:paddingLeft="20dp"
         android:text = "Name"
         android:hint ="Name"
         android:id="@+id/nameEingabe"
@@ -33,7 +34,8 @@
         android:layout_width="345dp"
         android:layout_height="wrap_content"
         android:inputType="textPersonName"
-        android:background="#ffffff"
+        android:background="@drawable/round_corners"
+        android:paddingLeft="20dp"
         android:layout_gravity="center"
         android:text = "Name deines Kindes"
         android:ems="10"
@@ -48,12 +50,13 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:inputType="textPersonName"
-        android:background="#ffffff"
         android:layout_gravity="center"
+        android:paddingLeft="20dp"
         android:ems="10"
         android:text = "Geburtsdatum deines Kindes"
         android:hint ="Geburtstag"
         android:id="@+id/birthdayEingabe"
+        android:background="@drawable/round_corners"
         android:layout_weight="0.06"
         android:textColor="?attr/colorButtonNormal" />
 
@@ -63,6 +66,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="20dp"
+        android:background="@drawable/button_border"
         android:id="@+id/saveButton"
         android:layout_weight="0.06" />
 </LinearLayout>
