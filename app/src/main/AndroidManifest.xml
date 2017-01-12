@@ -35,10 +35,10 @@
         <activity android:name=".rezepte.Einkaufszettel"/>
         <activity android:name=".rezepte.SpielbrettActivity"/>
         <activity android:name=".ImpressumActivity"/>
-        <activity android:name=".beitraege.Popup_FreischaltungBeitrag"
+        <activity android:name=".beitraege.PopupFreischaltungBeitrag"
             android:theme="@style/AppTheme.PopupTheme">
         </activity>
-        <activity android:name=".rezepte.Popup_FreischaltungRezept"
+        <activity android:name=".rezepte.PopupFreischaltungRezept"
             android:theme="@style/AppTheme.PopupTheme">
         </activity>
 
