@@ -90,7 +90,6 @@ public class DBHelper extends SQLiteOpenHelper {
             array_list = res.getString(res.getColumnIndex(COLUMN_NAME));
             res.moveToNext();
         }
-        res.close();
         return array_list;
     }
 
@@ -108,7 +107,6 @@ public class DBHelper extends SQLiteOpenHelper {
             array_list = res.getString(res.getColumnIndex(COLUMN_BABYNAME));
             res.moveToNext();
         }
-        res.close();
         return array_list;
     }
 
@@ -126,7 +124,6 @@ public class DBHelper extends SQLiteOpenHelper {
             array_list = res.getInt(res.getColumnIndex(COLUMN_DIAMANTS));
             res.moveToNext();
         }
-        res.close();
         return array_list;
     }
 
@@ -158,7 +155,6 @@ public class DBHelper extends SQLiteOpenHelper {
             array_list = res.getString(res.getColumnIndex(COLUMN_BIRTHDATE));
             res.moveToNext();
         }
-        res.close();
         return array_list;
     }
 

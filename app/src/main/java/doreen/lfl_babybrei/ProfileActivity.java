@@ -92,6 +92,7 @@ public class ProfileActivity extends AppCompatActivity {
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.profile);
+        mydb = new DBHelper(this);
 
 
         img = (ImageView) findViewById(R.id.profileImage);

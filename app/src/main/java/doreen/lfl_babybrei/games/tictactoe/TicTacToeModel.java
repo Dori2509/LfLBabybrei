@@ -22,15 +22,15 @@ public class TicTacToeModel {
      /**
       * menschlicher Benutzer
       */
-     private static final char user = 'X';
+     public static final char user = 'X';
      /**
       * Computer
       */
-     private static final char computer = 'O';
+     public static final char computer = 'O';
      /**
       * leeres Feld
       */
-     private static final char leer = ' ';
+     public static final char leer = ' ';
      /**
       * Zufallszahl
       */

@@ -89,8 +89,12 @@ public class BeikostActivity extends AppCompatActivity {
         ueberschrift.setText("Beikost");
         DatabaseAccess databaseAccess = DatabaseAccess.getInstance(this);
         databaseAccess.open();
+
+
         beitraege = databaseAccess.getBeitraege("beikost");
         iDlist = databaseAccess.getAllID("beikost");
+
+
         listView.setAdapter(new MyAdapter(this, beitraege));
         enable = databaseAccess.getAllEnabled();
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {

@@ -82,16 +82,17 @@ public final class DatabaseAccess {
         List<MyAdapter.Item> list = new ArrayList<>();
         Cursor cursor = database.rawQuery("SELECT * FROM beitraege WHERE assignement='" + value + "'", null);
         cursor.moveToFirst();
-        while (!cursor.isAfterLast()) {
+        while (cursor.isAfterLast() == false) {
             int resID = c.getResources().getIdentifier(cursor.getString(4), "drawable", c.getPackageName());
             String str = cursor.getString(1);
+
             if (str.length() > 22) {
                 str = str.substring(0, 18) + "...";
-                list.add(new MyAdapter.Item(str, resID, cursor.getInt(3), cursor.getString(5)));
-                cursor.moveToNext();
+
             }
-        }
-        cursor.close();
+            list.add(new MyAdapter.Item(str, resID, cursor.getInt(3), cursor.getString(5)));
+            cursor.moveToNext();
+        } cursor.close();
         return list;
     }
 
@@ -109,7 +110,7 @@ public final class DatabaseAccess {
             list.add(cursor.getInt(0));
             cursor.moveToNext();
         }
-        cursor.close();
+
         return list;
     }
 
@@ -126,7 +127,7 @@ public final class DatabaseAccess {
             list.add(cursor.getString(5));
             cursor.moveToNext();
         }
-        cursor.close();
+
         return list;
     }
 
@@ -165,11 +166,11 @@ public final class DatabaseAccess {
             String str = cursor.getString(1);
             if (str.length() > 22) {
                 str = str.substring(0, 18) + "...";
-                list.add(new MyAdapter.Item(str, resID, cursor.getInt(3), cursor.getString(9)));
-                cursor.moveToNext();
             }
+            list.add(new MyAdapter.Item(str, resID, cursor.getInt(3), cursor.getString(9)));
+            cursor.moveToNext();
         }
-        cursor.close();
+
         return list;
     }
 
@@ -187,7 +188,7 @@ public final class DatabaseAccess {
             list.add(cursor.getInt(0));
             cursor.moveToNext();
         }
-        cursor.close();
+
         return list;
     }
 
@@ -208,7 +209,7 @@ public final class DatabaseAccess {
                 cursor.moveToNext();
             }
         }
-        cursor.close();
+
         return list;
     }
 
@@ -224,7 +225,7 @@ public final class DatabaseAccess {
             list.add(cursor.getInt(0));
             cursor.moveToNext();
         }
-        cursor.close();
+
         return list;
     }
 
@@ -240,7 +241,7 @@ public final class DatabaseAccess {
             list.add(cursor.getString(9));
             cursor.moveToNext();
         }
-        cursor.close();
+
         return list;
     }
 
@@ -424,7 +425,7 @@ public final class DatabaseAccess {
                list.add(new Zutaten(cursor.getInt(1), cursor.getString(2)));
             cursor.moveToNext();
         }
-        cursor.close();
+
         return list;
     }
 
@@ -442,7 +443,7 @@ public final class DatabaseAccess {
             list.add(cursor.getLong(1));
             cursor.moveToNext();
         }
-        cursor.close();
+
         return list;
     }
 
@@ -460,7 +461,7 @@ public final class DatabaseAccess {
             list.add(new Zutaten(cursor.getLong(1), cursor.getString(2)));
             cursor.moveToNext();
         }
-        cursor.close();
+
         return list;
     }
 
