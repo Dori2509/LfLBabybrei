@@ -11,32 +11,36 @@ import android.widget.EditText;
 import doreen.lfl_babybrei.db.DBHelper;
 
 /**
+ * Profil Dateneingabe
  * Created by Doreen on 12.11.2016.
  */
 public class ProfileDataActivity extends Activity {
 
     /**
-     * The Save button.
+     * Savebutton.
      */
     Button saveButton;
     /**
-     * The Name.
+     * Name.
      */
     EditText Name;
     /**
-     * The Baby name.
+     * Babyname.
      */
     EditText BabyName;
     /**
-     * The Birthday.
+     * Geburtstag.
      */
     EditText Birthday;
     /**
-     * The Mydb.
+     * Datenbankverbindung
      */
     DBHelper mydb;
 
-
+    /**
+     * Initialisierung aller notwendigen Daten und der Ansicht.
+     * @param savedInstanceState Status
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,7 +52,7 @@ public class ProfileDataActivity extends Activity {
         Birthday = (EditText) findViewById(R.id.birthdayEingabe);
         saveButton = (Button) findViewById(R.id.saveButton);
 
-
+        //Dateneingabe mit anschließendem Abspeichern in der lokalen Datenbank
        Name.setFocusable(true);
        Name.setClickable(true);
        Name.setOnClickListener(new View.OnClickListener() {
@@ -95,10 +99,5 @@ public class ProfileDataActivity extends Activity {
                                           }
                                       }
         );
-
-
     }
-
-
-
 }

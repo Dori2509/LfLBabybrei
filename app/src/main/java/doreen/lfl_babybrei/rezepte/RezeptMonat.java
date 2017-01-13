@@ -19,45 +19,46 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * Rezeptansicht eines bestimmten Monats
  * Created by Doreen on 19.11.2016.
  */
 public class RezeptMonat extends AppCompatActivity {
     /**
-     * The Toolbar.
+     * Toolbar.
      */
     private Toolbar toolbar;
     /**
-     *
+     * Datenbankverbindung
      */
     private DBHelper mydb;
     /**
-     *
+     * Listview
      */
     private GridView listView;
     /**
-     *
+     * Liste aller Rezepte
      */
-    private List<MyAdapter.Item> quotes;
+    private List<MyAdapter.Item> rezepte;
     /**
-     * The Id list.
+     * ID-Liste
      */
     private ArrayList idList;
     /**
-     *
+     * value
      */
     private int value;
     /**
-     *
+     * Liste, welche Rezepte freigeschalten sind
      */
     private  List<String> enable;
     /**
-     * The Ueberschrift.
+     * Überschrift.
      */
     private TextView ueberschrift;
 
 
     /**
-     *
+     * Alle Daten und die Ansichten werden aktualisiert bei Aufruf.
      */
     @Override
     public void onRestart() {
@@ -67,16 +68,16 @@ public class RezeptMonat extends AppCompatActivity {
         if (extras != null) {
             value = extras.getInt("Monat");
         }
-        quotes = databaseAccess.getRezepte(value);
+        rezepte = databaseAccess.getRezepte(value);
         idList = databaseAccess.getAllRezepteID(value);
-        listView.setAdapter(new MyAdapter(this, quotes));
+        listView.setAdapter(new MyAdapter(this, rezepte));
         enable = databaseAccess.getAllRezepteEnabled();
         initToolBar();
     }
 
     /**
-     *
-     * @param savedInstanceState
+     * Initialisierung aller notwendigen Daten und der Ansicht.
+     * @param savedInstanceState Status
      */
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
@@ -85,6 +86,7 @@ public class RezeptMonat extends AppCompatActivity {
         initToolBar();
 
         Bundle extras = getIntent().getExtras();
+        //Auslesen, welchen Monat der Nutzer gewählt hat
         if (extras != null) {
             value = extras.getInt("Monat");
         }
@@ -100,13 +102,16 @@ public class RezeptMonat extends AppCompatActivity {
                 startActivity(i);
             }
         });
+        //Daten werden aus Datenbank ausgelesen und dem Adapter übergeben
         DatabaseAccess databaseAccess = DatabaseAccess.getInstance(this);
         databaseAccess.open();
-        quotes = databaseAccess.getRezepte(value);
+        rezepte = databaseAccess.getRezepte(value);
         idList = databaseAccess.getAllRezepteID(value);
-        listView.setAdapter(new MyAdapter(this, quotes));
+        listView.setAdapter(new MyAdapter(this, rezepte));
         enable = databaseAccess.getAllRezepteEnabled();
 
+        //Beim Klick auf ein Rezept wird geprüft, ob das Rezept freigeschalten ist
+        //Je nachdem wird nächste Screen angezeigt
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(final AdapterView<?> arg0, final View arg1, final int arg2, final long arg3) {
@@ -125,12 +130,9 @@ public class RezeptMonat extends AppCompatActivity {
                     intent.putExtra("id", toSearch);
                     startActivity(intent);
                 }
-
-
             }
         });
         databaseAccess.close();
-
     }
 
 
@@ -149,13 +151,5 @@ public class RezeptMonat extends AppCompatActivity {
         dia.setText(String.valueOf(diamants));
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-
     }
-
-
-
-
-
-
 }

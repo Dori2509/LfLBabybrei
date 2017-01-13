@@ -20,36 +20,35 @@ import java.util.Calendar;
 @SuppressLint("ValidFragment")
 public class DateDialog extends DialogFragment implements DatePickerDialog.OnDateSetListener {
     /**
-     * The Txtdate.
+     * Txtdate.
      */
     private TextView txtdate;
     /**
-     *
+     * Datenbankverbindung
      */
     private DBHelper mydb;
     /**
-     * The W.
+     * Zugehörigkeit
      */
     private String w;
 
     /**
-     * Instantiates a new Date dialog.
+     * Initialisiert ein neuen DateDialog
      *
-     * @param view the view
-     * @param mydb the mydb
-     * @param wo   the wo
+     * @param view view
+     * @param mydb Datenbank
+     * @param wo Zugehörigkeit
      */
     public DateDialog(final View view, final DBHelper mydb, final String wo) {
         txtdate = (TextView) view;
         this.mydb = mydb;
         this.w = wo;
-
     }
 
     /**
-     *
-     * @param savedInstanceState
-     * @return
+     * Initialisierung des gewählten Datums
+     * @param savedInstanceState Status
+     * @return Dialog
      */
     public Dialog onCreateDialog(final Bundle savedInstanceState) {
 

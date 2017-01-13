@@ -23,92 +23,114 @@ import java.util.ArrayList;
 
 
 /**
+ * Spielbrett des Kochbuches
  * Created by Doreen on 28.11.2016.
  */
 public class SpielbrettActivity extends Activity {
     /**
-     * The Einkaufs zettel.
+     * Einkaufszettel.
      */
     public ArrayList einkaufsZettel;
+    /**
+     * Liste aller möglichen Gemüsesorten
+     */
     private ArrayList gemuese;
+    /**
+     * Liste aller möglichen Flüssigkeiten
+     */
     private ArrayList fluessigkeiten;
+    /**
+     * Liste aller möglichen Fleischsorten
+     */
     private ArrayList fischFleisch;
+    /**
+     * Liste der restlichen Zutaten
+     */
     private ArrayList sonstiges;
 
     /**
-     * The Flüssigkeiten check.
+     * Flüssigkeitencheck.
      */
     public String[] flüssigkeitenCheck;
     /**
-     * The Gemüse check.
+     * Gemüsecheck.
      */
     public String[] gemüseCheck;
     /**
-     * The Fischfleisch check.
+     * Fischfleischcheck.
      */
     public String[] fischfleischCheck;
     /**
-     * The Sonstiges check.
+     * Sonstigescheck.
      */
     public String[] sonstigesCheck;
+    /**
+     * ProgressDialog
+     */
     private ProgressDialog mProgressDialog;
     /**
-     * The Bubble 1 1.
+     * Bubble 1 1.
      */
     ImageView bubble1_1, /**
-     * The Bubble 1 2.
+     * Bubble 1 2.
      */
     bubble1_2, /**
-     * The Bubble 1 3.
+     * Bubble 1 3.
      */
     bubble1_3, /**
-     * The Bubble 2 1.
+     * Bubble 2 1.
      */
     bubble2_1, /**
-     * The Bubble 2 2.
+     *Bubble 2 2.
      */
     bubble2_2, /**
-     * The Bubble 2 3.
+     * Bubble 2 3.
      */
     bubble2_3, /**
-     * The Bubble 3 1.
+     * Bubble 3 1.
      */
     bubble3_1, /**
-     * The Bubble 3 2.
+     * Bubble 3 2.
      */
     bubble3_2, /**
-     * The Bubble 3 3.
+     * Bubble 3 3.
      */
     bubble3_3, /**
-     * The Bubble 4 1.
+     * Bubble 4 1.
      */
     bubble4_1, /**
-     * The Bubble 4 2.
+     * Bubble 4 2.
      */
     bubble4_2, /**
-     * The Bubble 4 3.
+     * Bubble 4 3.
      */
     bubble4_3;
     /**
-     * The Get ingredients.
+     * Getingredients.
      */
     static int GET_INGREDIENTS;
+    /**
+     * Datenbankverbindung
+     */
     private DBHelper mydb ;
     /**
-     * The Reihe 1.
+     * Reihe 1.
      */
     public Integer[] Reihe1, /**
-     * The Reihe 2.
+     * Reihe 2.
      */
     Reihe2, /**
-     * The Reihe 3.
+     * Reihe 3.
      */
     Reihe3, /**
-     * The Reihe 4.
+     * Reihe 4.
      */
     Reihe4;
 
-
+    /**
+     * Initialisierung aller notwendigen Daten und der Ansicht.
+     * @param savedInstanceState Status
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -127,6 +149,7 @@ public class SpielbrettActivity extends Activity {
         mProgressDialog.setIndeterminate(false);
         mProgressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
 
+        //Die Zutaten werden in 3 Reihen zu jeweils 3 Bereichen aufgeteilt
         Reihe1 = new Integer[3];
         Reihe2 = new Integer[3];
         Reihe3 = new Integer[3];
@@ -241,22 +264,23 @@ public class SpielbrettActivity extends Activity {
 
         AsyncTaskRunner runner = new AsyncTaskRunner();
         runner.execute();
-
-
-        //TODO
-        // Info Popup
-        // Hilfebutton auf Spielbrett
-
-
     }
 
+    /**
+     *
+     */
     private class AsyncTaskRunner extends AsyncTask<String, String, String> {
 
         private String resp;
 
+        /**
+         * Zutaten werden aufgeteilt
+         * @param params
+         * @return
+         */
         @Override
         protected String doInBackground(String... params) {
-            publishProgress("Sleeping..."); // Calls onProgressUpdate()
+            publishProgress("Sleeping...");
             try {
 
                 int z = 0;
@@ -298,33 +322,21 @@ public class SpielbrettActivity extends Activity {
 
                     z++;
                 }
-
-
-
-
-
-
-
             } catch (Exception e) {
                 e.printStackTrace();
                 resp = e.getMessage();
             }
-
-
-
             return resp;
         }
 
         /*
-         * (non-Javadoc)
          *
          * @see android.os.AsyncTask#onPostExecute(java.lang.Object)
          */
         @Override
         protected void onPostExecute(String result) {
-            // execution of result of Long time consuming operation
             mProgressDialog.dismiss();
-// wenn im Cluster kein Element ist, dann Bubbles als erledigt anzeigen
+            // wenn im Cluster kein Element ist, dann Bubbles als erledigt anzeigen
             if(gemuese.size()==0){
                 bubble1_1.setImageResource(R.drawable.glas_17_2);
                 bubble1_2.setImageResource(R.drawable.glas_18_2);
@@ -348,7 +360,7 @@ public class SpielbrettActivity extends Activity {
                 bubble4_3.setImageResource(R.drawable.glas_07_2);
             }
 
-// wenn im Cluster ein Element ist, dann 2 Bubbles als erledigt anzeigen
+            // wenn im Cluster ein Element ist, dann 2 Bubbles als erledigt anzeigen
             if(gemuese.size()==1){
                 Reihe1[0] = 1;
                 //Reihe 1, links
@@ -422,7 +434,7 @@ public class SpielbrettActivity extends Activity {
                 });
             }
 
-// wenn im Cluster zwei Elemente ist, dann 1 Bubble als erledigt anzeigen
+            // wenn im Cluster zwei Elemente ist, dann 1 Bubble als erledigt anzeigen
             if(gemuese.size()==2){
                 Reihe1[0] = 1;
                 Reihe1[2] = 1;
@@ -537,7 +549,7 @@ public class SpielbrettActivity extends Activity {
                 });
             }
 
-// wenn im Cluster 3 Elemente sind
+            // wenn im Cluster 3 Elemente sind
             if(gemuese.size()>2){
                 Reihe1[0] = 1;
                 Reihe1[1] = 1;
@@ -811,6 +823,7 @@ public class SpielbrettActivity extends Activity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        //Bubbles werden gesetzt
         //Reihe 1, links
         if (requestCode == 1) {
             if (resultCode == RESULT_OK) {
@@ -922,7 +935,7 @@ public class SpielbrettActivity extends Activity {
     }
 
     /**
-     * Re draw second.
+     * Redrawsecond.
      */
     public void reDrawSecond(){
            if(Reihe1[0]==0 && Reihe1[1]==0 && Reihe1[2]==0){
@@ -938,7 +951,7 @@ public class SpielbrettActivity extends Activity {
     }
 
     /**
-     * Re draw third.
+     * Redrawthird.
      */
     public void reDrawThird(){
         if(Reihe2[0]==0 && Reihe2[1]==0 && Reihe2[2]==0){
@@ -993,7 +1006,7 @@ public class SpielbrettActivity extends Activity {
     }
 
     /**
-     * On coach mark.
+     * Anleitung anzeigen
      */
     public void onCoachMark(){
 
@@ -1013,7 +1026,7 @@ public class SpielbrettActivity extends Activity {
     }
 
     /**
-     * On won diamants.
+     * Wenn gewonnen, dann bekommt Nutzer Diamanten und Hauptmenü wird wieder angezeigt
      */
     public void onWonDiamants(){
         mydb.updateDiamants((mydb.getDiamants()+15));

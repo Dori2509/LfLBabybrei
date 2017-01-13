@@ -9,21 +9,22 @@ import doreen.lfl_babybrei.db.DBHelper;
 
 
 /**
+ * Impressum
  * Created by Doreen on 05.12.2016.
  */
 public class ImpressumActivity extends AppCompatActivity {
     /**
-     * The Toolbar.
+     * Toolbar.
      */
     private Toolbar toolbar;
     /**
-     *
+     * Datenbankverbindung
      */
     private DBHelper mydb;
 
     /**
-     *
-     * @param savedInstanceState
+     *  Initialisierung aller notwendigen Daten und der Ansicht.
+     * @param savedInstanceState Status
      */
     @Override
     protected void onCreate(final Bundle savedInstanceState) {

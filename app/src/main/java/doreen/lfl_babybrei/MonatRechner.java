@@ -9,34 +9,35 @@ import java.util.Locale;
 import doreen.lfl_babybrei.db.DBHelper;
 
 /**
+ * Berechnung des Alters
  * Created by Doreen on 20.11.2016.
  */
 public class MonatRechner {
 
     /**
-     *
+     * Datenbankverbindung
      */
     private DBHelper mydb;
     /**
-     *
+     * Tag
      */
     private String day;
     /**
-     * The Date.
+     * Date.
      */
     private Date date;
     /**
-     * The Diffmonths.
+     * monatliche Differenz
      */
     private long diffmonths;
 
     /**
-     * Instantiates a new Monat rechner.
-     *
-     * @param birthday the birthday
+     *  Initialisierung der Berechnung
+     * @param birthday Geburtsdatum
      */
     public MonatRechner(final String birthday) {
         this.day = birthday;
+        //Auslesen des aktuellen Datums
         SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy");
         String prvvDate = df.format(new Date());
 
@@ -50,6 +51,7 @@ public class MonatRechner {
         }
 
         try {
+            //Aktuelles Datum wird genutzt um die Berechnung der Monate zu veranlassen
             String currDate=  day;
             Date date1 = null;
             Date date2 = null;
@@ -64,17 +66,14 @@ public class MonatRechner {
         } catch (Exception e1) {
             System.out.println("exception " + e1);
         }
-
     }
 
     /**
-     * Get alter long.
-     *
-     * @return the long
+     * Getter für Alter
+     * @return alter
      */
     public long getAlter() {
         long alter = diffmonths;
        return alter;
     }
-
 }

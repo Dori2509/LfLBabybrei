@@ -17,33 +17,34 @@ import doreen.lfl_babybrei.db.DatabaseAccess;
 import java.util.ArrayList;
 
 /**
+ * Anzeige des Rezeptes
  * Created by Doreen on 21.11.2016.
  */
 public class RezeptActivity extends AppCompatActivity {
     /**
-     * The Toolbar.
+     * Toolbar.
      */
     private Toolbar toolbar;
     /**
-     *
+     * Datenbankverbindung
      */
     private DBHelper mydb;
     /**
-     *
+     * Zutatenliste
      */
     private ArrayList<Zutaten> productList;
     /**
-     * The value.
+     * value.
      */
     private int value;
     /**
-     * The X menge.
+     * Menge pro Zutat
      */
     private long xMenge;
 
     /**
-     *
-     * @param savedInstanceState
+     * Initialisierung aller notwendigen Daten und der Ansicht.
+     * @param savedInstanceState Status
      */
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
@@ -62,6 +63,7 @@ public class RezeptActivity extends AppCompatActivity {
         final DatabaseAccess databaseAccess = DatabaseAccess.getInstance(this);
         databaseAccess.open();
 
+        //sämtliche Daten werden aus Datenbank ausgelesen und zu den einzelnen Bestandteilen zugeordnet
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
             value = extras.getInt("_id");
@@ -82,15 +84,12 @@ public class RezeptActivity extends AppCompatActivity {
             ListviewAdapter adapter = new ListviewAdapter(this, productList);
             lview.setAdapter(adapter);
 
-
-
-
-
             adapter.notifyDataSetChanged();
 
 
         }
 
+        //Portionenänderung durch Eingabe des Nutzers
         refreshImg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(final View v) {
@@ -117,6 +116,7 @@ public class RezeptActivity extends AppCompatActivity {
             }
         });
 
+        //Button zum Hinzufügen oder Löschen eines Rezeptes zum Kochbuch
         if (databaseAccess.getKochbuch(value).equals("false")) {
             addKoch.setText("zum Kochbuch hinzufügen");
             addKoch.setOnClickListener(new View.OnClickListener() {
@@ -136,8 +136,6 @@ public class RezeptActivity extends AppCompatActivity {
                 }
             });
         }
-
-
     }
 
     /**
@@ -154,13 +152,5 @@ public class RezeptActivity extends AppCompatActivity {
         dia.setText(String.valueOf(diamants));
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-
     }
-
-
-
-
-
-
 }

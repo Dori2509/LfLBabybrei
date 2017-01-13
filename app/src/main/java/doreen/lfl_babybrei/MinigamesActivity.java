@@ -14,25 +14,26 @@ import doreen.lfl_babybrei.db.DBHelper;
 import doreen.lfl_babybrei.games.tictactoe.TicTacToe;
 
 /**
+ * Anzeige der Minigames
  * Created by Doreen on 26.10.2016.
  */
 public class MinigamesActivity extends AppCompatActivity {
     /**
-     * The Toolbar.
+     * Toolbar.
      */
     private Toolbar toolbar;
     /**
-     * The Tic.
+     * Button.
      */
     private Button tic;
     /**
-     *
+     * Datenbankverbindung
      */
     private DBHelper mydb;
 
     /**
-     *
-     * @param savedInstanceState
+     * Initialisierung aller notwendigen Daten und der Ansicht.
+     * @param savedInstanceState Status
      */
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
@@ -40,6 +41,7 @@ public class MinigamesActivity extends AppCompatActivity {
         setContentView(R.layout.minigames);
         initToolBar();
 
+        //Bisher wurde nur TicTacToe entwickelt
         ImageView tictactoe = (ImageView) findViewById(R.id.tictactoe);
         tictactoe.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -88,7 +90,6 @@ public class MinigamesActivity extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), "SimonSays ist noch in der Entwicklung", Toast.LENGTH_LONG).show();
             }
         });
-
     }
 
     /**
@@ -106,13 +107,5 @@ public class MinigamesActivity extends AppCompatActivity {
         dia.setText(String.valueOf(diamants));
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-
     }
-
-
-
-
-
-
 }

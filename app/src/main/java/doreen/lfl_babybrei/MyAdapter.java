@@ -14,27 +14,28 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * Adapter
  * Created by Doreen on 18.11.2016.
  */
 public class MyAdapter extends BaseAdapter {
     /**
-     *
+     * Liste
      */
     private List<Item> mItems = new ArrayList<Item>();
     /**
-     *
+     * Inflater
      */
     private final LayoutInflater mInflater;
     /**
-     *
+     * Kontext
      */
     private Context c;
 
         /**
-         * Instantiates a new My adapter.
+         * Initialisierung des Adapters
          *
-         * @param context   the context
-         * @param beitraege the beitraege
+         * @param context   context
+         * @param beitraege beitraege
          */
         public MyAdapter(final Context context, final List<Item> beitraege) {
         mInflater = LayoutInflater.from(context);
@@ -43,8 +44,8 @@ public class MyAdapter extends BaseAdapter {
         }
 
     /**
-     *
-     * @return
+     * Menge der Items
+     * @return Menge
      */
     @Override
     public int getCount() {
@@ -52,9 +53,9 @@ public class MyAdapter extends BaseAdapter {
         }
 
     /**
-     *
+     * bestimmtes Item auslesen
      * @param i
-     * @return
+     * @return Item
      */
     @Override
     public Item getItem(final int i) {
@@ -62,9 +63,9 @@ public class MyAdapter extends BaseAdapter {
                 }
 
     /**
-     *
-      * @param i
-     * @return
+     * Auslesen der Item-ID
+     * @param i
+     * @return ID
      */
     @Override
     public long getItemId(final int i) {
@@ -72,11 +73,11 @@ public class MyAdapter extends BaseAdapter {
                 }
 
     /**
-         *
-          * @param i
-         * @param view
-         * @param viewGroup
-         * @return
+     * Liste befüllen
+     * @param i i
+     * @param view View
+     * @param viewGroup ViewGroup
+     * @return View
      */
         @Override
     public View getView(final int i, final View view, final ViewGroup viewGroup) {
@@ -86,6 +87,7 @@ public class MyAdapter extends BaseAdapter {
                 RatingBar ratb;
                 ImageView enable;
 
+                //Alle Bestandteile werden befüllt
                 if (v == null) {
                 v = mInflater.inflate(R.layout.grid_item, viewGroup, false);
                 v.setTag(R.id.picture, v.findViewById(R.id.picture));
@@ -109,49 +111,45 @@ public class MyAdapter extends BaseAdapter {
                 if (item.enable.equals("false")) {
                     enable.setImageResource(R.drawable.enabled);
                     name.setTextColor(ContextCompat.getColor(c, R.color.overlaygreen));
-
-                   // LayerDrawable stars = (LayerDrawable) ratb.getProgressDrawable();
-                   // stars.getDrawable(2).setColorFilter(Color.parseColor("#175D2D"),PorterDuff.Mode.SRC_ATOP);
                 }
 
                 return v;
                 }
 
                 /**
-                 * The type Item.
+                 * Item.
                  */
                 public static class Item {
                         /**
-                         * The Name.
+                         * Name.
                          */
                         private final String name;
                         /**
-                         * The Drawable id.
+                         * ID
                          */
                         private final int drawableId;
                         /**
-                         * The Rate.
+                         * Rate.
                          */
                         private final int rate;
                         /**
-                         * The Enable.
+                         * Enable.
                          */
                         private final String enable;
 
                         /**
-                         * Instantiates a new Item.
+                         * Initialisierung eines Items mit deren Eigenschaften
                          *
-                         * @param name       the name
-                         * @param drawableId the drawable id
-                         * @param rate       the rate
-                         * @param en         the en
+                         * @param name        name
+                         * @param drawableId  drawable id
+                         * @param rate        rate
+                         * @param en          en
                          */
                         public Item(final String name, final int drawableId, final int rate, final String en) {
-                this.name = name;
-                this.drawableId = drawableId;
-                this.rate = rate;
-                this.enable = en;
-            }
-
+                            this.name = name;
+                            this.drawableId = drawableId;
+                            this.rate = rate;
+                            this.enable = en;
+                        }
                 }
         }

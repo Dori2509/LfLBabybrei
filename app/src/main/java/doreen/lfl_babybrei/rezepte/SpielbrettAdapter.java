@@ -18,20 +18,20 @@ import java.util.ArrayList;
  */
 public class SpielbrettAdapter extends ArrayAdapter {
     /**
-     * The Model items.
+     * Modelitems.
      */
     private ArrayList modelItems = null;
     /**
-     * The Context.
+     * Context.
      */
     private Context context;
 
 
     /**
-     * Instantiates a new Spielbrett adapter.
+     * Initialisiert den Spielbrettadapter
      *
-     * @param context  the context
-     * @param resource the resource
+     * @param context   context
+     * @param resource  resource
      */
     public SpielbrettAdapter(final Context context, final ArrayList resource) {
         super(context, R.layout.einkaufszettelcheck, resource);
@@ -40,20 +40,20 @@ public class SpielbrettAdapter extends ArrayAdapter {
     }
 
     /**
-     *
-     * @param position
-     * @param convertView
-     * @param parent
-     * @return
+     * Anzeige der View und deren Befüllung
+     * @param position Position
+     * @param convertView View
+     * @param parent Abstammung
+     * @return View
      */
     @Override
     public View getView(final int position, View convertView, final ViewGroup parent) {
-        // TODO Auto-generated method stub
         LayoutInflater inflater = ((Activity) context).getLayoutInflater();
         convertView = inflater.inflate(R.layout.spielbrettcheck, parent, false);
         TextView name = (TextView) convertView.findViewById(R.id.checkedTextView1);
         final CheckedTextView cb = (CheckedTextView) convertView.findViewById(R.id.checkedTextView1);
         Zutaten f = (Zutaten) modelItems.get(position);
+        // Anzeige wird befüllt mit Text
         if (f.getMenge() > 0) {
             name.setText(f.getMenge() + " " + f.getZutat());
         } else {

@@ -28,18 +28,17 @@ import java.util.List;
 public class MainMenuActivity extends AppCompatActivity {
 
     /**
-     * The Toolbar.
+     * Toolbar.
      */
     private Toolbar toolbar;
     /**
-     *
+     * Datenbankverbindung
      */
     private DBHelper mydb;
     /**
-     * The Menupuenkte.
+     * Menupunkte.
      */
-// Array of strings storing country names
-    private String[] menupuenkte = new String[] {
+    private String[] menupunkte = new String[] {
             "Profil",
             "Milch & Co.",
             "Beikost",
@@ -53,9 +52,8 @@ public class MainMenuActivity extends AppCompatActivity {
     };
 
     /**
-     * The Menubilder.
+     * Menubilder.
      */
-// Array of integers points to images stored in /res/drawable-ldpi/
     private int[] menubilder = new int[]{
             R.drawable.profil,
             R.drawable.milch,
@@ -70,9 +68,8 @@ public class MainMenuActivity extends AppCompatActivity {
     };
 
     /**
-     * The Untertitel.
+     * Untertitel.
      */
-// Array of strings to store currencies
     private String[] untertitel = new String[]{
             "bearbeiten, löschen",
             "nützliche Hinweise, versch. Fertignahrung etc.",
@@ -87,8 +84,8 @@ public class MainMenuActivity extends AppCompatActivity {
     };
 
     /**
-     *
-     * @param savedInstanceState
+     * Initialisierung aller notwendigen Daten und der Ansicht.
+     * @param savedInstanceState Status
      */
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
@@ -100,7 +97,7 @@ public class MainMenuActivity extends AppCompatActivity {
 
         for (int i = 0; i < untertitel.length; i++) {
             HashMap<String, String> hm = new HashMap<String, String>();
-            hm.put("txt", menupuenkte[i]);
+            hm.put("txt", menupunkte[i]);
             hm.put("cur", untertitel[i]);
             hm.put("flag", Integer.toString(menubilder[i]));
             aList.add(hm);
@@ -113,12 +110,10 @@ public class MainMenuActivity extends AppCompatActivity {
         // Initialisierung eines Adapters um die Elemente zu "füllen"/ erstellen
         SimpleAdapter adapter = new SimpleAdapter(getBaseContext(), aList, R.layout.listview_layout, from, to);
 
-        // Getting a reference to listview of main.xml layout file
         ListView listView = (ListView) findViewById(R.id.listview);
 
-
-        // Setting the adapter to the listView
         listView.setAdapter(adapter);
+        //Je nachdem was geklickt wird, wird die neue Ansicht angezeigt
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(final AdapterView<?> arg0, final View arg1, final int arg2, final long arg3) {
@@ -166,7 +161,6 @@ public class MainMenuActivity extends AppCompatActivity {
                         startActivity(intenta);
                         break;
                     default:
-
                 }
             }
         });
@@ -187,7 +181,5 @@ public class MainMenuActivity extends AppCompatActivity {
         dia.setText(String.valueOf(diamants));
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-
     }
 }

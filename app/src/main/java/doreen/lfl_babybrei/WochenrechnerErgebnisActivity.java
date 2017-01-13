@@ -21,37 +21,29 @@ import doreen.lfl_babybrei.db.DBHelper;
  */
 public class WochenrechnerErgebnisActivity extends AppCompatActivity {
     /**
-     * The Toolbar.
+     * Toolbar.
      */
     private Toolbar toolbar;
     /**
-     *
+     * Datenbankverbindung
      */
     private DBHelper mydb;
     /**
-     * The Get name.
-     */
-    private String getName;
-    /**
-     * The Get datum.
-     */
-    private String getDatum;
-    /**
-     * The Ergebnis name.
+     * Ergebnisname.
      */
     private String ergebnisName;
     /**
-     * The Ergebnis datum.
+     * Ergebnisdatum.
      */
     private String ergebnisDatum;
     /**
-     * The Date.
+     * Datum
      */
     private Date date;
 
     /**
-     *
-     * @param savedInstanceState
+     * Initialisierung aller notwendigen Daten und der Ansicht.
+     * @param savedInstanceState Status
      */
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
@@ -74,7 +66,7 @@ public class WochenrechnerErgebnisActivity extends AppCompatActivity {
             ergebnisDatum = extras.getString("datum");
         }
 
-
+        //Aktuelles Datum zum Vergleich wird ausgelesen
         SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy");
         String prvvDate = df.format(new Date());
 
@@ -89,6 +81,7 @@ public class WochenrechnerErgebnisActivity extends AppCompatActivity {
         }
         String dayOfTheWeek = sdf.format(date);
 
+        //Wochentag
        switch (dayOfTheWeek) {
            case "Monday":
                dayOfTheWeek = "Montag";
@@ -115,6 +108,7 @@ public class WochenrechnerErgebnisActivity extends AppCompatActivity {
                break;
        }
 
+        //Wiederholung der eingegebenen Daten
         String geburtsdatum = "Geburtstag von " + ergebnisName + ": " + ergebnisDatum + ".\n\n";
 
         try {
@@ -129,15 +123,17 @@ public class WochenrechnerErgebnisActivity extends AppCompatActivity {
             long diffmonths = (long) Math.floor(diffDays / 30.41667);
             long diffyears = diffDays / 365;
 
+            //Differenz in Tage
             String tage = "Heute ist " + ergebnisName + " genau " + diffDays + " Tage alt.\n\n";
-
+            //Differenz in Wochen
             long ddays = diffDays - (diffweeks*7);
             String wochen = "Heute ist " + ergebnisName + " genau " + diffweeks + " Wochen und " + ddays + " Tage alt.\n\n";
 
             long didays = (long) Math.floor(diffDays - (diffmonths * 30.41667));
-
+            //Differenz in Monaten
             String monate = "Heute ist " + ergebnisName + " genau " + diffmonths + " Monate und " + didays + " Tage alt.\n\n";
 
+            //Differenz in Jahre
             long difdays = 365 - (diffDays - (diffyears * 365));
             String jahre = ergebnisName + " ist " + diffyears + " und wird in " + difdays + " Tagen " + (diffyears + 1) + " Jahre alt.\n" +
                     "\n";
@@ -147,12 +143,9 @@ public class WochenrechnerErgebnisActivity extends AppCompatActivity {
             String text = geburtsdatum + tage + wochen + monate + jahre + wochentag;
             ergebnis.setText(text);
 
-
         } catch (Exception e1) {
             System.out.println("exception " + e1);
         }
-
-
     }
 
     /**
@@ -170,7 +163,5 @@ public class WochenrechnerErgebnisActivity extends AppCompatActivity {
         dia.setText(String.valueOf(diamants));
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-
     }
 }

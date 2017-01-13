@@ -1,28 +1,28 @@
 package doreen.lfl_babybrei.rezepte;
 
 import android.os.Parcel;
-
 import java.io.Serializable;
 
 /**
+ * Aufbau/Inhalt einer Zutat
  * Created by Doreen on 21.11.2016.
  */
 public class Zutaten implements Serializable {
 
     /**
-     *
+     * Menge
      */
     private long menge;
     /**
-     *
+     * Zutat
      */
     private String zutat;
 
     /**
-     * Instantiates a new Zutaten.
+     * Initialisierung einer neuen Zutat
      *
-     * @param menge the menge
-     * @param zutat the zutat
+     * @param menge menge
+     * @param zutat zutat
      */
     public Zutaten(final long menge, final String zutat) {
         this.menge = menge;
@@ -32,30 +32,29 @@ public class Zutaten implements Serializable {
     /**
      * Instantiates a new Zutaten.
      *
-     * @param in the in
-     */
+     * @param in in
+
     protected Zutaten(final Parcel in) {
         menge = in.readLong();
         zutat = in.readString();
     }
-
+     */
 
     /**
-     * Gets menge.
+     * Getter für die Menge
      *
-     * @return the menge
+     * @return menge
      */
     public long getMenge() {
         return menge;
     }
 
     /**
-     * Gets zutat.
+     * Getter für Zutat.
      *
-     * @return the zutat
+     * @return zutat
      */
     public String getZutat() {
         return zutat;
     }
-
 }

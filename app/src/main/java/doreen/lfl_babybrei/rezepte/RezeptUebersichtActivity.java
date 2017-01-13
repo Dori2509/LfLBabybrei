@@ -14,21 +14,22 @@ import doreen.lfl_babybrei.db.DBHelper;
 import doreen.lfl_babybrei.MonatRechner;
 
 /**
+ * Rezeptübersicht
  * Created by Doreen on 26.10.2016.
  */
 public class RezeptUebersichtActivity extends AppCompatActivity {
     /**
-     * The Toolbar.
+     * Toolbar.
      */
     private Toolbar toolbar;
     /**
-     *
+     * Datenbankverbindung
      */
     private DBHelper mydb;
 
     /**
-     *
-     * @param savedInstanceState
+     * Initialisierung aller notwendigen Daten und der Ansicht.
+     * @param savedInstanceState Status
      */
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
@@ -36,6 +37,8 @@ public class RezeptUebersichtActivity extends AppCompatActivity {
         setContentView(R.layout.rezeptuebersicht);
         initToolBar();
 
+        //Alter des Kindes wird berechnet um maximal die Rezepte freizuschalten,
+        //die für das Alter geeignet sind
         MonatRechner m = new MonatRechner(mydb.getBirthday());
         long alter = m.getAlter();
 
@@ -129,6 +132,7 @@ public class RezeptUebersichtActivity extends AppCompatActivity {
         einJahr.setEnabled(false);
         einJahr.setImageResource(R.drawable.einjahr_enabled);
 
+        //Freischaltung je nach Alter
         if (alter >= 5) {
             sechs.setEnabled(true);
             sechs.setImageResource(R.drawable.sechs);
@@ -170,13 +174,5 @@ public class RezeptUebersichtActivity extends AppCompatActivity {
         dia.setText(String.valueOf(diamants));
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-
     }
-
-
-
-
-
-
 }

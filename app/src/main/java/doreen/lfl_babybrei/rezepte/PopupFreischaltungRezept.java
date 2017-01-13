@@ -13,30 +13,31 @@ import doreen.lfl_babybrei.db.DBHelper;
 import doreen.lfl_babybrei.db.DatabaseAccess;
 
 /**
+ * Freischaltungspopup für Rezept
  * Created by Doreen on 21.11.2016.
  */
 public class PopupFreischaltungRezept extends Activity {
 
     /**
-     * The Abbrechen.
+     * Abbrechen.
      */
     private Button abbrechen;
     /**
-     * The Freischalten.
+     * Freischalten.
      */
     private Button freischalten;
     /**
-     * The Id.
+     * ID
      */
     private int id;
     /**
-     *
+     * Datenbankverbindung
      */
     private DBHelper mydb;
 
     /**
-     *
-     * @param savedInstanceState
+     * Initialisierung aller notwendigen Daten und der Ansicht.
+     * @param savedInstanceState Status
      */
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
@@ -49,13 +50,14 @@ public class PopupFreischaltungRezept extends Activity {
 
         int width = dm.widthPixels;
         int height = dm.heightPixels;
-
+        //Größe des Popup-Fensters
         getWindow().setLayout((int) (width * .8), (int) (height * .4));
 
         abbrechen = (Button) findViewById(R.id.Abbrechen);
         freischalten = (Button) findViewById(R.id.Freischalten);
         TextView hinweis = (TextView) findViewById(R.id.hinweis);
 
+        //Überprüfung, ob noch Diamanten vorhanden für die Freischaltung
         int di = mydb.getDiamants();
         if (di == 0) {
             hinweis.setText("Du hast zu wenig Diamanten. Versuch dein Glück bei den Minigames oder sammel Diamanten im Kochbuch.");
@@ -71,13 +73,13 @@ public class PopupFreischaltungRezept extends Activity {
             }
         });
 
-
         final DatabaseAccess databaseAccess = DatabaseAccess.getInstance(this);
         databaseAccess.open();
 
         Bundle extras = getIntent().getExtras();
         id = extras.getInt("id");
 
+        //Rezept wird freigeschalten, Datenbank aktualisiert und das Rezept wird geöffnet
         freischalten.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(final View v) {

@@ -24,56 +24,57 @@ import android.widget.Toast;
 import doreen.lfl_babybrei.db.DBHelper;
 
 /**
+ * Profil
  * Created by Doreen on 26.10.2016.
  */
 public class ProfileActivity extends AppCompatActivity {
     /**
-     * The Toolbar.
+     * Toolbar.
      */
     private Toolbar toolbar;
     /**
-     * The Img.
+     * Bild.
      */
     private ImageView img;
     /**
-     * The Change name.
+     * neuer Name
      */
     private ImageView changeName;
     /**
-     * The Change babyname.
+     * neuer Babyname
      */
     private ImageView changeBabyname;
     /**
-     * The Change birthday.
+     * neuer Geburtstag
      */
     private ImageView changeBirthday;
     /**
-     * The Context.
+     * Kontext
      */
     private final Context context = this;
     /**
-     *
+     * Datenbankverbindung
      */
     private DBHelper mydb;
     /**
-     * The babyname.
+     * Babyname
      */
     private TextView babyname;
     /**
-     * The name.
+     * Name.
      */
     private TextView name;
     /**
-     * The geburtstag.
+     * Geburtsdatum
      */
     private TextView geburtstag;
     /**
-     * The alter.
+     * Alter
      */
     private TextView alter;
 
     /**
-     *
+     * Alle Daten und die Ansichten werden aktualisiert bei Aufruf.
      */
     @Override
     public void onRestart() {
@@ -84,14 +85,14 @@ public class ProfileActivity extends AppCompatActivity {
     }
 
     /**
-     *
-     * @param savedInstanceState
+     * Initialisierung aller notwendigen Daten und der Ansicht.
+     * @param savedInstanceState Status
      */
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.profile);
-        initToolBar();
+
 
         img = (ImageView) findViewById(R.id.profileImage);
         //img.setImageDrawable(Drawable.createFromPath(mydb.getImage()));
@@ -124,6 +125,7 @@ public class ProfileActivity extends AppCompatActivity {
 
             @Override
             public void afterTextChanged(final Editable s) {
+                //Sobald Geburtsdatum geändert wird, wird das Alter neu berechnet
                 MonatRechner m = new MonatRechner(geburtstag.getText().toString());
                 if (m.getAlter() > 1) {
                     alter.setText(mydb.getBabyName() + " ist " + m.getAlter() + " Monate alt.");
@@ -132,6 +134,8 @@ public class ProfileActivity extends AppCompatActivity {
                 }
             }
         });
+
+        //Name ändern
         changeName.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(final View v) {
@@ -176,6 +180,7 @@ public class ProfileActivity extends AppCompatActivity {
             }
         });
 
+        //Babynamen ändern
         changeBabyname.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(final View v) {
@@ -244,25 +249,10 @@ public class ProfileActivity extends AppCompatActivity {
                 dialog.show(ft, "DatePicker");
             }
         });
-
-
     }
 
     /**
-     * Init tool bar.
-     */
-    public void initToolBar() {
-        mydb = new DBHelper(this);
-
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-
-
-    }
-
-
-    /**
-     * Pick image.
+     * Pick image. wird noch nicht verwendet
      */
     public void pickImage() {
         Intent intent = new Intent(Intent.ACTION_PICK,
@@ -292,7 +282,6 @@ public class ProfileActivity extends AppCompatActivity {
         if (requestCode == 1) {
             final Bundle extras = data.getExtras();
             if (extras != null) {
-                //Get image
                 Bitmap newProfilePic = extras.getParcelable("data");
                 Drawable de = new BitmapDrawable(getResources(), newProfilePic);
                 Toast.makeText(getApplicationContext(), de.toString(), Toast.LENGTH_LONG).show();

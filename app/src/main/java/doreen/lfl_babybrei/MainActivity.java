@@ -15,30 +15,30 @@ import doreen.lfl_babybrei.db.DBHelper;
 public class MainActivity extends AppCompatActivity {
 
     /**
-     * The Bar.
+     * Progressbar.
      */
     private ProgressBar bar;
     /**
-     * The Label.
+     * Label.
      */
     private TextView label;
     /**
-     * The Handler.
+     * Handler.
      */
     private Handler handler = new Handler();
     /**
-     *
+     * Datenbankverbindung
      */
     private DBHelper mydb;
     /**
-     * The Name.
+     * Name.
      */
     private String name;
 
 
     /**
-     *
-     * @param savedInstanceState
+     * Initialisierung aller notwendigen Daten und der Ansicht.
+     * @param savedInstanceState Status
      */
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
@@ -46,14 +46,11 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         bar = (ProgressBar) findViewById(R.id.progBar);
 
-
-
         mydb = new DBHelper(this);
         name = mydb.getName();
 
 
         new Thread(new Runnable() {
-
             private int i = 0;
             private int progressStatus = 0;
 
@@ -75,6 +72,7 @@ public class MainActivity extends AppCompatActivity {
                     });
                 }
 
+                //Je nach Stand wird die kommende Anzeige automatisch angezeigt
                 if (progressStatus >= 100) {
                     if (name == "") {
                         Intent intent = new Intent(getApplicationContext(), ProfileDataActivity.class);
@@ -84,38 +82,31 @@ public class MainActivity extends AppCompatActivity {
                         startActivity(intent);
                     }
                 }
-
-                 }
-
+            }
             private int doWork() {
 
                 return i * 3;
             }
-
         }).start();
-
-
-
     }
 
     /**
-     *
+     * Wenn zum ersten Mal die App geöffnet wird, werden Name, Babyname und Geburtsdatum abgefragt
      * @param requestCode
      * @param resultCode
      * @param data
      */
     @Override
     protected void onActivityResult(final int requestCode, final int resultCode, final Intent data) {
-
         if (resultCode == RESULT_OK) {
             name = data.getStringExtra("Name");
             String babyName = data.getStringExtra("BabyName");
             String birthday = data.getStringExtra("Birthday");
             mydb.insertProfile(name, babyName, birthday, 25, "R.drawable.profil_xl");
+            //Alter des Babys wird berechnet
             MonatRechner m = new MonatRechner(birthday);
             Intent intent = new Intent(getApplicationContext(), MainMenuActivity.class);
             startActivity(intent);
         }
-
     }
 }

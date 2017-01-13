@@ -19,24 +19,32 @@ import doreen.lfl_babybrei.db.DatabaseAccess;
 import java.util.ArrayList;
 
 /**
+ * Popup für Zutatencheck
  * Created by Doreen on 02.12.2016.
  */
 public class Popup_ZutatenCheck extends Activity {
 
     /**
-     * The Abbrechen.
+     * Abbrechen.
      */
-    Button abbrechen;
+    private Button abbrechen;
     /**
-     * The Fertig.
+     * Fertig.
      */
-    Button fertig;
+    private Button fertig;
+    /**
+     * Zutatenliste
+     */
     private ArrayList ingredients;
     /**
-     * The Lv.
+     * Listenanzeige.
      */
     ListView lv;
 
+    /**
+     * Initialisierung aller notwendigen Daten und der Ansicht.
+     * @param savedInstanceState Status
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,7 +55,7 @@ public class Popup_ZutatenCheck extends Activity {
 
         int width = dm.widthPixels;
         int height = dm.heightPixels;
-
+        //Größe des Fensters wird definiert
         getWindow().setLayout((int)(width*.8), (int)(height*.4));
 
         lv = (ListView) findViewById(R.id.listeIngredients);
@@ -74,9 +82,6 @@ public class Popup_ZutatenCheck extends Activity {
             lv.setOnItemClickListener(cbC);
 
 
-
-
-
         abbrechen.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -84,7 +89,7 @@ public class Popup_ZutatenCheck extends Activity {
             }
         });
 
-
+        //Es wird ausgelesen, ob alle Zutaten abgeharkt wurden
         fertig.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -100,20 +105,11 @@ public class Popup_ZutatenCheck extends Activity {
                     u++;
                 }
                 if(alles.equals("true")){
-                    System.out.println("fertsch");
-                    //TODO
-                    //Idee in Spielbrett
                     Intent BackIntent = new Intent();
                     BackIntent.putExtra("ActivityResult", "fertig");
                     setResult(RESULT_OK,BackIntent);
-
-
                 }
-
-
                 Popup_ZutatenCheck.this.finish();
-
-
             }
         });
     }

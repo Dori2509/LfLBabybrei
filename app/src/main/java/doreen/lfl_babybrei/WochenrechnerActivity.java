@@ -14,33 +14,34 @@ import android.widget.TextView;
 import doreen.lfl_babybrei.db.DBHelper;
 
 /**
+ * Wochenrechner
  * Created by Doreen on 26.10.2016.
  */
 public class WochenrechnerActivity extends AppCompatActivity {
     /**
-     * The Toolbar.
+     * Toolbar.
      */
     private Toolbar toolbar;
     /**
-     *
+     * Datenbankverbindung
      */
     private DBHelper mydb;
     /**
-     * The Set name.
+     * Name.
      */
     private EditText setName;
     /**
-     * The datum.
+     * Datum.
      */
     private EditText datum;
     /**
-     * The Calculate.
+     * Button
      */
     private Button calculate;
 
     /**
-     *
-     * @param savedInstanceState
+     * Initialisierung aller notwendigen Daten und der Ansicht.
+     * @param savedInstanceState Status
      */
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
@@ -79,6 +80,7 @@ public class WochenrechnerActivity extends AppCompatActivity {
             }
         });
 
+        //Eingaben werden an weitere Activity gegeben und Alter genau zu berechnen
         calculate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(final View v) {
@@ -88,8 +90,6 @@ public class WochenrechnerActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
-
     }
 
     /**
@@ -107,7 +107,5 @@ public class WochenrechnerActivity extends AppCompatActivity {
         dia.setText(String.valueOf(diamants));
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-
     }
 }
