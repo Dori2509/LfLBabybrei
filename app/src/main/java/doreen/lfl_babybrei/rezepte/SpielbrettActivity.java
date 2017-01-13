@@ -725,7 +725,6 @@ public class SpielbrettActivity extends Activity {
                 bubble3_3.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        System.out.println("funzt du?");
                         GET_INGREDIENTS = 9;
                         Intent intent = new Intent(getApplicationContext(),Popup_ZutatenCheck.class);
                         intent.putExtra("Zutaten", fluessigkeiten3);
